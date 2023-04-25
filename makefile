@@ -25,4 +25,6 @@ submit:
 test: all
 	@../QtOvercooked_mac/QtOvercooked.app/Contents/MacOS/QtOvercooked -l maps/level1/level1-1.txt -p build/main
 
+run: all
+	@../QtOvercooked_mac/QtOvercooked.app/Contents/MacOS/QtOvercooked -l maps/level1/level1-1.txt
 
