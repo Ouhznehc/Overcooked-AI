@@ -22,3 +22,7 @@ submit:
 		https://exam.problemsolving.top:8085/api/v2/submission/lab
 	@rm -r ${TEMP}
 
+test: all
+	../QtOvercooked_mac/QtOvercooked.app/Contents/MacOS/QtOvercooked -l maps/level1/level1-2.txt -p build/main
+
+
