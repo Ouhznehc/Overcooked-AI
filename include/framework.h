@@ -5,29 +5,25 @@
 #include <vector>
 #include <enum.h>
 
-struct Ingredient
-{
+struct Ingredient {
     int x, y, price;
     std::string name;
 };
 
-struct Recipe
-{
+struct Recipe {
     int time;
     std::string nameBefore, nameAfter;
     std::string kind;
 };
 
-struct Order
-{
+struct Order {
     int validFrame;
     int price;
     int frequency;
     std::vector<std::string> recipe;
 };
 
-struct Player
-{
+struct Player {
     double x, y;
     double X_Velocity;
     double Y_Velocity;
@@ -36,8 +32,7 @@ struct Player
     std::vector<std::string> entity;
 };
 
-struct Entity
-{
+struct Entity {
     double x, y;
     ContainerKind containerKind;
     std::vector<std::string> entity;

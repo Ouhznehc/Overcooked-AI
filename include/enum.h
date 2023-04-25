@@ -1,5 +1,5 @@
-#ifndef ENUM
-#define ENUM
+#ifndef __ENUM_H__
+#define __ENUM_H__
 #include <cassert>
 #include <string>
 
