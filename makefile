@@ -23,6 +23,6 @@ submit:
 	@rm -r ${TEMP}
 
 test: all
-	@../QtOvercooked_mac/QtOvercooked.app/Contents/MacOS/QtOvercooked -l maps/level1/level1-2.txt -p build/main
+	@../QtOvercooked_mac/QtOvercooked.app/Contents/MacOS/QtOvercooked -l maps/level1/level1-1.txt -p build/main
 
 
