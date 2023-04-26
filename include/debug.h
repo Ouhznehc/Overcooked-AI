@@ -22,7 +22,7 @@
 
 #define Log(format,...) \
   fprintf(stderr, "[%s,%d,%s] " format "\n", \
-      __FILE__, __LINE__, __func__, ## __VA_ARGS__)
+      basename(__FILE__), __LINE__, __func__, ## __VA_ARGS__)
 
 
 #endif
