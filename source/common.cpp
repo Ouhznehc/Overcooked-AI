@@ -6,6 +6,7 @@
 int width, height;
 char Map[N][N];
 int IngredientCount;
+
 struct Ingredient Ingredient[N];
 int recipeCount;
 struct Recipe Recipe[N];
@@ -18,3 +19,4 @@ struct Player Players[2 + 5];
 int entityCount;
 struct Entity Entity[N];
 int remainFrame, Fund;
+
