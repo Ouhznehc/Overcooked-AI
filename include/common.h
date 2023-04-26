@@ -21,10 +21,10 @@ extern struct Entity Entity[N];
 extern int remainFrame, Fund;
 
 
-extern location Plates[N];
-extern location ServiceWindow;
-extern location DirtyPlate;
-extern location Sink;
-extern location CleanPlate;
+extern struct location Plates[N];
+extern struct location ServiceWindow;
+extern struct location DirtyPlate;
+extern struct location Sink;
+extern struct location CleanPlate;
 
 #endif
