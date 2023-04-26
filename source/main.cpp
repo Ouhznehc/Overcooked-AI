@@ -12,7 +12,7 @@ int main() {
     std::string s;
     std::stringstream ss;
     int frame;
-    std::cerr << "hello __FILE__ = " << __FILE__ << std::endl;
+    printf("__FILE__ = \n", __FILE__);
 
     init_read();
 
