@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <common.h>
 #include <enum.h>
 #include <debug.h>
 #include <IO_handle.h>
