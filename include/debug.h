@@ -21,7 +21,7 @@
 // extern FILE* debug_log;
 
 #define Log(format,...) \
-  sprintf(stderr, "[%s,%d,%s] " format "\n", \
+  fprintf(stderr, "[%s,%d,%s] " format "\n", \
       __FILE__, __LINE__, __func__, ## __VA_ARGS__)
 
 
