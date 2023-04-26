@@ -22,7 +22,7 @@
 #define __FILENAME__ (strrchr(__FILE__, '/') ? (strrchr(__FILE__, '/') + 1):__FILE__)
 
 #define Log(format,...) \
-  fprintf(stderr, "[%s,%d,%s] " format "\n", \
+  fprintf(stderr, "[%s, %d, %s] " format "\n", \
       __FILENAME__, __LINE__, __func__, ## __VA_ARGS__)
 
 
