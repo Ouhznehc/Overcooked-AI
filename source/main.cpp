@@ -6,9 +6,11 @@
 #include <stdlib.h>
 #include <framework.h>
 #include <debug.h>
+#include <time.h>
 
 std::string dir[4] = { "U", "R", "D", "L" };
 int main() {
+    srand(time(0));
     std::ios::sync_with_stdio(false);
     std::cerr.tie(nullptr);
     std::cerr << std::nounitbuf;
