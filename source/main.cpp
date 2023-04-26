@@ -6,13 +6,13 @@
 #include <framework.h>
 
 int main() {
-    std::cerr << "hello __FILE__ = " << __FILE__ << std::endl;
     std::ios::sync_with_stdio(false);
     std::cerr.tie(nullptr);
     std::cerr << std::nounitbuf;
     std::string s;
     std::stringstream ss;
     int frame;
+    std::cerr << "hello __FILE__ = " << __FILE__ << std::endl;
 
     init_read();
 
