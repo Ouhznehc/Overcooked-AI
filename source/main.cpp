@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <framework.h>
+#include <debug.h>
 
 int main() {
     std::ios::sync_with_stdio(false);
@@ -23,7 +24,7 @@ int main() {
     for (int i = 0; i < totalFrame; i++) {
         bool skip = frame_read(i);
         if (skip) continue;
-        fprintf(stderr, "__FILE__ = %s \n", __FILE__);
+        Log("__FILE__ = ", __FILE);
         /* 输出当前帧的操作，此处仅作示例 */
         std::cout << "Frame " << i << "\n";
         std::string player0_Action = "Move R";
