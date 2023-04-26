@@ -31,7 +31,7 @@ int main() {
 
         std::string player0_Action = allocate_task(Players[0]);
         std::string player1_Action = allocate_task(Players[1]);
-
+        Log("%s", player0_Action);
         /* 合成一个字符串再输出，否则输出有可能会被打断 */
         std::string action = player0_Action + "\n" + player1_Action + "\n";
         std::cout << action;
