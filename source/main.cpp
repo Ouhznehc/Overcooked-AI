@@ -1,4 +1,7 @@
-#include <common.h>
+#include <bits/stdc++.h>
+#include <enum.h>
+#include <debug.h>
+#include <IO_handle.h>
 
 
 int main() {
