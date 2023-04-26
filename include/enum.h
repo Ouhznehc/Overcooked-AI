@@ -1,6 +1,8 @@
 #ifndef __ENUM_H__
 #define __ENUM_H__
 
+#include <bits/stdc++.h>
+
 struct Ingredient {
     int x, y, price; // 坐标以及花费
     std::string name;// 原料名称
