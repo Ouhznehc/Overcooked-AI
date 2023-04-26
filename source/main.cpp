@@ -5,8 +5,8 @@
 #include <string>
 #include <framework.h>
 
-int main()
-{
+int main() {
+    std::cerr << "hello __FILE__ = " << __FILE__ << std::endl;
     std::ios::sync_with_stdio(false);
     std::cerr.tie(nullptr);
     std::cerr << std::nounitbuf;
@@ -22,8 +22,7 @@ int main()
     */
 
     int totalFrame = 14400;
-    for (int i = 0; i < totalFrame; i++)
-    {
+    for (int i = 0; i < totalFrame; i++) {
         bool skip = frame_read(i);
         if (skip) continue;
 
