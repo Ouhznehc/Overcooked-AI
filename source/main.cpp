@@ -24,7 +24,6 @@ int main() {
     int totalFrame = 14400;
     for (int i = 0; i < totalFrame; i++) {
         bool skip = frame_read(i);
-        continue;
         if (skip) continue;
         /* 输出当前帧的操作，此处仅作示例 */
         std::cout << "Frame " << i << "\n";
