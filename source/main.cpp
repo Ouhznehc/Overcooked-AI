@@ -13,7 +13,7 @@ int main() {
     std::stringstream ss;
     int frame;
     fprintf(stderr, "__FILE__ = %s \n", __FILE__);
-
+    assert(0);
     init_read();
 
     /*
