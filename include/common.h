@@ -1,4 +1,4 @@
-extern int N = 20 + 5;
+extern const int N = 20 + 5;
 
 /* 按照读入顺序定义 */
 extern int width, height;
