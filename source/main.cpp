@@ -7,7 +7,7 @@
 #include <framework.h>
 #include <debug.h>
 
-std::string dir = "UDRL";
+std::string dir[4] = { "U", "R", "D", "L" };
 int main() {
     std::ios::sync_with_stdio(false);
     std::cerr.tie(nullptr);
