@@ -22,7 +22,6 @@ int main() {
 
     int totalFrame = 14400;
     for (int i = 0; i < totalFrame; i++) {
-        assert(0);
         bool skip = frame_read(i);
         if (skip) continue;
 
