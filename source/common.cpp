@@ -20,3 +20,9 @@ int entityCount;
 struct Entity Entity[N];
 int remainFrame, Fund;
 
+location Plates[N];
+location ServiceWindow;
+location DirtyPlate;
+location Sink;
+location CleanPlate;
+

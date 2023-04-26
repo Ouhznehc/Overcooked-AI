@@ -20,4 +20,11 @@ extern int entityCount;
 extern struct Entity Entity[N];
 extern int remainFrame, Fund;
 
+
+extern location Plates[N];
+extern location ServiceWindow;
+extern location DirtyPlate;
+extern location Sink;
+extern location CleanPlate;
+
 #endif

@@ -174,3 +174,18 @@ bool frame_read(int now_frame) {
     }
     return false;
 }
+
+void init() {
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            switch (Map[i][j]) {
+            case 'k': Sink = { j, i }; break;
+            case 'r': CleanPlate = { j, i }; break;
+            case 'p': DirtyPlate = { j, i }; break;
+            case '$': ServiceWindow = { j, i }; break;
+            default:
+                break;
+            }
+        }
+    }
+}
