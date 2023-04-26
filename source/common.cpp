@@ -1,3 +1,4 @@
+#include <enum.h>
 const int N = 20 + 5;
 
 /* 按照读入顺序定义 */
