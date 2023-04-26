@@ -1,7 +1,9 @@
 #ifndef __DEBUG_H__
 #define __DEBUG_H__
 
+#include <libgen.h>
 #define __DEBUG_MODE__
+
 
 #ifdef assert
 #undef assert
