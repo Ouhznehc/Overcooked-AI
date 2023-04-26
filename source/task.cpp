@@ -10,5 +10,5 @@ std::pair<std::string, std::string> allocate_task() {
 
 std::string schedule_move(std::string dest) {
   auto rc = move_towards(Players[0], dest);
-  return "Move " + (std::string)rc.second;
+  return "Move " + rc.second;
 }
