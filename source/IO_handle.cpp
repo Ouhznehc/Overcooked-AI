@@ -1,4 +1,7 @@
 #include <IO_handle.h>
+#include <common.h>
+#include <bits/stdc++.h>
+#include <enum.h>
 
 void init_read() {
     std::string s;

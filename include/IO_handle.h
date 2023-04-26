@@ -1,11 +1,6 @@
 #ifndef __IO_HANDLE__
 #define __IO_HANDLE__
 
-#include <enum.h>
-#include <bits/stdc++.h>
-#include <common.h>
-
-
 /* 初始化时的读入。 */
 void init_read();
 
