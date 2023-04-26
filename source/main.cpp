@@ -3,6 +3,7 @@
 #include <enum.h>
 #include <debug.h>
 #include <IO_handle.h>
+#include <task.h>
 
 
 int main() {
@@ -27,8 +28,9 @@ int main() {
         if (skip) continue;
         /* 输出当前帧的操作，此处仅作示例 */
         std::cout << "Frame " << i << "\n";
-        std::string player0_Action = "Move R";
-        std::string player1_Action = "Move U";
+
+        std::string player0_Action = allocate_task(Players[0]);
+        std::string player1_Action = allocate_task(Players[1]);
 
         /* 合成一个字符串再输出，否则输出有可能会被打断 */
         std::string action = player0_Action + "\n" + player1_Action + "\n";
