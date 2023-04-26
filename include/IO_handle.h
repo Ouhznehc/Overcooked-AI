@@ -1,7 +1,8 @@
 #ifndef __IO_HANDLE__
 #define __IO_HANDLE__
 
-#include <common.h>
+#include <enum.h>
+#include <bits/stdc++.h>
 
 const int N = 20 + 5;
 
