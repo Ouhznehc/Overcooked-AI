@@ -16,7 +16,7 @@
 #define panic(format, ...) \
       do { \
         Log("panic: " format, ## __VA_ARGS__); \
-        _halt(1); \
+        halt(1); \
       } while (0)
 
 #define Assert(cond,format,...) \
