@@ -7,5 +7,5 @@
 !source/*
 !maps/*
 !maps/*/**
-debug.out
+*.log
 
