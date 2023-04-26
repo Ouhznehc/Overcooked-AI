@@ -2,7 +2,6 @@
 #define __IO_HANDLE__
 
 #include <enum.h>
-#include <common.h>
 #include <bits/stdc++.h>
 
 extern const int N = 20 + 5;
