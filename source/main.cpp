@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 #include <enum.h>
 #include <debug.h>
+#include <common.h>
 #include <IO_handle.h>
 
 
