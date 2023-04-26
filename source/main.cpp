@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <string>
+#include <stdlib.h>
 #include <framework.h>
 #include <debug.h>
 
@@ -26,6 +27,8 @@ int main() {
         if (skip) continue;
         /* 输出当前帧的操作，此处仅作示例 */
         std::cout << "Frame " << i << "\n";
+        int rand = rand() % 4;
+
         std::string player0_Action = "Move R";
         std::string player1_Action = "Move U";
 
