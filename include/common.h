@@ -1,7 +1,6 @@
 #ifndef __COMMON_H__
 #define __COMMON_H__
 
-#include <bits/stdc++.h>
 extern const int N = 20 + 5;
 
 /* 按照读入顺序定义 */
