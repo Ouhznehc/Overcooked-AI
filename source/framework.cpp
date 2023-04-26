@@ -8,21 +8,23 @@
 #include <vector>
 #include <string>
 
+const int N = 20 + 5;
+
 /* 按照读入顺序定义 */
 int width, height;
-char Map[20 + 5][20 + 5];
+char Map[N][N];
 int IngredientCount;
-struct Ingredient Ingredient[20 + 5];
+struct Ingredient Ingredient[N];
 int recipeCount;
-struct Recipe Recipe[20 + 5];
+struct Recipe Recipe[N];
 int totalTime, randomizeSeed, totalOrderCount;
-struct Order totalOrder[20 + 5];
+struct Order totalOrder[N];
 int orderCount;
-struct Order Order[20 + 5];
+struct Order Order[N];
 int k;
 struct Player Players[2 + 5];
 int entityCount;
-struct Entity Entity[20 + 5];
+struct Entity Entity[N];
 int remainFrame, Fund;
 
 void init_read() {
