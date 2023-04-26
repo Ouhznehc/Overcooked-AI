@@ -4,7 +4,7 @@
 #include <cassert>
 #include <string>
 
-enum class ContainerKind {
+enum class Container {
     None,
     Pan,
     Pot,
@@ -12,7 +12,7 @@ enum class ContainerKind {
     DirtyPlates,
 };
 
-enum class TileKind {
+enum class Tile {
     None,
     Void,
     Floor,
@@ -28,54 +28,54 @@ enum class TileKind {
     PlateRack,
 };
 
-inline TileKind getTileKind(char kindChar) {
+inline Tile fetch_tile_kind(char kindChar) {
     switch (kindChar) {
     case '_':
-        return TileKind::Void;
+        return Tile::Void;
     case '.':
-        return TileKind::Floor;
+        return Tile::Floor;
     case '*':
-        return TileKind::Table;
+        return Tile::Table;
     case 't':
-        return TileKind::Trashbin;
+        return Tile::Trashbin;
     case 'c':
-        return TileKind::ChoppingStation;
+        return Tile::ChoppingStation;
     case '$':
-        return TileKind::ServiceWindow;
+        return Tile::ServiceWindow;
     case 's':
-        return TileKind::Stove;
+        return Tile::Stove;
     case 'p':
-        return TileKind::PlateReturn;
+        return Tile::PlateReturn;
     case 'k':
-        return TileKind::Sink;
+        return Tile::Sink;
     case 'r':
-        return TileKind::PlateRack;
+        return Tile::PlateRack;
     default:
         assert(0);
     }
 }
 
-inline char getAbbrev(TileKind kind) {
-    switch (kind) {
-    case TileKind::IngredientBox:
-        return 'i';
-    case TileKind::Trashbin:
-        return 't';
-    case TileKind::ChoppingStation:
-        return 'c';
-    case TileKind::ServiceWindow:
-        return '$';
-    case TileKind::Stove:
-        return 's';
-    case TileKind::PlateReturn:
-        return 'p';
-    case TileKind::Sink:
-        return 'k';
-    case TileKind::PlateRack:
-        return 'r';
-    default:
-        assert(0);
-    }
-}
+// inline char getAbbrev(Tile kind) {
+//     switch (kind) {
+//     case Tile::IngredientBox:
+//         return 'i';
+//     case Tile::Trashbin:
+//         return 't';
+//     case Tile::ChoppingStation:
+//         return 'c';
+//     case Tile::ServiceWindow:
+//         return '$';
+//     case Tile::Stove:
+//         return 's';
+//     case Tile::PlateReturn:
+//         return 'p';
+//     case Tile::Sink:
+//         return 'k';
+//     case Tile::PlateRack:
+//         return 'r';
+//     default:
+//         assert(0);
+//     }
+// }
 
 #endif
