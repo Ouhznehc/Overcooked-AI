@@ -10,6 +10,7 @@
 // #include <cassert>
 // #include <vector>
 // #include <string>
+#include <bits/stdc++.h>
 
 const int N = 20 + 5;
 
