@@ -35,9 +35,9 @@ struct Player {
 struct Entity {
     double x, y; // 实体坐标
     Container container;// 实体上的容器
-    std::vector<std::string> entity;
-    int current_frame, total_frame;
-    int sum;
+    std::vector<std::string> entity; // 实体上的的实体
+    int current_frame, total_frame; // 容器加工进度
+    int sum; // 特指脏盘子数量
 };
 
 

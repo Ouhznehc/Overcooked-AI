@@ -24,9 +24,9 @@ submit:
 
 test: all
 	@clear
-	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l maps/level1/level1-1.txt -p build/main
+	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l maps/level1/level1-1.txt -p build/main -c
 
 run: all
 	@clear
-	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l maps/level1/level1-1.txt
+	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l maps/level1/level1-1.txt -c
 
