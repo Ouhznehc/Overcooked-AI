@@ -1,9 +1,9 @@
 #ifndef __COMMON_H__
 #define __COMMON_H__
 
-#include <string>
-#include <vector>
 #include <enum.h>
+#include <debug.h>
+#include <IO_handle.h>
 
 struct Ingredient {
   int x, y, price; // 坐标以及花费
