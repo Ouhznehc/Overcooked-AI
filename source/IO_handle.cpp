@@ -179,10 +179,10 @@ void init() {
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
             switch (Map[i][j]) {
-            case 'k': Sink = { j, i }; break;
-            case 'r': CleanPlate = { j, i }; break;
-            case 'p': DirtyPlate = { j, i }; break;
-            case '$': ServiceWindow = { j, i }; break;
+            case 'k': Sink = { (double)j, (double)i }; break;
+            case 'r': CleanPlate = { (double)j, (double)i }; break;
+            case 'p': DirtyPlate = { (double)j, (double)i }; break;
+            case '$': ServiceWindow = { (double)j, (double)i }; break;
             default:
                 break;
             }
