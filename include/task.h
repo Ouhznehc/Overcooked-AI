@@ -10,7 +10,7 @@ typedef struct task {
   std::string object;
 }task;
 
-std::deque<task> task_pool;
+extern std::deque<task> task_pool;
 
 void update_task_pool();
 void schedule_task();
