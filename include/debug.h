@@ -2,6 +2,7 @@
 #define __DEBUG_H__
 
 #include <libgen.h>
+
 #define __DEBUG_MODE__
 
 
@@ -19,9 +20,9 @@
 
 // extern FILE* debug_log;
 
-#define Log(format, ...) \
-    printf( "[%s:%d %s] " format, "\n", \
-        basename(__FILE__), __LINE__, __func__, ## __VA_ARGS__)
+#define Log(format,...) \
+  sprintf(stderr, "[%s,%d,%s] " format "\n", \
+      __FILE__, __LINE__, __func__, ## __VA_ARGS__)
 
 
 #endif
