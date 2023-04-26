@@ -13,7 +13,7 @@ struct Ingredient {
 struct Recipe {
     int time; // 加工耗时
     std::string name_before, name_after; // 加工前后名称
-    std::string kind; // 加工方式
+    std::string kind; // 加工容器
 };
 
 struct Order {
