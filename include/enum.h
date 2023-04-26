@@ -3,6 +3,11 @@
 
 #include <bits/stdc++.h>
 
+typedef struct location {
+    double x;
+    double y;
+}location;
+
 enum class Container {
     None,
     Pan,
