@@ -1,7 +1,7 @@
 #ifndef __COMMON_H__
 #define __COMMON_H__
 
-extern const int N;
+#define N 25
 
 /* 按照读入顺序定义 */
 extern int width, height;
