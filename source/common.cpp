@@ -1,4 +1,4 @@
-#include <enum.h>
+#include <common.h>
 
 const int N = 20 + 5;
 

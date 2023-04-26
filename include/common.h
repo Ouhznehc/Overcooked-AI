@@ -1,3 +1,7 @@
+#ifndef __COMMON_H__
+#define __COMMON_H__
+
+#include <enum.h>
 extern const int N = 20 + 5;
 
 /* 按照读入顺序定义 */
@@ -16,3 +20,5 @@ extern struct Player Players[2 + 5];
 extern int entityCount;
 extern struct Entity Entity[N];
 extern int remainFrame, Fund;
+
+#endif

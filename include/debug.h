@@ -4,10 +4,6 @@
 #define __DEBUG_MODE__
 
 
-
-
-
-
 #ifdef __DEBUG_MODE__
 
 #define __FILENAME__ (strrchr(__FILE__, '/') ? (strrchr(__FILE__, '/') + 1):__FILE__)
