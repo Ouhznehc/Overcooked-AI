@@ -7,21 +7,21 @@
 const int N = 20 + 5;
 
 /* 按照读入顺序定义 */
-int width, height;
-char Map[N][N];
-int IngredientCount;
-struct Ingredient Ingredient[N];
-int recipeCount;
-struct Recipe Recipe[N];
-int totalTime, randomizeSeed, totalOrderCount;
-struct Order totalOrder[N];
-int orderCount;
-struct Order Order[N];
-int k;
-struct Player Players[2 + 5];
-int entityCount;
-struct Entity Entity[N];
-int remainFrame, Fund;
+extern int width, height;
+extern char Map[N][N];
+extern int IngredientCount;
+extern struct Ingredient Ingredient[N];
+extern int recipeCount;
+extern struct Recipe Recipe[N];
+extern int totalTime, randomizeSeed, totalOrderCount;
+extern struct Order totalOrder[N];
+extern int orderCount;
+extern struct Order Order[N];
+extern int k;
+extern struct Player Players[2 + 5];
+extern int entityCount;
+extern struct Entity Entity[N];
+extern int remainFrame, Fund;
 
 
 /* 初始化时的读入。 */
