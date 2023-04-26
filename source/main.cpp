@@ -1,14 +1,10 @@
-#include <iostream>
-#include <sstream>
-#include <string>
-#include <vector>
-#include <string>
-#include <stdlib.h>
-#include <framework.h>
-#include <debug.h>
-#include <time.h>
+#include <bits/stdc++.h>
 
-std::string dir[4] = { "U", "R", "D", "L" };
+#include <common.h>
+#include <debug.h>
+#include <IO_handle.h>
+
+
 int main() {
     srand(time(0));
     std::ios::sync_with_stdio(false);
@@ -30,10 +26,8 @@ int main() {
         if (skip) continue;
         /* 输出当前帧的操作，此处仅作示例 */
         std::cout << "Frame " << i << "\n";
-        int randnum0 = (rand() * rand()) % 4;
-        int randnum1 = (rand() * rand()) % 4;
-        std::string player0_Action = "Move " + dir[randnum0];
-        std::string player1_Action = "Move " + dir[randnum1];
+        std::string player0_Action = "Move R";
+        std::string player1_Action = "Move U";
 
         /* 合成一个字符串再输出，否则输出有可能会被打断 */
         std::string action = player0_Action + "\n" + player1_Action + "\n";

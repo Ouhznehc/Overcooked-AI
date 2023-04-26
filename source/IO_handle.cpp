@@ -1,31 +1,4 @@
-#include <enum.h>
-#include <framework.h>
-#include <string>
-#include <iostream>
-#include <sstream>
-#include <string>
-#include <cassert>
-#include <vector>
-#include <string>
-
-const int N = 20 + 5;
-
-/* 按照读入顺序定义 */
-int width, height;
-char Map[N][N];
-int IngredientCount;
-struct Ingredient Ingredient[N];
-int recipeCount;
-struct Recipe Recipe[N];
-int totalTime, randomizeSeed, totalOrderCount;
-struct Order totalOrder[N];
-int orderCount;
-struct Order Order[N];
-int k;
-struct Player Players[2 + 5];
-int entityCount;
-struct Entity Entity[N];
-int remainFrame, Fund;
+#include <IO_handle.h>
 
 void init_read() {
     std::string s;
