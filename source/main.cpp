@@ -31,6 +31,7 @@ int main() {
         for (auto it : map) {
             std::cerr << it.first << std::endl;
         }
+        std::cerr.flush();
         /* 输出当前帧的操作，此处仅作示例 */
         std::cout << "Frame " << i << "\n";
         std::pair<std::string, std::string> strategy = allocate_task();
