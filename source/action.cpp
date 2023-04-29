@@ -47,7 +47,7 @@ std::pair<bool, std::string> move_towards(Player player, std::string dest) {
   else dst_location = *map.find(dest)->second.begin();
   if (check_arive(src_location, dst_location)) {
     bool stop = player.x_velocity == 0 && player.y_velocity == 0;
-    return { !stop, " " };
+    return { true, " " };
   }
   else return { true, move_towards_by_location(src_location, dst_location) };
 }
