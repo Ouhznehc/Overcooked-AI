@@ -58,5 +58,17 @@ std::pair<bool, std::string> put_or_pick(Player player, std::string object) {
   for (int i = 0; i < player.entity.size(); i++) {
     if (player.entity[i] == object) return { false, "" };
   }
-  return { true, "L" };
+  assert(LUT.find(object) != LUT.end() || map.find(object) != map.end());
+  location dst_location, src_location = { player.x, player.y };
+  if (LUT.find(object) != LUT.end()) dst_location = *LUT.find(object)->second.begin();
+  else dst_location = *map.find(object)->second.begin();
+  if (std::fabs(DELTA_X(src_location, dst_location) <= LIMIT_RANGE) {
+    if (src_location.y > dst_location.y) return { true, "U" };
+    else return { true, "D" };
+  }
+  if (std::fabs(DELTA_Y(src_location, dst_location) <= LIMIT_RANGE) {
+    if (src_location.x > dst_location.x) return { true, "L" };
+    else return { true, "R" };
+  }
+  assert(0);
 }
