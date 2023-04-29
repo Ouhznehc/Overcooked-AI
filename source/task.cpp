@@ -7,13 +7,13 @@ std::deque<task> task_pool;
 
 std::pair<std::string, std::string> allocate_task() {
   while (1) {
-    while (schedule_move(Player[0], "fish"));
-    while (schedule_put_or_pick(Player[0], "fish"));
-    while (schedule_move(Player[0], "Plate"));
-    while (schedule_put_or_pick(Player[0], "Plate"));
-    while (schedule_put_or_pick(Player[0], "Plate"));
-    while (schedule_move(Player[0], "service_window"));
-    while (schedule_put_or_pick(Player[0], "service_window"));
+    while (schedule_move(Players[0], "fish"));
+    while (schedule_put_or_pick(Players[0], "fish"));
+    while (schedule_move(Players[0], "Plate"));
+    while (schedule_put_or_pick(Players[0], "Plate"));
+    while (schedule_put_or_pick(Players[0], "Plate"));
+    while (schedule_move(Players[0], "service_window"));
+    while (schedule_put_or_pick(Players[0], "service_window"));
   }
 }
 
