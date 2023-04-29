@@ -3,15 +3,17 @@
 #include <bits/stdc++.h>
 
 #define LIMIT_RANGE 0.001
+#define DELTA_X(src, dst) (dst.x - src.x + 0.5)
+#define DELTA_Y(src, dst) (dst.y - src.y + 0.5)
 
 double manhattan_distance(location src, location dst) {
-  double distance = std::fabs(src.x - dst.x) + std::fabs(src.y - dst.y);
+  double distance = std::fabs(DELTA_X(src, dst)) + std::fabs(DELTA_Y(src, dst));
   return distance;
 }
 
 bool check_arive(location src, location dst) {
   bool flag1 = manhattan_distance(src, dst) <= 0.8;
-  bool flag2 = std::fabs(src.x - dst.x) <= LIMIT_RANGE || std::fabs(src.y - dst.y) <= LIMIT_RANGE;
+  bool flag2 = std::fabs(DELTA_X(src, dst)) <= LIMIT_RANGE || std::fabs(DELTA_Y(src, dst)) <= LIMIT_RANGE;
   return flag1 && flag2;
 }
 
@@ -19,7 +21,7 @@ std::string move_towards_by_location(location src, location dst) {
   std::cerr << src.x << " " << src.y << std::endl;
   std::cerr << dst.x << " " << dst.y << std::endl;
   std::cerr.flush();
-  double delta_x = dst.x - src.x, delta_y = dst.y - src.y;
+  double delta_x = DELTA_X(src, dst), delta_y = DELTA_Y(src, dst);
   int x_flag, y_flag;
   if (std::fabs(delta_x) <= LIMIT_RANGE) x_flag = 0;
   else if (delta_x > LIMIT_RANGE) x_flag = 1;
