@@ -1,6 +1,7 @@
 #include <task.h>
 #include <action.h>
 #include <common.h>
+#include <debug.h>
 
 std::deque<task> task_pool;
 
