@@ -7,7 +7,7 @@ task player0_task_pool[7] = { {schedule_move, "fish"}, {schedule_put_or_pick, "f
 task* player0_task;
 int player0_current;
 std::pair<std::string, std::string> allocate_task() {
-  if (player0_current == NULL) player0_task = &player0_task_pool[current];
+  if (player0_current == NULL) player0_task = &player0_task_pool[player0_current];
   auto rc = player0_task->function(Players[0], player0_task->object);
   if (rc == "") {
     player0_current = (player0_current + 1) % 7;
