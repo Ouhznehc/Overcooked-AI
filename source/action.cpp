@@ -13,6 +13,7 @@ std::string move_towards_by_location(location src, location dst) {
   if (delta_x < -1) return "L";
   if (delta_y > 1) return "D";
   if (delta_y < -1) return "U";
+  return " ";
 }
 
 std::pair<bool, std::string> move_towards(Player player, std::string dest) {
