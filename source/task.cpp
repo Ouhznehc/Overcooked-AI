@@ -11,8 +11,8 @@ std::pair<std::string, std::string> allocate_task() {
   if (current_task == NULL) current_task = &taskPool[current];
   auto rc = current_task->function(Players[0], current_task->object);
   if (rc == "") current_task = &taskPool[(current + 1) % 7], current++;
-  else return { rc, " " };
-  return { " ", " " };
+  else return { rc, "" };
+  return { "", "" };
 }
 
 std::string schedule_move(Player player, std::string dest) {
