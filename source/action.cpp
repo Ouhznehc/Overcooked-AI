@@ -32,7 +32,6 @@ std::string move_towards_by_location(location src, location dst) {
   if (x_flag == 0 && y_flag == -1) return "U";
   if (x_flag == 1 && y_flag == 0) return "R";
   if (x_flag == -1 && y_flag == 0) return "L";
-  assert(0);
   return " ";
 }
 
