@@ -54,7 +54,7 @@ std::pair<bool, std::string> interact(Player player, std::string object) {
 
 }
 std::pair<bool, std::string> put_or_pick(Player player, std::string object) {
-  if (player.container == Container::Plate) return { false, "" };
+  if (player.container == Container::Plate && object == "Plate") return { false, "" };
   for (int i = 0; i < player.entity.size(); i++) {
     if (player.entity[i] == object) return { false, "" };
   }
