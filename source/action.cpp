@@ -38,7 +38,7 @@ std::string move_towards_by_location(location src, location dst) {
 }
 
 std::pair<bool, std::string> move_towards(Player player, std::string dest) {
-  assert(LUT.find(dest) != LUT.end() || map.find(dest) != map.end());
+  assert(LUT.find(dest) == LUT.end() && map.find(dest) == map.end());
   if (LUT.find(dest) != LUT.end() || map.find(dest) != map.end()) {
     return { false, "" };
   }
@@ -62,7 +62,7 @@ std::pair<bool, std::string> put_or_pick(Player player, std::string object) {
   for (int i = 0; i < player.entity.size(); i++) {
     if (player.entity[i] == object) return { false, "" };
   }
-  if (LUT.find(object) != LUT.end() || map.find(dest) != map.end()) {
+  if (LUT.find(object) == LUT.end() && map.find(object) == map.end()) {
     return { false, "" };
   }
   assert(LUT.find(object) != LUT.end() || map.find(object) != map.end());
