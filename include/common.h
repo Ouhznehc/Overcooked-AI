@@ -20,11 +20,6 @@ extern int entityCount;
 extern struct Entity Entity[N];
 extern int remainFrame, Fund;
 
-
-extern struct location Plates[N];
-extern struct location ServiceWindow;
-extern struct location DirtyPlate;
-extern struct location Sink;
-extern struct location CleanPlate;
+extern std::map<std::string, std::vector<location>> LUT;
 
 #endif

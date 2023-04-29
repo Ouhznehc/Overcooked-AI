@@ -175,17 +175,23 @@ bool frame_read(int now_frame) {
     return false;
 }
 
+
 void init() {
+    LUT.clear();
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
             switch (Map[i][j]) {
-            case 'k': Sink = { (double)j, (double)i }; break;
-            case 'r': CleanPlate = { (double)j, (double)i }; break;
-            case 'p': DirtyPlate = { (double)j, (double)i }; break;
-            case '$': ServiceWindow = { (double)j, (double)i }; break;
+            case 'k': LUT["sink"].push_back({ (double)j, (double)i }); break;
+            case 'r': LUT["clean_plate_location"].push_back({ (double)j, (double)i }); break;
+            case 'p': LUT["dirty_plate_location"].push_back({ (double)j, (double)i }); break;
+            case '$': LUT["service_window"].push_back({ (double)j, (double)i }); break;
             default:
                 break;
             }
         }
     }
+}
+
+void look_up_table() {
+
 }
