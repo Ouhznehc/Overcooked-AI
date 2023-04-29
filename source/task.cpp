@@ -2,6 +2,7 @@
 #include <action.h>
 #include <common.h>
 #include <debug.h>
+#include <enum.h>
 
 std::deque<task> task_pool;
 
