@@ -2,7 +2,7 @@
 #include <common.h>
 #include <bits/stdc++.h>
 
-#define LIMIT_RANGE 0.2
+#define LIMIT_RANGE 0.1
 #define DELTA_X(src, dst) (dst.x - src.x + 0.5)
 #define DELTA_Y(src, dst) (dst.y - src.y + 0.5)
 
@@ -13,7 +13,7 @@ double manhattan_distance(location src, location dst) {
 
 bool check_arive(location src, location dst) {
   bool flag1 = manhattan_distance(src, dst) <= 1;
-  bool flag2 = std::fabs(DELTA_X(src, dst)) <= LIMIT_RANGE || std::fabs(DELTA_Y(src, dst)) <= LIMIT_RANGE;
+  bool flag2 = std::fabs(DELTA_X(src, dst)) <= 0.01 || std::fabs(DELTA_Y(src, dst)) <= 0.01;
   return flag1 && flag2;
 }
 
