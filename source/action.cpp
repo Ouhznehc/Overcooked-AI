@@ -8,7 +8,7 @@ double manhattan_distance(location src, location dst) {
 
 bool check_arive(location src, location dst) {
   bool flag1 = manhattan_distance(src, dst) <= 0.8;
-  bool flag2 = std::fabs(src.x - dst.x) <= 1.0 || std::fabs(src.y - dst.y);
+  bool flag2 = std::fabs(src.x - dst.x) <= 0.1 || std::fabs(src.y - dst.y) <= 0.1;
   return flag1 && flag2;
 }
 
