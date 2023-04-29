@@ -6,7 +6,7 @@ bool check_arive(location src, location dst) {
 }
 
 
-std::string move_towards_by_loaction(locaton src, location dst) {
+std::string move_towards_by_lacation(locaton src, location dst) {
 
 }
 
