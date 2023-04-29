@@ -2,6 +2,7 @@
 #define __COMMON_H__
 
 #include <bits/stdc++.h>
+#include <enum.h>
 
 #define N 25
 
