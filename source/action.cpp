@@ -3,7 +3,7 @@
 
 bool check_arive(location src, location dst) {
   double distance = (src.x - dst.x) * (src.x - dst.x) + (src.y - dst.y) * (src.y - dst.y);
-  return distance <= 1.0;
+  return distance <= 5.0;
 }
 
 
