@@ -45,3 +45,10 @@ std::pair<bool, std::string> move_towards(Player player, std::string dest) {
   if (check_arive(src_location, dst_location)) return { false, " " };
   else return { true, move_towards_by_location(src_location, dst_location) };
 }
+
+std::pair<bool, std::string> interact(Player player, std::string object) {
+  return { false, NULL };
+}
+std::pair<bool, std::string> put_or_pick(Player player, std::string object) {
+  return { false, NULL };
+}
