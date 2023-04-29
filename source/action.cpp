@@ -12,7 +12,7 @@ double manhattan_distance(location src, location dst) {
 }
 
 bool check_arive(location src, location dst) {
-  bool flag1 = manhattan_distance(src, dst) <= 0.8;
+  bool flag1 = manhattan_distance(src, dst) <= 1;
   bool flag2 = std::fabs(DELTA_X(src, dst)) <= LIMIT_RANGE || std::fabs(DELTA_Y(src, dst)) <= LIMIT_RANGE;
   return flag1 && flag2;
 }
