@@ -175,6 +175,14 @@ bool frame_read(int now_frame) {
     return false;
 }
 
+void look_up_table() {
+    map.clear();
+    for (int i = 0; i < entityCount; i++) {
+        for (int j = 0; j < Entity[i].entity.size(); j++) {
+            map[Entity[i].entity[j]].push_back({ Entity[i].x, Entity[i].y });
+        }
+    }
+}
 
 void init() {
     LUT.clear();
@@ -193,14 +201,5 @@ void init() {
     for (int i = 0; i < IngredientCount; i++) {
         LUT[Ingredient[i].name].push_back({ (double)Ingredient[i].x, (double)Ingredient[i].y });
     }
-    for (int i = 0; i < entityCount; i++) {
-        for (int j = 0; j < Entity[i].entity.size(); j++) {
-            LUT[Entity[i].entity[j]].push_back({ Entity[i].x, Entity[i].y });
-        }
-    }
-
-}
-
-void look_up_table() {
-
+    look_up_table();
 }

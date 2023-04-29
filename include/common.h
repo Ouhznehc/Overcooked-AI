@@ -24,5 +24,6 @@ extern struct Entity Entity[N];
 extern int remainFrame, Fund;
 
 extern std::map<std::string, std::vector<location>> LUT;
+extern std::map<std::string, std::vector<location>> map;
 
 #endif

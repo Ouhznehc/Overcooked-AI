@@ -21,4 +21,5 @@ struct Entity Entity[N];
 int remainFrame, Fund;
 
 std::map<std::string, std::vector<location>> LUT;
+std::map<std::string, std::vector<location>> map;
 
