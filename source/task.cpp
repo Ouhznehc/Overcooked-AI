@@ -4,6 +4,7 @@
 #include <debug.h>
 std::deque<task> task_pool;
 task player0_task_pool[7] = { {schedule_move, "fish"}, {schedule_put_or_pick, "fish"}, {schedule_move, "Plate"}, {schedule_put_or_pick, "Plate"}, {schedule_put_or_pick, "Plate"}, {schedule_move, "service_window"}, {schedule_put_or_pick, "service_window"} };
+task player1_task_pool[7] = { {schedule_move, "dirty_plate_location"}, {schedule_put_or_pick, "dirty_plate_location"}, {schedule_move, "sink"}, {schedule_put_or_pick, "sink"}, {schedule_put_or_pick, "Plate"}, {schedule_move, "service_window"}, {schedule_put_or_pick, "service_window"} };
 task* player0_task;
 int player0_current;
 std::pair<std::string, std::string> allocate_task() {
