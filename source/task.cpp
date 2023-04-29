@@ -3,7 +3,7 @@
 #include <common.h>
 #include <debug.h>
 std::deque<task> task_pool;
-task taskPool[7] = { {schedule_move, "fish"}, {schedule_put_or_pick, "fish"}, {schedule_move, "Plate"}, {schedule_put_or_pick, "Plate"}, {schedule_put_or_pick, "Plate"}, {schedule_move, "service_window"}, {schedule_put_or_pick, "service_window"} };
+task taskPool[7] = { {schedule_move, "Plate"}, {schedule_put_or_pick, "fish"}, {schedule_move, "Plate"}, {schedule_put_or_pick, "Plate"}, {schedule_put_or_pick, "Plate"}, {schedule_move, "service_window"}, {schedule_put_or_pick, "service_window"} };
 task* current_task;
 int current;
 std::pair<std::string, std::string> allocate_task() {
