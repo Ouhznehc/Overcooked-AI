@@ -5,7 +5,7 @@
 #include <enum.h>
 
 std::pair<bool, std::string> move_towards(Player player, std::string dest);
-bool interact(Player player, std::string object);
-bool put_or_pick(Player player, std::string object);
+std::pair<bool, std::string> interact(Player player, std::string object);
+std::pair<bool, std::string> put_or_pick(Player player, std::string object);
 
 #endif
