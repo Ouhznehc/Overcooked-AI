@@ -25,9 +25,9 @@ int main() {
         bool skip = frame_read(i);
         if (skip) continue;
         look_up_table();
-        for (auto it : map) {
-            std::cerr << it.first << " " << it.second.begin()->x << " " << it.second.begin()->y << std::endl;
-        }
+        // for (auto it : map) {
+        //     std::cerr << it.first << " " << it.second.begin()->x << " " << it.second.begin()->y << std::endl;
+        // }
         /* 输出当前帧的操作，此处仅作示例 */
         std::cout << "Frame " << i << "\n";
         std::pair<std::string, std::string> strategy = allocate_task();
