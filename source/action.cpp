@@ -1,7 +1,7 @@
 #include <action.h>
 #include <common.h>
 
-#define LIMIT_RANGE 0.1
+#define LIMIT_RANGE 0.08
 
 double manhattan_distance(location src, location dst) {
   double distance = std::fabs(src.x - dst.x) + std::fabs(src.y - dst.y);
