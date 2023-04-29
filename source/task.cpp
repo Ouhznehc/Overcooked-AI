@@ -3,16 +3,15 @@
 #include <common.h>
 #include <debug.h>
 std::deque<task> task_pool;
-task taskPool[7] = { {schedule_move, "fish"}, {schedule_put_or_pick, "fish"}, {schedule_move, "Plate"}, {schedule_put_or_pick, "Plate"}, {schedule_put_or_pick, "Plate"}, {schedule_move, "service_window"}, {schedule_put_or_pick, "service_window"} };
-task* current_task;
-int current;
+task player0_task_pool[7] = { {schedule_move, "fish"}, {schedule_put_or_pick, "fish"}, {schedule_move, "Plate"}, {schedule_put_or_pick, "Plate"}, {schedule_put_or_pick, "Plate"}, {schedule_move, "service_window"}, {schedule_put_or_pick, "service_window"} };
+task* player0_task;
+int player0_current;
 std::pair<std::string, std::string> allocate_task() {
-  Log("current = %d \n", current);
-  if (current_task == NULL) current_task = &taskPool[current];
-  auto rc = current_task->function(Players[0], current_task->object);
+  if (player0_current == NULL) player0_task = &player0_task_pool[current];
+  auto rc = player0_task->function(Players[0], player0_task->object);
   if (rc == "") {
-    current = (current + 1) % 7;
-    current_task = &taskPool[current];
+    player0_current = (current + 1) % 7;
+    player0_task = &player0_task_pool[current];
     return { "", "" };
   }
   else return { rc, "" };
