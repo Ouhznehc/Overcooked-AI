@@ -18,9 +18,6 @@ bool check_arive(location src, location dst) {
 }
 
 std::string move_towards_by_location(location src, location dst) {
-  std::cerr << src.x << " " << src.y << std::endl;
-  std::cerr << dst.x << " " << dst.y << std::endl;
-  std::cerr.flush();
   double delta_x = DELTA_X(src, dst), delta_y = DELTA_Y(src, dst);
   int x_flag, y_flag;
   if (std::fabs(delta_x) <= LIMIT_RANGE) x_flag = 0;
