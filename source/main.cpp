@@ -15,7 +15,7 @@ int main() {
     std::stringstream ss;
     int frame;
     init_read();
-
+    init();
     /*
         你可以在读入后进行一些相关预处理，时间限制：5秒钟
         init();
@@ -25,6 +25,7 @@ int main() {
     for (int i = 0; i < totalFrame; i++) {
         bool skip = frame_read(i);
         if (skip) continue;
+        look_up_table();
         /* 输出当前帧的操作，此处仅作示例 */
         std::cout << "Frame " << i << "\n";
         std::pair<std::string, std::string> strategy = allocate_task();
