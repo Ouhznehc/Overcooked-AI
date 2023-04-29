@@ -168,8 +168,7 @@ bool frame_read(int now_frame) {
                 Entity[i].container = Container::DirtyPlates;
                 tmp >> Entity[i].sum;
             }
-            else
-                Entity[i].entity.push_back(s);
+            Entity[i].entity.push_back(s);
         }
     }
     return false;
