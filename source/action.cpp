@@ -16,6 +16,7 @@ bool check_arive(location src, location dst) {
 }
 
 std::string move_towards_by_location(location src, location dst) {
+  std::cerr << src.x << " " << src.y << std::endl;
   std::cerr << dst.x << " " << dst.y << std::endl;
   double delta_x = dst.x - src.x, delta_y = dst.y - src.y;
   int x_flag, y_flag;
