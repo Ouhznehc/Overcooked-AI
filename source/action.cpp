@@ -6,6 +6,11 @@ double manhattan_distance(location src, location dst) {
   return distance;
 }
 
+bool check_arive(location src, location dst) {
+  bool flag1 = manhattan_distance(src, dst) <= 0.8;
+  bool flag2 = std::fabs(src.x - dst.x) <= 1.0 || std::fabs(src.y - dst.y);
+  return flag1 && flag2;
+}
 
 std::string move_towards_by_location(location src, location dst) {
   double delta_x = dst.x - src.x, delta_y = dst.y - src.y;
@@ -32,6 +37,6 @@ std::pair<bool, std::string> move_towards(Player player, std::string dest) {
   location dst_location, src_location = { player.x, player.y };
   if (LUT.find(dest) != LUT.end()) dst_location = *LUT.find(dest)->second.begin();
   else dst_location = *map.find(dest)->second.begin();
-  if (manhattan_distance(src_location, dst_location) <= 0.8) return { false, " " };
+  if (check_arive(src_location, dst_location)) return { false, " " };
   else return { true, move_towards_by_location(src_location, dst_location) };
 }
