@@ -9,10 +9,10 @@ bool check_arive(location src, location dst) {
 
 std::string move_towards_by_location(location src, location dst) {
   double delta_x = dst.x - src.x, delta_y = dst.y - src.y;
-  if (delta_x > 0) return "R";
-  if (delta_x < 0) return "L";
-  if (delta_y > 0) return "D";
-  if (delta_y < 0) return "U";
+  if (delta_x > 0.1) return "R";
+  if (delta_x < -0.1) return "L";
+  if (delta_y > 0.1) return "D";
+  if (delta_y < -0.1) return "U";
   return " ";
 }
 
