@@ -32,6 +32,6 @@ std::pair<bool, std::string> move_towards(Player player, std::string dest) {
   location dst_location, src_location = { player.x, player.y };
   if (LUT.find(dest) != LUT.end()) dst_location = *LUT.find(dest)->second.begin();
   else dst_location = *map.find(dest)->second.begin();
-  if (manhattan_distance(src_location, dst_location) <= 1.0) return { false, " " };
+  if (manhattan_distance(src_location, dst_location) <= 0.5) return { false, " " };
   else return { true, move_towards_by_location(src_location, dst_location) };
 }
