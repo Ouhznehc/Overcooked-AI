@@ -10,7 +10,7 @@ std::pair<std::string, std::string> allocate_task() {
 }
 
 std::string schedule_move(std::string dest) {
-  Log("%s", dest);
+  cerr << dest;
   auto rc = move_towards(Players[0], dest);
   return "Move " + rc.second;
 }
