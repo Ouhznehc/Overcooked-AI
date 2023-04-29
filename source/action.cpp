@@ -54,5 +54,5 @@ std::pair<bool, std::string> put_or_pick(Player player, std::string object) {
   for (int i = 0; i < player.entity.size(); i++) {
     if (player.entity[i] == object) return { false, "" };
   }
-  return { false, "" };
+  return { true, "L" };
 }
