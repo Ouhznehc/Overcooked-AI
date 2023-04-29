@@ -24,7 +24,7 @@ int main() {
     for (int i = 0; i < totalFrame; i++) {
         bool skip = frame_read(i);
         if (skip) continue;
-        if (i % 10 == 0) look_up_table();
+        if (i % 100 == 0) look_up_table();
         /* 输出当前帧的操作，此处仅作示例 */
         std::cout << "Frame " << i << "\n";
         std::pair<std::string, std::string> strategy = allocate_task();
