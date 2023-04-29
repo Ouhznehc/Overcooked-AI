@@ -38,10 +38,10 @@ std::string move_towards_by_location(location src, location dst) {
 }
 
 std::pair<bool, std::string> move_towards(Player player, std::string dest) {
-  assert(LUT.find(dest) != LUT.end() || map.find(dest) != map.end());
   if (LUT.find(dest) == LUT.end() && map.find(dest) == map.end()) {
     return { false, "" };
   }
+  assert(LUT.find(dest) != LUT.end() || map.find(dest) != map.end());
   location dst_location, src_location = { player.x, player.y };
   if (LUT.find(dest) != LUT.end()) dst_location = *LUT.find(dest)->second.begin();
   else dst_location = *map.find(dest)->second.begin();
