@@ -11,7 +11,7 @@ std::pair<std::string, std::string> allocate_task() {
   auto rc = player0_task->function(Players[0], player0_task->object);
   if (rc == "") {
     player0_current = (current + 1) % 7;
-    player0_task = &player0_task_pool[current];
+    player0_task = &player0_task_pool[player0_current];
     return { "", "" };
   }
   else return { rc, "" };
