@@ -3,8 +3,8 @@
 #include <bits/stdc++.h>
 
 #define LIMIT_RANGE 0.01
-#define DELTA_X(src, dst) (dst.x - src.x + 0.5)
-#define DELTA_Y(src, dst) (dst.y - src.y + 0.5)
+#define DELTA_X(src, dst) (dst.x - src.x)
+#define DELTA_Y(src, dst) (dst.y - src.y)
 
 
 double manhattan_distance(location src, location dst) {
@@ -13,10 +13,10 @@ double manhattan_distance(location src, location dst) {
 }
 
 location set_dest_location(location dst) {
-  if (dst.x == 0) return { dst.x + 1, dst.y };
-  if (dst.y == 0) return { dst.x, dst.y + 1 };
-  if (dst.x == width - 1) return { dst.x - 1, dst.y };
-  if (dst.y == height - 1) return { dst.x, dst.y - 1 };
+  if (dst.x == 0) return { dst.x + 1.5, dst.y + 0.5 };
+  if (dst.y == 0) return { dst.x + 0.5, dst.y + 1.5 };
+  if (dst.x == width - 1) return { dst.x - 0.5, dst.y + 0.5 };
+  if (dst.y == height - 1) return { dst.x + 0.5, dst.y - 0.5 };
 
 }
 
