@@ -54,8 +54,8 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
   location dst_location, src_location = { player.x, player.y };
   if (LUT.find(dest) != LUT.end()) dst_location = set_dest_location(*LUT.find(dest)->second.begin());
   else dst_location = set_dest_location(*map.find(dest)->second.begin());
-  std::cerr << "src:" << src_location.x << " " << src_location.y << std::endl;
-  std::cerr << "dst:" << dst_location.x << " " << dst_location.y << std::endl;
+  // std::cerr << "src:" << src_location.x << " " << src_location.y << std::endl;
+  // std::cerr << "dst:" << dst_location.x << " " << dst_location.y << std::endl;
   if (check_arive(src_location, dst_location)) {
     if (dst_location.x == 1.5) return { false, "L" };
     if (dst_location.x == width - 1.5) return { false, "R" };
