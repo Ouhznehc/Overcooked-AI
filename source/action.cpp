@@ -3,6 +3,7 @@
 #include <bits/stdc++.h>
 
 #define LIMIT_RANGE 0.3
+#define SAFE_DISTANCE 2.5
 #define DELTA_X(src, dst) (dst.x - src.x)
 #define DELTA_Y(src, dst) (dst.y - src.y)
 
@@ -29,10 +30,10 @@ bool check_arive(location src, location dst) {
 std::string move_towards(location src, location dst) {
   // std::cerr << "src:" << src.x << " " << src.y << std::endl;
   // std::cerr << "dst:" << dst.x << " " << dst.y << std::endl;
-  if (src.x <= 2) return "R";
-  else if (src.x >= width - 2) return "L";
-  if (src.y <= 2) return "D";
-  else if (src.y >= height - 2) return "U";
+  if (src.x <= SAFE_DISTANCE) return "R";
+  else if (src.x >= width - SAFE_DISTANCE) return "L";
+  if (src.y <= SAFE_DISTANCE) return "D";
+  else if (src.y >= height - SAFE_DISTANCE) return "U";
   double delta_x = DELTA_X(src, dst), delta_y = DELTA_Y(src, dst);
   int x_flag, y_flag;
   if (std::fabs(delta_x) <= LIMIT_RANGE) x_flag = 0;
