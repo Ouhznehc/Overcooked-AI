@@ -81,7 +81,7 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
     if (dst_location.x == 0) return { false, "L" };
     if (dst_location.x == width - 1) return { false, "R" };
   }
-  else return { true, move_towards(src_location, dst_location) };
+  else return { true, move_towards(src_location, dst_set_location) };
   assert(0);
 
 }
