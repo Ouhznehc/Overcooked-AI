@@ -9,13 +9,13 @@ task* player0_task;
 int player0_current;
 std::pair<std::string, std::string> allocate_task() {
   if (player0_task == NULL) player0_task = &player0_task_pool[player0_current];
-  auto rc = player0_task->function(Players[0], player0_task->object);
-  if (rc.first == false) {
+  auto rc0 = player0_task->function(Players[0], player0_task->object);
+  if (rc0.first == false) {
     player0_current = (player0_current + 1) % 4;
     player0_task = &player0_task_pool[player0_current];
-    return { rc.second, "" };
+    return { rc0.second, "" };
   }
-  else return { rc.second, "" };
+  else return { rc0.second, "" };
 }
 
 std::pair<bool, std::string> schedule_move_and_put_or_pick(Player player, std::string dest) {
