@@ -73,15 +73,17 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
 
 
 std::pair<bool, std::string> interact(Player player, std::string object) {
-  location dst_location = set_dest_location(*LUT.find("sink")->second.begin());
+  location sink_location = *LUT.find("sink")->second.begin();
+  if (map.find("DirtyPlate") == map.end()) return { false, " " };
+  location plate_location = *map.find("DirtyPlate")->second.begin();
+  if (plate_location.x == sink_location.x && plate_location.y == sink_location.y) {
+    if (sink_location.y == 0) return { true, "U" };
+    if (sink_location.y == height - 1) return { true, "D" };
+    if (sink_location.x == 0) return { true, "L" };
+    if (sink_location.x == width - 1) return { true, "R" };
+  }
   for (int i = 0; i < entityCount; i++) {
     if (Entity[i].total_frame != 0) {
-      assert(0);
-      if (dst_location.y == 1.5) return { true, "U" };
-      if (dst_location.y == height - 1.5) return { true, "D" };
-      if (dst_location.x == 1.5) return { true, "L" };
-      if (dst_location.x == width - 1.5) return { true, "R" };
-      assert(0);
       break;
     }
   }
