@@ -57,10 +57,10 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
   // std::cerr << "src:" << src_location.x << " " << src_location.y << std::endl;
   // std::cerr << "dst:" << dst_location.x << " " << dst_location.y << std::endl;
   if (check_arive(src_location, dst_location)) {
-    if (dst_location.x == 1.5) return { false, "L" };
-    if (dst_location.x == width - 1.5) return { false, "R" };
     if (dst_location.y == 1.5) return { false, "U" };
     if (dst_location.y == height - 1.5) return { false, "D" };
+    if (dst_location.x == 1.5) return { false, "L" };
+    if (dst_location.x == width - 1.5) return { false, "R" };
   }
   else return { true, move_towards(src_location, dst_location) };
   assert(0);
