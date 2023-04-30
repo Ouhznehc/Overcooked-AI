@@ -50,6 +50,14 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
   if (LUT.find(dest) == LUT.end() && map.find(dest) == map.end()) {
     return { true, " " };
   }
+  location player0_location = { Players[0].x, Players[0].y };
+  location player1_location = { Players[1].x, Players[1].y };
+  if (manhattan_distance(player0_location, player1_location) <= 2.0) {
+    if (player0_location.x == player.x && player0_location.y == player.y) {
+      return { true, " " };
+    }
+    else return { true, " " };
+  }
   assert(LUT.find(dest) != LUT.end() || map.find(dest) != map.end());
   location dst_location, src_location = { player.x, player.y };
   if (LUT.find(dest) != LUT.end()) dst_location = set_dest_location(*LUT.find(dest)->second.begin());
