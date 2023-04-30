@@ -6,7 +6,7 @@
 #include <enum.h>
 
 typedef struct task {
-  std::string(*function)(Player, std::string);
+  std::pair<bool, std::string>(*function)(Player, std::string);
   std::string object;
 }task;
 
