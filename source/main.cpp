@@ -24,7 +24,7 @@ int main() {
     for (int i = 0; i < totalFrame; i++) {
         bool skip = frame_read(i);
         if (skip) continue;
-        if (i > 650) continue;
+        if (i > 630) continue;
         if (Fund >= 200) continue;
         look_up_table();
         // for (auto it : map) {
