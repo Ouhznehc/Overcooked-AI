@@ -25,6 +25,7 @@ int main() {
         bool skip = frame_read(i);
         if (skip) continue;
         if (Fund >= 200) {
+            std::cout << "Frame " << i << "\n";
             std::cout << "Move \nMove \n";
             std::cout.flush();
             continue;
