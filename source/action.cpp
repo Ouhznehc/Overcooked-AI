@@ -56,6 +56,8 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
     }
   }
   else return { true, move_towards(src_location, dst_location) };
+  assert(0);
+
 }
 
 
