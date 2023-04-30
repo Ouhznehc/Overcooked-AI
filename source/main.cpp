@@ -24,6 +24,7 @@ int main() {
     for (int i = 0; i < totalFrame; i++) {
         bool skip = frame_read(i);
         if (skip) continue;
+        if (Fund >= 200) continue;
         look_up_table();
         // for (auto it : map) {
         //     std::cerr << it.first << " " << it.second.begin()->x << " " << it.second.begin()->y << std::endl;
