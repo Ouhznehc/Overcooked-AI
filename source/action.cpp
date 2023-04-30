@@ -82,11 +82,6 @@ std::pair<bool, std::string> interact(Player player, std::string object) {
     if (sink_location.x == 0) return { true, "L" };
     if (sink_location.x == width - 1) return { true, "R" };
   }
-  for (int i = 0; i < entityCount; i++) {
-    if (Entity[i].total_frame != 0) {
-      break;
-    }
-  }
   return { false, " " };
 }
 
