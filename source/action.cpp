@@ -48,7 +48,7 @@ std::string move_towards(location src, location dst) {
 
 std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string dest) {
   if (LUT.find(dest) == LUT.end() && map.find(dest) == map.end()) {
-    return { false, "" };
+    return { true, " " };
   }
   assert(LUT.find(dest) != LUT.end() || map.find(dest) != map.end());
   location dst_location, src_location = { player.x, player.y };
