@@ -17,7 +17,7 @@ location set_dest_location(location dst) {
   if (dst.y == 0) return { dst.x + 0.5, dst.y + 1.5 };
   if (dst.x == width - 1) return { dst.x - 0.5, dst.y + 0.5 };
   if (dst.y == height - 1) return { dst.x + 0.5, dst.y - 0.5 };
-
+  assert(0);
 }
 
 bool check_arive(location src, location dst) {
