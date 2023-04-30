@@ -80,6 +80,7 @@ std::pair<bool, std::string> interact(Player player, std::string object) {
       if (dst_location.y == height - 1.5) return { true, "D" };
       if (dst_location.x == 1.5) return { true, "L" };
       if (dst_location.x == width - 1.5) return { true, "R" };
+      assert(0);
       break;
     }
   }
