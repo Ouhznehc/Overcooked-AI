@@ -73,6 +73,9 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
 
 
 std::pair<bool, std::string> interact(Player player, std::string object) {
+  if (LUT.find("sink") == LUT.end()) {
+    return { false, "" };
+  }
   location dst_location = set_dest_location(*LUT.find(object)->second.begin());
   for (int i = 0; i < entityCount; i++) {
     if (Entity[i].sum != 0) {
