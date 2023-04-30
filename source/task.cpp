@@ -24,7 +24,7 @@ std::pair<std::string, std::string> allocate_task() {
     player1_current = (player1_current + 1) % 4;
     player1_task = &player1_task_pool[player1_current];
   }
-  return { rc0.second, rc1.second };
+  return { rc0.second, " " };
 }
 
 std::pair<bool, std::string> schedule_move_and_put_or_pick(Player player, std::string dest) {
