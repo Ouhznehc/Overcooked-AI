@@ -2,6 +2,7 @@
 #include <action.h>
 #include <common.h>
 #include <debug.h>
+
 std::deque<task> task_pool;
 task player0_task_pool[4] = { {schedule_move_and_put_or_pick, "fish"} , {schedule_move_and_put_or_pick, "Plate"}, {schedule_move_and_put_or_pick, "Plate"}, {schedule_move_and_put_or_pick, "service_window"} };
 task player1_task_pool[3] = { {schedule_move_and_put_or_pick, "dirty_plate_location"}, {schedule_move_and_put_or_pick, "sink"}, {schedule_interact, "DirtyPlates"} };
@@ -32,5 +33,6 @@ std::pair<bool, std::string> schedule_move_and_put_or_pick(Player player, std::s
 
 std::pair<bool, std::string> schedule_interact(Player player, std::string dest) {
   auto rc = interact(player, dest);
+  std::cerr << rc.first << " " << "Interact " + rc.second << std::endl;
   return { rc.first, rc.first ? "Interact " + rc.second : "Move " + rc.second };
 }
