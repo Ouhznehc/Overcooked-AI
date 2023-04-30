@@ -53,7 +53,7 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
   location player0_location = { Players[0].x, Players[0].y };
   location player1_location = { Players[1].x, Players[1].y };
   if (manhattan_distance(player0_location, player1_location) <= 2.0) {
-    if (player0_location.x == player.x && player0_location.y == player.y) {
+    if (player1_location.x == player.x && player1_location.y == player.y) {
       return { true, " " };
     }
   }
