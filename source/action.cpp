@@ -52,7 +52,7 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
   }
   assert(LUT.find(dest) != LUT.end() || map.find(dest) != map.end());
   location dst_location, src_location = { player.x, player.y };
-  if (LUT.find(dest) != LUT.end()) dst_location = *LUT.find(dest)->second.begin();
+  if (LUT.find(dest) != LUT.end()) dst_location = set_dest_location(*LUT.find(dest)->second.begin());
   else dst_location = set_dest_location(*map.find(dest)->second.begin());
   std::cerr << "src:" << src_location.x << " " << src_location.y << std::endl;
   std::cerr << "dst:" << dst_location.x << " " << dst_location.y << std::endl;
