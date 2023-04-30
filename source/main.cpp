@@ -24,8 +24,11 @@ int main() {
     for (int i = 0; i < totalFrame; i++) {
         bool skip = frame_read(i);
         if (skip) continue;
-        //if (i > 630) continue;
-        if (Fund >= 200) continue;
+        if (Fund >= 200) {
+            std::cout << "Move \nMove \n";
+            std::cout.flush();
+            continue;
+        }
         look_up_table();
         // for (auto it : map) {
         //     std::cerr << it.first << " " << it.second.begin()->x << " " << it.second.begin()->y << std::endl;
