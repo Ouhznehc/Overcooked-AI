@@ -76,10 +76,10 @@ std::pair<bool, std::string> interact(Player player, std::string object) {
   location dst_location = set_dest_location(*LUT.find("sink")->second.begin());
   for (int i = 0; i < entityCount; i++) {
     if (Entity[i].total_frame != 0) {
-      if (dst_location.x == 1.5) return { true, "L" };
-      if (dst_location.x == width - 1.5) return { true, "R" };
       if (dst_location.y == 1.5) return { true, "U" };
       if (dst_location.y == height - 1.5) return { true, "D" };
+      if (dst_location.x == 1.5) return { true, "L" };
+      if (dst_location.x == width - 1.5) return { true, "R" };
       break;
     }
   }
