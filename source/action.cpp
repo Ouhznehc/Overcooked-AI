@@ -56,7 +56,6 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
     if (player0_location.x == player.x && player0_location.y == player.y) {
       return { true, " " };
     }
-    else return { true, " " };
   }
   assert(LUT.find(dest) != LUT.end() || map.find(dest) != map.end());
   location dst_location, src_location = { player.x, player.y };
