@@ -27,8 +27,8 @@ bool check_arive(location src, location dst) {
 }
 
 std::string move_towards(location src, location dst) {
-  std::cerr << "src:" << src.x << " " << src.y << std::endl;
-  std::cerr << "dst:" << dst.x << " " << dst.y << std::endl;
+  // std::cerr << "src:" << src.x << " " << src.y << std::endl;
+  // std::cerr << "dst:" << dst.x << " " << dst.y << std::endl;
   if (src.x <= 1.40) return "R";
   else if (src.x >= width - 1.40) return "L";
   if (src.y <= 1.40) return "D";
