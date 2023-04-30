@@ -3,7 +3,7 @@
 #include <bits/stdc++.h>
 
 #define LIMIT_RANGE 0.3
-#define SAFE_DISTANCE 2.05
+#define SAFE_DISTANCE 2.01
 #define DELTA_X(src, dst) (dst.x - src.x)
 #define DELTA_Y(src, dst) (dst.y - src.y)
 
