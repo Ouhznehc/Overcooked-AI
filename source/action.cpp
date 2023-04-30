@@ -27,6 +27,10 @@ bool check_arive(location src, location dst) {
 }
 
 std::string move_towards(location src, location dst) {
+  if (src.x == 1.35) return "R";
+  if (src.x == width - 1.35) return "L";
+  if (src.y == 1.35) return "D";
+  if (src.y == height - 1.35) return "U";
   double delta_x = DELTA_X(src, dst), delta_y = DELTA_Y(src, dst);
   int x_flag, y_flag;
   if (std::fabs(delta_x) <= LIMIT_RANGE) x_flag = 0;
