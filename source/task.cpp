@@ -13,7 +13,7 @@ std::pair<std::string, std::string> allocate_task() {
   if (player0_task == NULL) player0_task = &player0_task_pool[player0_current];
   if (player1_task == NULL) player1_task = &player1_task_pool[player1_current];
   auto rc0 = player0_task->function(Players[0], player0_task->object);
-  auto rc1 = player1_task->function(Players[1], palyer1_task->object);
+  auto rc1 = player1_task->function(Players[1], player1_task->object);
   if (rc0.first == false) {
     player0_current = (player0_current + 1) % 4;
     player0_task = &player0_task_pool[player0_current];
