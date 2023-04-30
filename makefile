@@ -30,3 +30,6 @@ run: all
 	@clear
 	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l maps/level1/level1-1.txt -c
 
+fast_test: all
+	@clear
+	@../test/runner -l maps/level1/level1-3.txt -p build/main -c
