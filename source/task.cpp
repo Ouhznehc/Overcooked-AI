@@ -34,12 +34,12 @@ std::pair<bool, std::string> schedule_move_and_put_or_pick(Player player, std::s
 
 std::pair<bool, std::string> schedule_interact(Player player, std::string dest) {
   auto rc = interact(player, dest);
-  std::cerr << rc.first << " " << "Interact " + rc.second << std::endl;
+  // std::cerr << rc.first << " " << "Interact " + rc.second << std::endl;
   return { rc.first, rc.first ? "Interact " + rc.second : "Move " + rc.second };
 }
 
 std::pair<bool, std::string> schedule_stop(Player player, std::string dest) {
   if (std::fabs(player.x_velocity) <= 0.2 && std::fabs(player.y_velocity) <= 0.2) return { false, "Move" };
-  std::cerr << "loop " << remainFrame << std::endl;
+  // std::cerr << "loop " << remainFrame << std::endl;
   return { true, "Move" };
 }
