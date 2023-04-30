@@ -39,7 +39,7 @@ std::pair<bool, std::string> schedule_interact(Player player, std::string dest) 
 }
 
 std::pair<bool, std::string> schedule_stop(Player player, std::string dest) {
-  if (player.x_velocity == 0 && player.y_velocity == 0) return { false, "Move" };
+  if (std::fabs(player.x_velocity) <= 0.3 && std::fabs(player.y_velocity) <= 0.3) return { false, "Move" };
   std::cerr << "loop " << remainFrame << std::endl;
   return { true, "Move" };
 }
