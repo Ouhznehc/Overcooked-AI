@@ -16,6 +16,7 @@ void update_task_pool();
 void schedule_task();
 std::pair<bool, std::string> schedule_move_and_put_or_pick(Player player, std::string dest);
 std::pair<bool, std::string> schedule_interact(Player player, std::string dest);
+std::pair<bool, std::string> schedule_stop(Player player, std::string dest)
 std::pair<std::string, std::string> allocate_task();
 
 #endif

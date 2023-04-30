@@ -5,7 +5,7 @@
 
 std::deque<task> task_pool;
 task player0_task_pool[4] = { {schedule_move_and_put_or_pick, "kelp"} , {schedule_move_and_put_or_pick, "Plate"}, {schedule_move_and_put_or_pick, "Plate"}, {schedule_move_and_put_or_pick, "service_window"} };
-task player1_task_pool[3] = { {schedule_move_and_put_or_pick, "dirty_plate_location"}, {schedule_move_and_put_or_pick, "sink"}, {schedule_interact, "DirtyPlates"} };
+task player1_task_pool[4] = { {schedule_move_and_put_or_pick, "dirty_plate_location"}, {schedule_move_and_put_or_pick, "sink"}, {schedule_stop, " "}, {schedule_interact, "DirtyPlates"} };
 task* player0_task;
 task* player1_task;
 int player0_current;
@@ -20,7 +20,7 @@ std::pair<std::string, std::string> allocate_task() {
     player0_task = &player0_task_pool[player0_current];
   }
   if (rc1.first == false) {
-    player1_current = (player1_current + 1) % 3;
+    player1_current = (player1_current + 1) % 4;
     player1_task = &player1_task_pool[player1_current];
   }
   return { rc0.second, rc1.second };
@@ -35,4 +35,9 @@ std::pair<bool, std::string> schedule_interact(Player player, std::string dest) 
   auto rc = interact(player, dest);
   // std::cerr << rc.first << " " << "Interact " + rc.second << std::endl;
   return { rc.first, rc.first ? "Interact " + rc.second : "Move " + rc.second };
+}
+
+std::pair<bool, std::string> schedule_stop(Player player, std::string dest) {
+  if (player.x_velocity == 0 && player.y_velocity == 0) return { false, " " };
+  return { true, "Move  " };
 }
