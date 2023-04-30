@@ -39,5 +39,5 @@ std::pair<bool, std::string> schedule_interact(Player player, std::string dest) 
 }
 
 std::pair<bool, std::string> schedule_stop(Player player, std::string dest) {
-  return { true, "Move" };
+  return { false, "Move" };
 }
