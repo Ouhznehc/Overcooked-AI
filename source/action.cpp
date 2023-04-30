@@ -2,7 +2,7 @@
 #include <common.h>
 #include <bits/stdc++.h>
 
-#define LIMIT_RANGE 0.01
+#define LIMIT_RANGE 0.2
 #define DELTA_X(src, dst) (dst.x - src.x)
 #define DELTA_Y(src, dst) (dst.y - src.y)
 
