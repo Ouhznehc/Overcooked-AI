@@ -25,5 +25,5 @@ std::pair<bool, std::string> schedule_move_and_put_or_pick(Player player, std::s
 
 std::pair<bool, std::string> schedule_interact(Player player, std::string dest) {
   auto rc = interact(player, dest);
-  return rc.first ? "Interact " + rc.second : "";
+  return { rc.first, rc.first ? "Interact " + rc.second : "" };
 }
