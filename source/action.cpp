@@ -58,16 +58,22 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
   //   }
   // }
   assert(LUT.find(dest) != LUT.end() || map.find(dest) != map.end());
-  location dst_location, src_location = { player.x, player.y };
-  if (LUT.find(dest) != LUT.end()) dst_location = set_dest_location(*LUT.find(dest)->second.begin());
-  else dst_location = set_dest_location(*map.find(dest)->second.begin());
+  location dst_set_location, dst_location, src_location = { player.x, player.y };
+  if (LUT.find(dest) != LUT.end()) {
+    dst_location = *LUT.find(dest)->second.begin();
+    dst_set_location = set_dest_location(dst_location);
+  }
+  else {
+    dst_location = *map.find(dest)->second.begin();
+    dst_set_location = set_dest_location(dst_location);
+  }
   // std::cerr << "src:" << src_location.x << " " << src_location.y << std::endl;
   // std::cerr << "dst:" << dst_location.x << " " << dst_location.y << std::endl;
-  if (check_arive(src_location, dst_location)) {
-    if (dst_location.y == 1.5) return { false, "U" };
-    if (dst_location.y == height - 1.5) return { false, "D" };
-    if (dst_location.x == 1.5) return { false, "L" };
-    if (dst_location.x == width - 1.5) return { false, "R" };
+  if (check_arive(src_location, dst_set_location)) {
+    if (dst_location.y == 0) return { false, "U" };
+    if (dst_location.y == height - 1) return { false, "D" };
+    if (dst_location.x == 0) return { false, "L" };
+    if (dst_location.x == width - 1) return { false, "R" };
   }
   else return { true, move_towards(src_location, dst_location) };
   assert(0);
