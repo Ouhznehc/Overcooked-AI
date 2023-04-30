@@ -12,11 +12,11 @@ double manhattan_distance(location src, location dst) {
   return distance;
 }
 
-location set_dest_location(location* dst) {
-  if (dst->x == 0) return { dst->x + 1, dst->y };
-  if (dst->y == 0) return { dst->x, dst->y + 1 };
-  if (dst->x == width - 1) return { dst->x - 1, dst->y };
-  if (dst->y == height - 1) return { dst->x, dst->y - 1 };
+location set_dest_location(location dst) {
+  if (dst.x == 0) return { dst.x + 1, dst.y };
+  if (dst.y == 0) return { dst.x, dst.y + 1 };
+  if (dst.x == width - 1) return { dst.x - 1, dst.y };
+  if (dst.y == height - 1) return { dst.x, dst.y - 1 };
 
 }
 
@@ -53,7 +53,7 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
   assert(LUT.find(dest) != LUT.end() || map.find(dest) != map.end());
   location dst_location, src_location = { player.x, player.y };
   if (LUT.find(dest) != LUT.end()) dst_location = *LUT.find(dest)->second.begin();
-  else dst_location = set_dest_location(map.find(dest)->second.begin());
+  else dst_location = set_dest_location(*map.find(dest)->second.begin());
   if (check_arive(src_location, dst_location)) {
     if (std::fabs(DELTA_X(src_location, dst_location)) <= LIMIT_RANGE) {
       if (src_location.y > dst_location.y) return { false, "U" };
