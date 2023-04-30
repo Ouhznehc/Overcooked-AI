@@ -82,7 +82,6 @@ std::pair<bool, std::string> interact(Player player, std::string object) {
       if (sink_location.y == height - 1) return { true, "D" };
       if (sink_location.x == 0) return { true, "L" };
       if (sink_location.x == width - 1) return { true, "R" };
-      assert(0);
     }
   }
   return { false, " " };
