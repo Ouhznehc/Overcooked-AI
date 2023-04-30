@@ -24,12 +24,12 @@ int main() {
     for (int i = 0; i < totalFrame; i++) {
         bool skip = frame_read(i);
         if (skip) continue;
-        if (Fund >= 200) {
-            std::cout << "Frame " << i << "\n";
-            std::cout << "Move \nMove \n";
-            std::cout.flush();
-            continue;
-        }
+        // if (Fund >= 200) {
+        //     std::cout << "Frame " << i << "\n";
+        //     std::cout << "Move \nMove \n";
+        //     std::cout.flush();
+        //     continue;
+        // }
         look_up_table();
         // for (auto it : map) {
         //     std::cerr << it.first << " " << it.second.begin()->x << " " << it.second.begin()->y << std::endl;
