@@ -6,15 +6,24 @@
 #define DELTA_X(src, dst) (dst.x - src.x + 0.5)
 #define DELTA_Y(src, dst) (dst.y - src.y + 0.5)
 
+
 double manhattan_distance(location src, location dst) {
   double distance = std::fabs(DELTA_X(src, dst)) + std::fabs(DELTA_Y(src, dst));
   return distance;
 }
 
+location set_dest_location(location* dst) {
+  if (dst->x == 0) return { dst->x + 1, dst->y };
+  if (dst->y == 0) return { dst->x, dst->y + 1 };
+  if (dst->x == width - 1) return { dst->x - 1, dst->y };
+  if (dst->y == height - 1) return { dst->x, dst->y - 1 };
+
+}
+
 bool check_arive(location src, location dst) {
-  bool flag1 = manhattan_distance(src, dst) <= 1.5;
-  bool flag2 = std::fabs(DELTA_X(src, dst)) <= LIMIT_RANGE || std::fabs(DELTA_Y(src, dst)) <= LIMIT_RANGE;
-  return flag1 && flag2;
+  // bool flag1 = manhattan_distance(src, dst) <= 1.5;
+  bool flag2 = std::fabs(DELTA_X(src, dst)) <= LIMIT_RANGE && std::fabs(DELTA_Y(src, dst)) <= LIMIT_RANGE;
+  return true && flag2;
 }
 
 std::string move_towards(location src, location dst) {
@@ -44,7 +53,7 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
   assert(LUT.find(dest) != LUT.end() || map.find(dest) != map.end());
   location dst_location, src_location = { player.x, player.y };
   if (LUT.find(dest) != LUT.end()) dst_location = *LUT.find(dest)->second.begin();
-  else dst_location = *map.find(dest)->second.begin();
+  else dst_location = set_dest_location(map.find(dest)->second.begin());
   if (check_arive(src_location, dst_location)) {
     if (std::fabs(DELTA_X(src_location, dst_location)) <= LIMIT_RANGE) {
       if (src_location.y > dst_location.y) return { false, "U" };
