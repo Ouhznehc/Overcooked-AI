@@ -17,7 +17,7 @@ bool check_arive(location src, location dst) {
   return flag1 && flag2;
 }
 
-std::string move_towards_by_location(location src, location dst) {
+std::string move_towards(location src, location dst) {
   double delta_x = DELTA_X(src, dst), delta_y = DELTA_Y(src, dst);
   int x_flag, y_flag;
   if (std::fabs(delta_x) <= LIMIT_RANGE) x_flag = 0;
@@ -37,7 +37,7 @@ std::string move_towards_by_location(location src, location dst) {
   return " ";
 }
 
-std::pair<bool, std::string> move_towards(Player player, std::string dest) {
+std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string dest) {
   if (LUT.find(dest) == LUT.end() && map.find(dest) == map.end()) {
     return { false, "" };
   }
@@ -46,36 +46,51 @@ std::pair<bool, std::string> move_towards(Player player, std::string dest) {
   if (LUT.find(dest) != LUT.end()) dst_location = *LUT.find(dest)->second.begin();
   else dst_location = *map.find(dest)->second.begin();
   if (check_arive(src_location, dst_location)) {
-    bool stop = player.x_velocity == 0 && player.y_velocity == 0;
-    return { !stop, " " };
+    if (std::fabs(DELTA_X(src_location, dst_location)) <= LIMIT_RANGE) {
+      if (src_location.y > dst_location.y) return { false, "U" };
+      else return { false, "D" };
+    }
+    if (std::fabs(DELTA_Y(src_location, dst_location)) <= LIMIT_RANGE) {
+      if (src_location.x > dst_location.x) return { false, "L" };
+      else return { false, "R" };
+    }
   }
-  else return { true, move_towards_by_location(src_location, dst_location) };
+  else return { true, move_towards(src_location, dst_location) };
 }
+
+
+
+
+
 
 std::pair<bool, std::string> interact(Player player, std::string object) {
   return { false, "" };
+}
 
-}
-std::pair<bool, std::string> put_or_pick(Player player, std::string object) {
-  if (player.container == Container::Plate && object == "Plate") return { false, "" };
-  if (player.container == Container::None && object == "service_window") return { false, "" };
-  for (int i = 0; i < player.entity.size(); i++) {
-    if (player.entity[i] == object) return { false, "" };
-  }
-  if (LUT.find(object) == LUT.end() && map.find(object) == map.end()) {
-    return { false, "" };
-  }
-  assert(LUT.find(object) != LUT.end() || map.find(object) != map.end());
-  location dst_location, src_location = { player.x, player.y };
-  if (LUT.find(object) != LUT.end()) dst_location = *LUT.find(object)->second.begin();
-  else dst_location = *map.find(object)->second.begin();
-  if (std::fabs(DELTA_X(src_location, dst_location)) <= LIMIT_RANGE) {
-    if (src_location.y > dst_location.y) return { true, "U" };
-    else return { true, "D" };
-  }
-  if (std::fabs(DELTA_Y(src_location, dst_location)) <= LIMIT_RANGE) {
-    if (src_location.x > dst_location.x) return { true, "L" };
-    else return { true, "R" };
-  }
-  assert(0);
-}
+
+
+
+
+// std::pair<bool, std::string> put_or_pick(Player player, std::string object) {
+//   if (player.container == Container::Plate && object == "Plate") return { false, "" };
+//   if (player.container == Container::None && object == "service_window") return { false, "" };
+//   for (int i = 0; i < player.entity.size(); i++) {
+//     if (player.entity[i] == object) return { false, "" };
+//   }
+//   if (LUT.find(object) == LUT.end() && map.find(object) == map.end()) {
+//     return { false, "" };
+//   }
+//   assert(LUT.find(object) != LUT.end() || map.find(object) != map.end());
+//   location dst_location, src_location = { player.x, player.y };
+//   if (LUT.find(object) != LUT.end()) dst_location = *LUT.find(object)->second.begin();
+//   else dst_location = *map.find(object)->second.begin();
+//   if (std::fabs(DELTA_X(src_location, dst_location)) <= LIMIT_RANGE) {
+//     if (src_location.y > dst_location.y) return { true, "U" };
+//     else return { true, "D" };
+//   }
+//   if (std::fabs(DELTA_Y(src_location, dst_location)) <= LIMIT_RANGE) {
+//     if (src_location.x > dst_location.x) return { true, "L" };
+//     else return { true, "R" };
+//   }
+//   assert(0);
+// }
