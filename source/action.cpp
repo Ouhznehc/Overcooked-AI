@@ -40,8 +40,8 @@ std::pair<bool, std::string> alert_dest(Player player, location dst) {
 }
 
 std::pair<bool, std::string> alert_player(Player player0, Player player1, Player player) {
-  double delta_x = std::fabs(player1.x - player0.x) - 0.7;
-  double delta_y = std::fabs(player1.y - player0.y) - 0.7;
+  double delta_x = std::fabs(player1.x - player0.x) - 1;
+  double delta_y = std::fabs(player1.y - player0.y) - 1;
   int x_flag, y_flag;
   if (delta_x < (player0.x_velocity - player1.x_velocity) * (player0.x_velocity - player1.x_velocity) / ACCELARATE) x_flag = 1;
   else x_flag = 0;
