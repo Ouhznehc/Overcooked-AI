@@ -52,10 +52,10 @@ void evaluate_map(Player player) {
 
   ValueMap[player_x][player_y] += -inf;
   ValueMap[cliff_x][cliff_y] += -inf;
-  for (int i = 0; i < 9; i++) {
-    ValueMap[player_x + dx[i]][player_y + dy[i]] += -inf;
-    ValueMap[cliff_x + dx[i]][cliff_y + dy[i]] += -inf;
-  }
+  // for (int i = 0; i < 9; i++) {
+  //   ValueMap[player_x + dx[i]][player_y + dy[i]] += -inf;
+  //   ValueMap[cliff_x + dx[i]][cliff_y + dy[i]] += -inf;
+  // }
   // location start_location = { (double)(int)src.x, (double)(int)src.y };
   // location end_location = { (double)(int)dst.x, (double)(int)dst.y };
 }
