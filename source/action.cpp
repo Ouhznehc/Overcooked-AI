@@ -2,6 +2,7 @@
 #include <common.h>
 #include <bits/stdc++.h>
 
+#define E 1e-7
 #define LIMIT_RANGE 0.3
 #define SAFE_DISTANCE 1.8
 #define DELTA_X(src, dst) (dst.x - src.x)
@@ -11,6 +12,42 @@
 double manhattan_distance(location src, location dst) {
   double distance = std::fabs(DELTA_X(src, dst)) + std::fabs(DELTA_Y(src, dst));
   return distance;
+}
+
+std::pair<bool, std::string> alert_dest(Player player, location dst) {
+  double delta_x = dst.x - player.x;
+  double delta_y = dst.y - player.y;
+  bool x_flag, y_flag;
+  if (delta_x > 0 && player.x_velocity > 0) {
+    if (delta_x < player.x_velocity * player.x_velocity / 60) x_flag = -1;
+    else x_flag = 0;
+  }
+  else if (delta_x < 0 && player.x_velocity < 0) {
+    if (-delta_x < player.x_velocity * player.x_velocity / 60) x_flag = 1;
+    else x_flag = 0;
+  }
+  if (delta_y > 0 && player.y_velocity > 0) {
+    if (delta_y < player.y_velocity * player.y_velocity / 60) y_flag = -1;
+    else y_flag = 0;
+  }
+  else if (delta_y < 0 && player.y_velocity < 0) {
+    if (-delta_y < player.y_velocity * player.y_velocity / 60) y_flag = 1;
+    else y_flag = 0;
+  }
+  if (x_flag == 1 && y_flag == 1) return { true, "RD" };
+  if (x_flag == -1 && y_flag == 1) return { true, "LD" };
+  if (x_flag == 1 && y_flag == -1) return { true, "RU" };
+  if (x_flag == -1 && y_flag == -1) return { true, "LU" };
+  if (x_flag == 0 && y_flag == 1) return { true, "D" };
+  if (x_flag == 0 && y_flag == -1) return { true, "U" };
+  if (x_flag == 1 && y_flag == 0) return { true, "R" };
+  if (x_flag == -1 && y_flag == 0) return { true, "L" };
+  return { false, " " };
+}
+
+bool alert_player(Player player0, Player player1) {
+
+
 }
 
 location set_dest_location(location dst) {
@@ -30,10 +67,10 @@ bool check_arive(location src, location dst) {
 std::string move_towards(location src, location dst) {
   // std::cerr << "src:" << src.x << " " << src.y << std::endl;
   // std::cerr << "dst:" << dst.x << " " << dst.y << std::endl;
-  if (src.x <= SAFE_DISTANCE) return "R";
-  else if (src.x >= width - SAFE_DISTANCE) return "L";
-  if (src.y <= SAFE_DISTANCE) return "D";
-  else if (src.y >= height - SAFE_DISTANCE) return "U";
+  // if (src.x <= SAFE_DISTANCE) return "R";
+  // else if (src.x >= width - SAFE_DISTANCE) return "L";
+  // if (src.y <= SAFE_DISTANCE) return "D";
+  // else if (src.y >= height - SAFE_DISTANCE) return "U";
   double delta_x = DELTA_X(src, dst), delta_y = DELTA_Y(src, dst);
   int x_flag, y_flag;
   if (std::fabs(delta_x) <= LIMIT_RANGE) x_flag = 0;
@@ -83,7 +120,11 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
     if (dst_location.x == 0) return { false, "L" };
     if (dst_location.x == width - 1) return { false, "R" };
   }
-  else return { true, move_towards(src_location, dst_set_location) };
+  else {
+    auto rc = alert_dest(player, dst_set_location);
+    if (rc.first) return { true, rc.second };
+    else return { true, move_towards(src_location, dst_set_location) };
+  }
   assert(0);
 
 }
