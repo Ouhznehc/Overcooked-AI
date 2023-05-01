@@ -90,7 +90,6 @@ std::string move_towards(location src, location dst) {
 }
 
 std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string dest) {
-  if (player.x_velocity > 4 || player.y_velocity > 4) return { true, " " };
   if (LUT.find(dest) == LUT.end() && map.find(dest) == map.end()) {
     return { true, " " };
   }
