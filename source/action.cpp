@@ -295,7 +295,7 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
     evaluate_map(player);
     auto move = move_towards(src_location, dst_set_location);
     auto rc = alert_dest(player, dst_set_location);
-    if (rc.first) return { true, " " };
+    //if (rc.first) return { true, " " };
     return { true, move };
   }
 }
