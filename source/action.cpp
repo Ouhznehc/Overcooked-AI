@@ -5,6 +5,7 @@
 #define E 1e-7
 #define LIMIT_RANGE 0.3
 #define SAFE_DISTANCE 1.8
+#define ACCELARATE 50
 #define DELTA_X(src, dst) (dst.x - src.x)
 #define DELTA_Y(src, dst) (dst.y - src.y)
 
@@ -19,19 +20,19 @@ std::pair<bool, std::string> alert_dest(Player player, location dst) {
   double delta_y = dst.y - player.y;
   bool x_flag, y_flag;
   if (delta_x > 0 && player.x_velocity > 0) {
-    if (delta_x < player.x_velocity * player.x_velocity / 50) x_flag = 1;
+    if (delta_x < player.x_velocity * player.x_velocity / ACCELARATE) x_flag = 1;
     else x_flag = 0;
   }
   else if (delta_x < 0 && player.x_velocity < 0) {
-    if (-delta_x < player.x_velocity * player.x_velocity / 60) x_flag = 1;
+    if (-delta_x < player.x_velocity * player.x_velocity / ACCELARATE) x_flag = 1;
     else x_flag = 0;
   }
   if (delta_y > 0 && player.y_velocity > 0) {
-    if (delta_y < player.y_velocity * player.y_velocity / 60) y_flag = 1;
+    if (delta_y < player.y_velocity * player.y_velocity / ACCELARATE) y_flag = 1;
     else y_flag = 0;
   }
   else if (delta_y < 0 && player.y_velocity < 0) {
-    if (-delta_y < player.y_velocity * player.y_velocity / 60) y_flag = 1;
+    if (-delta_y < player.y_velocity * player.y_velocity / ACCELARATE) y_flag = 1;
     else y_flag = 0;
   }
   if (x_flag || y_flag) return { true, " " };
