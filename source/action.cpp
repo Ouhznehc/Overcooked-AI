@@ -172,6 +172,9 @@ struct int_loc {
   operator std::pair<int, int>() const {
     return std::pair<int, int>(x, y);
   }
+  bool operator < (const int_loc& b) const {
+    return x != b.x ? x < b.x : y < b.y;
+  }
   int_loc operator [](int direction) const {
     return int_loc(x + dx[direction], y + dy[direction]);
   }
