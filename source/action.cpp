@@ -17,9 +17,9 @@ double manhattan_distance(location src, location dst) {
 std::pair<bool, std::string> alert_dest(Player player, location dst) {
   double delta_x = dst.x - player.x;
   double delta_y = dst.y - player.y;
-  int x_flag, y_flag;
+  bool x_flag, y_flag;
   if (delta_x > 0 && player.x_velocity > 0) {
-    if (delta_x < player.x_velocity * player.x_velocity / 60) x_flag = -1;
+    if (delta_x < player.x_velocity * player.x_velocity / 60) x_flag = 1;
     else x_flag = 0;
   }
   else if (delta_x < 0 && player.x_velocity < 0) {
@@ -27,22 +27,15 @@ std::pair<bool, std::string> alert_dest(Player player, location dst) {
     else x_flag = 0;
   }
   if (delta_y > 0 && player.y_velocity > 0) {
-    if (delta_y < player.y_velocity * player.y_velocity / 60) y_flag = -1;
+    if (delta_y < player.y_velocity * player.y_velocity / 60) y_flag = 1;
     else y_flag = 0;
   }
   else if (delta_y < 0 && player.y_velocity < 0) {
     if (-delta_y < player.y_velocity * player.y_velocity / 60) y_flag = 1;
     else y_flag = 0;
   }
-  if (x_flag == 1 && y_flag == 1) return { true, "RD" };
-  if (x_flag == -1 && y_flag == 1) return { true, "LD" };
-  if (x_flag == 1 && y_flag == -1) return { true, "RU" };
-  if (x_flag == -1 && y_flag == -1) return { true, "LU" };
-  if (x_flag == 0 && y_flag == 1) return { true, "D" };
-  if (x_flag == 0 && y_flag == -1) return { true, "U" };
-  if (x_flag == 1 && y_flag == 0) return { true, "R" };
-  if (x_flag == -1 && y_flag == 0) return { true, "L" };
-  return { false, " " };
+  if (x_flag || y_flag) return { true, " " };
+  else return { false, " " };
 }
 
 bool alert_player(Player player0, Player player1) {
