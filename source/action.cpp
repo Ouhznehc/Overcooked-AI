@@ -207,7 +207,7 @@ int get_shortest_path(int_loc from, int_loc dest) {
       continue;
     int_loc now_pos = now_node.pos;
     fputs("HERE\n", stderr);
-    fprintf(stderr, "%d %d\n", now_pos.x, now_pos.y);
+    fprintf(stderr, "%d %d %d\n", now_pos.x, now_pos.y, now_pos.get_value());
     for (int direction = 0; direction < Direction_N; direction++) {
       if (!now_pos[direction].isvalid())
         continue;
