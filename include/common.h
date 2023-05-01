@@ -9,6 +9,8 @@
 /* 按照读入顺序定义 */
 extern int width, height;
 extern char Map[N][N];
+extern int ValueMap[N][N];
+extern int visit[N][N];
 extern int IngredientCount;
 extern struct Ingredient Ingredient[N];
 extern int recipeCount;

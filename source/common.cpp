@@ -5,6 +5,8 @@
 /* 按照读入顺序定义 */
 int width, height;
 char Map[N][N];
+int ValueMap[N][N];
+int visit[N][N];
 int IngredientCount;
 
 struct Ingredient Ingredient[N];
