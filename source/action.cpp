@@ -195,7 +195,6 @@ std::map <int_loc, int> dist;
 
 int get_shortest_path(int_loc from, int_loc dest) {
 
-  int cnt = 0;
 
   dist.clear();
   while (!spfa_pq.empty()) spfa_pq.pop();
@@ -204,7 +203,6 @@ int get_shortest_path(int_loc from, int_loc dest) {
   spfa_pq.push(Node(from, dist[from]));
 
   while (!spfa_pq.empty()) {
-    ++cnt;
     Node now_node = spfa_pq.top();
     spfa_pq.pop();
     if (now_node.score > dist[now_node.pos])
@@ -224,7 +222,7 @@ int get_shortest_path(int_loc from, int_loc dest) {
     }
   }
 
-  std::cerr << "Cycle Count " << cnt << " " << std::endl;
+  // std::cerr << "Cycle Count " << cnt << " " << std::endl;
   return dist[dest];
 }
 
@@ -308,6 +306,7 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
     auto move = move_towards(src_location, dst_set_location);
     auto rc = alert_dest(player, dst_set_location);
     if (rc.first) return { true, " " };
+    if (move == " ") return { true, "R" };
     return { true, move };
   }
 }
