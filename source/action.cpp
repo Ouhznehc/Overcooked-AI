@@ -54,7 +54,6 @@ std::pair<bool, std::string> alert_player(Player player0, Player player1, Player
       else x_move = 1;
     }
     else {
-      assert(0);
       if (player.x_velocity - player0.x_velocity > 0) x_move = -1;
       else x_move = 1;
     }
