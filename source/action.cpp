@@ -43,9 +43,9 @@ std::pair<bool, std::string> alert_player(Player player0, Player player1) {
   double delta_x = std::fabs(player1.x - player0.x);
   double delta_y = std::fabs(player1.y - player0.y);
   int x_flag, y_flag;
-  if (delta_x < (player0.x_velocity - player1.x_velocity) * (player0.x_velocity - player1.x_velocity) / 60) x_flag = 1;
+  if (delta_x < (player0.x_velocity - player1.x_velocity) * (player0.x_velocity - player1.x_velocity) / ACCELARATE) x_flag = 1;
   else x_flag = 0;
-  if (delta_y < (player0.y_velocity - player1.y_velocity) * (player0.y_velocity - player1.y_velocity) / 60) y_flag = 1;
+  if (delta_y < (player0.y_velocity - player1.y_velocity) * (player0.y_velocity - player1.y_velocity) / ACCELARATE) y_flag = 1;
   else y_flag = 0;
   if (x_flag || y_flag) return { true, " " };
   else return { false, " " };
