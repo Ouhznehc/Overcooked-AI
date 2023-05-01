@@ -106,7 +106,7 @@ std::pair<bool, std::string> alert_dest(Player player, location dst) {
         else return { true, "LD" };
       }
     }
-    else assert(0);
+    else return { false, " " };
   }
   else return { false, " " };
 }
