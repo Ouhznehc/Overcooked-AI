@@ -39,7 +39,7 @@ std::pair<bool, std::string> alert_dest(Player player, location dst) {
   else return { false, " " };
 }
 
-std::pair<bool, std::string> alert_player(Player player0, Player player1) {
+std::pair<bool, std::string> alert_player(Player player0, Player player1, Player player) {
   double delta_x = std::fabs(player1.x - player0.x);
   double delta_y = std::fabs(player1.y - player0.y);
   int x_flag, y_flag;
@@ -47,7 +47,26 @@ std::pair<bool, std::string> alert_player(Player player0, Player player1) {
   else x_flag = 0;
   if (delta_y < (player0.y_velocity - player1.y_velocity) * (player0.y_velocity - player1.y_velocity) / ACCELARATE) y_flag = 1;
   else y_flag = 0;
-  if (x_flag || y_flag) return { true, " " };
+  if (x_flag) {
+    if (player.x == player0.x && player.y == player0.y) {
+      if (player.x_velocity - player1.x_velocity > 0) return { true, "L" };
+      else return { true, "R" };
+    }
+    else {
+      if (player.x_velocity - player0.x_velocity > 0) return { true, "L" };
+      else return { true, "R" };
+    }
+  }
+  if (y_flag) {
+    if (player.x == player0.x && player.y == player0.y) {
+      if (player.y_velocity - player1.y_velocity > 0) return { true, "U" };
+      else return { true, "D" };
+    }
+    else {
+      if (player.y_velocity - player0.y_velocity > 0) return { true, "U" };
+      else return { true, "U" };
+    }
+  }
   else return { false, " " };
 }
 
@@ -95,7 +114,7 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
   if (LUT.find(dest) == LUT.end() && map.find(dest) == map.end()) {
     return { true, " " };
   }
-  auto alert = alert_player(Players[0], Players[1]);
+  auto alert = alert_player(Players[0], Players[1], player);
   if (alert.first) return{ true, " " };
   location player0_location = { Players[0].x, Players[0].y };
   location player1_location = { Players[1].x, Players[1].y };
