@@ -160,6 +160,7 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
     if (dst_location.y == height - 1) return { false, "D" };
     if (dst_location.x == 0) return { false, "L" };
     if (dst_location.x == width - 1) return { false, "R" };
+    assert(0);
   }
   else {
     auto move = move_towards(src_location, dst_set_location);
