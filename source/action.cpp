@@ -109,6 +109,7 @@ std::pair<bool, std::string> alert_dest(Player player, location dst) {
     else return { false, " " };
   }
   else return { false, " " };
+  return { false, " " };
 }
 
 // std::pair<bool, std::string> alert_player(Player player0, Player player1, Player player) {
