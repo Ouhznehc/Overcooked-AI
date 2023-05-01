@@ -48,28 +48,27 @@ std::pair<bool, std::string> alert_player(Player player0, Player player1, Player
   if (delta_y < (player0.y_velocity - player1.y_velocity) * (player0.y_velocity - player1.y_velocity) / ACCELARATE) y_flag = 1;
   else y_flag = 0;
   if (x_flag && y_flag) {
-    if (x_flag) {
-      if (player.x == player0.x && player.y == player0.y) {
-        if (player.x_velocity - player1.x_velocity > 0) return { true, "L" };
-        else return { true, "R" };
-      }
-      else {
-        if (player.x_velocity - player0.x_velocity > 0) return { true, "L" };
-        else return { true, "R" };
-      }
+    int x_move, y_move;
+    if (player.x == player0.x && player.y == player0.y) {
+      if (player.x_velocity - player1.x_velocity > 0) x_move = -1;
+      else x_move = 1;
     }
-    if (y_flag) {
-      if (player.x == player0.x && player.y == player0.y) {
-        std::cerr << player.y_velocity << " " << player1.y_velocity << std::endl;
-        if (player.y_velocity - player1.y_velocity > 0) return { true, "U" };
-        else return { true, "D" };
-      }
-      else {
-        assert(0);
-        if (player.y_velocity - player0.y_velocity > 0) return { true, "U" };
-        else return { true, "D" };
-      }
+    else {
+      if (player.x_velocity - player0.x_velocity > 0) x_move = -1;
+      else x_move = 1;
     }
+    if (player.x == player0.x && player.y == player0.y) {
+      if (player.y_velocity - player1.y_velocity > 0) y_move = -1;
+      else y_move = 1;
+    }
+    else {
+      if (player.y_velocity - player0.y_velocity > 0) y_move = -1;
+      else y_move = 1;
+    }
+    if (x_move == 1 && y_move == 1) return { true, "RD" };
+    if (x_move == 1 && y_move == -1) return { true, "RU" };
+    if (x_move == -1 && y_move == 1) return { true, "LD" };
+    if (x_move == -1 && y_move == -1) return { true, "LU" };
   }
   else return { false, " " };
 }
