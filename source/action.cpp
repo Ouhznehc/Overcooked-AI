@@ -206,12 +206,12 @@ int get_shortest_path(int_loc from, int_loc dest) {
     if (now_node.score > dist[now_node.pos])
       continue;
     int_loc now_pos = now_node.pos;
+    fputs("HERE\n", stderr);
+    fprintf(stderr, "%d %d\n", now_pos.x, now_pos.y);
     for (int direction = 0; direction < Direction_N; direction++) {
       if (!now_pos[direction].isvalid())
         continue;
       if (dist.find(now_pos[direction]) == dist.end() || dist[now_pos[direction]] < dist[now_pos] + now_pos.get_value()) {
-        fputs("HERE\n", stderr);
-        fprintf(stderr, "%d %d\n", now_pos.x, now_pos.y);
         dist[now_pos[direction]] = dist[now_pos] + now_pos.get_value();
         spfa_pq.push(Node(now_pos[direction], dist[now_pos[direction]]));
       }
