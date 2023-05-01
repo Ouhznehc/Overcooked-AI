@@ -64,7 +64,7 @@ std::pair<bool, std::string> alert_player(Player player0, Player player1, Player
     }
     else {
       if (player.y_velocity - player0.y_velocity > 0) return { true, "U" };
-      else return { true, "U" };
+      else return { true, "D" };
     }
   }
   else return { false, " " };
