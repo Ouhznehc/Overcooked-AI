@@ -161,11 +161,6 @@ bool check_arive(location src, location dst) {
   return true && flag2;
 }
 
-struct Node;
-struct int_loc;
-std::priority_queue <Node> spfa_pq;
-std::map <int_loc, int> dist;
-
 struct int_loc {
   int x, y;
   int_loc(int _x = 0, int _y = 0): x(_x), y(_y) {}
@@ -191,6 +186,9 @@ struct Node {
     return score < b.score;
   }
 };
+
+std::priority_queue <Node> spfa_pq;
+std::map <int_loc, int> dist;
 
 int get_shortest_path(int_loc from, int_loc dest) {
   dist.clear();
