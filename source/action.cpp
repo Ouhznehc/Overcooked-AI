@@ -5,7 +5,7 @@
 #define E 1e-7
 #define LIMIT_RANGE 0.3
 #define SAFE_DISTANCE 1.8
-#define ACCELARATE 30
+#define ACCELARATE 10
 #define DELTA_X(src, dst) (dst.x - src.x)
 #define DELTA_Y(src, dst) (dst.y - src.y)
 
@@ -91,8 +91,7 @@ std::pair<bool, std::string> alert_dest(Player player, location dst) {
       if (player.x_velocity > 0) {
         if (dst.y > player.y) return { true, "LD" };
         else return { true, "LU" };
-      }
-      else {
+
         if (dst.y > player.y) return { true, "RD" };
         else return { true, "RU" };
       }
