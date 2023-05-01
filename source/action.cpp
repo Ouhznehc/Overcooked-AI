@@ -307,8 +307,14 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
     auto rc = alert_dest(player, dst_set_location);
     if (rc.first) return { true, " " };
     if (move == " ") {
-      if (dst_location.x == 0 || dst_location.x == width - 1) return { true, "U" };
-      if (dst_location.y == 0 || dst_location.y == height - 1) return { true, "R" };
+      if (dst_location.x == 0 || dst_location.x == width - 1) {
+        if (src_location.x > dst_location.x) return { true, "L" };
+        else return { true, "R" };
+      }
+      if (dst_location.y == 0 || dst_location.y == height - 1) {
+        if (src_location.y > dst_location.y) return { true, "U" };
+        else return { true, "D" };
+      };
     }
     return { true, move };
   }
