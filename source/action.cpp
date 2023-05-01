@@ -282,7 +282,7 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
       auto rc = move_and_put_or_pick(player, "clean_plate_location");
       return { true, rc.second };
     }
-    if (dest == "DirtyPlate") {
+    if (dest == "DirtyPlates") {
       auto rc = move_and_put_or_pick(player, "dirty_plate_location");
       return { true, rc.second };
     }
