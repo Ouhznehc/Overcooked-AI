@@ -165,7 +165,7 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
   else {
     auto move = move_towards(src_location, dst_set_location);
     auto rc = alert_dest(player, dst_set_location);
-    if (rc.first) return { true, rc.second };
+    if (rc.first) return { true, " " };
     else {
       auto alert = alert_player(Players[0], Players[1], player);
       if (!alert.first) return { true, move };
