@@ -168,7 +168,6 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
     return { true, move };
   }
 }
-}
 
 
 
