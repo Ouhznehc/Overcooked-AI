@@ -32,4 +32,4 @@ run: all
 
 fast_test: all
 	@clear
-	@../test/runner -l maps/level1/level1-3s.txt -p build/main -c
+	@../test/runner -l maps/level1/level1-3s.txt -p build/main
