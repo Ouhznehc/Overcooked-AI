@@ -149,6 +149,7 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
         if (move.size() == 1) return { true, alert.second };
         else {
           if (move[0] != alert.second[0]) return{ true, &move[1] };
+          if (move[1] != alert.second[1]) return { true, move[0] + alert.second[1] };
           return{ true, alert.second };
         }
       }
