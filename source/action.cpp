@@ -46,8 +46,7 @@ std::pair<bool, std::string> alert_dest(Player player, location dst) {
 }
 
 bool alert_player(Player player0, Player player1) {
-
-
+  return false;
 }
 
 location set_dest_location(location dst) {
