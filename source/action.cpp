@@ -66,10 +66,10 @@ std::pair<bool, std::string> alert_player(Player player0, Player player1, Player
       if (player.y_velocity - player0.y_velocity > 0) y_move = -1;
       else y_move = 1;
     }
-    if (x_move == 1 && y_move == 1) return { true, "R" };
-    if (x_move == 1 && y_move == -1) return { true, "R" };
-    if (x_move == -1 && y_move == 1) return { true, "L" };
-    if (x_move == -1 && y_move == -1) return { true, "L" };
+    if (x_move == 1 && y_move == 1) return { true, "RD" };
+    if (x_move == 1 && y_move == -1) return { true, "RU" };
+    if (x_move == -1 && y_move == 1) return { true, "LD" };
+    if (x_move == -1 && y_move == -1) return { true, "LU" };
   }
   else return { false, " " };
 }
@@ -118,17 +118,8 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
   if (LUT.find(dest) == LUT.end() && map.find(dest) == map.end()) {
     return { true, " " };
   }
-  auto alert = alert_player(Players[0], Players[1], player);
-  std::cerr << alert.first << " " << alert.second << std::endl;
-  // if (alert.first) assert(0);
-  if (alert.first) return{ true, alert.second };
-  location player0_location = { Players[0].x, Players[0].y };
-  location player1_location = { Players[1].x, Players[1].y };
-  // if (manhattan_distance(player0_location, player1_location) <= 2.0) {
-  //   if (player1_location.x == player.x && player1_location.y == player.y) {
-  //     return { true, " " };
-  //   }
-  // }
+
+
   assert(LUT.find(dest) != LUT.end() || map.find(dest) != map.end());
   location dst_set_location, dst_location, src_location = { player.x, player.y };
   if (LUT.find(dest) != LUT.end()) {
@@ -150,9 +141,22 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
   else {
     auto rc = alert_dest(player, dst_set_location);
     if (rc.first) return { true, rc.second };
-    else return { true, move_towards(src_location, dst_set_location) };
+    else {
+      auto alert = alert_player(Players[0], Players[1], player);
+      std::cerr << alert.first << " " << alert.second << std::endl;
+      auto move = move_towards(src_location, dst_set_location);
+      if (!alert.first) return { true, move };
+      else {
+        if (move.size() == 1) return { true, alert.second };
+        else {
+          if (move[0] != alert.second[0]) return{ true, &move[1] };
+          return{ true, alert.second };
+        }
+      }
+    }
   }
-  assert(0);
+}
+assert(0);
 
 }
 
