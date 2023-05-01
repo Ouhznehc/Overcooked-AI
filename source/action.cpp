@@ -176,6 +176,9 @@ struct int_loc {
   int get_value() const {
     return ValueMap[x][y];
   }
+  bool isvalid() const {
+    return x < N && y < N && x >= 0 && y >= 0;
+  }
 };
 
 struct Node {
@@ -204,6 +207,8 @@ int get_shortest_path(int_loc from, int_loc dest) {
       continue;
     int_loc now_pos = now_node.pos;
     for (int direction = 0; direction < Direction_N; direction++) {
+      if (!now_pos[direction].isvalid())
+        continue;
       if (dist.find(now_pos[direction]) == dist.end() || dist[now_pos[direction]] < dist[now_pos] + now_pos.get_value()) {
         fputs("HERE", stderr);
         dist[now_pos[direction]] = dist[now_pos] + now_pos.get_value();
