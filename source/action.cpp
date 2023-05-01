@@ -195,13 +195,6 @@ std::map <int_loc, int> dist;
 
 int get_shortest_path(int_loc from, int_loc dest) {
 
-  for (int i = 0; i < N; i++) {
-    for (int j = 0; j < N; j++) {
-      fprintf(stderr, "%d ", ValueMap[i][j]);
-    }
-    fprintf(stderr, "\n");
-  }
-
   dist.clear();
   while (!spfa_pq.empty()) spfa_pq.pop();
 
@@ -214,8 +207,6 @@ int get_shortest_path(int_loc from, int_loc dest) {
     if (now_node.score > dist[now_node.pos])
       continue;
     int_loc now_pos = now_node.pos;
-    // fputs("HERE\n", stderr);
-    // fprintf(stderr, "%d %d %d\n", now_pos.x, now_pos.y, now_pos.get_value());
     for (int direction = 0; direction < Direction_N; direction++) {
       if (!now_pos[direction].isvalid())
         continue;
@@ -269,7 +260,10 @@ std::string move_towards(location src, location dst) {
   // if (x_flag == 1 && y_flag == 0) return "R";
   // if (x_flag == -1 && y_flag == 0) return "L";
 
-  return direction_name[find_best_direction(src_x, src_y, dst_x, dst_y)];
+  std::string res_name = direction_name[find_best_direction(src_x, src_y, dst_x, dst_y)];
+  fprintf(stderr, "%s\n", res_name.c_str());
+
+  return res_name;
 }
 
 std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string dest) {
