@@ -162,8 +162,9 @@ bool check_arive(location src, location dst) {
 }
 
 struct Node;
+struct int_loc;
 std::priority_queue <Node> spfa_pq;
-std::unordered_map <std::pair<int, int>, int> dist;
+std::map <int_loc, int> dist;
 
 struct int_loc {
   int x, y;
@@ -192,7 +193,7 @@ int get_shortest_path(int_loc from, int_loc dest) {
   dist.clear();
   while (!spfa_pq.empty()) spfa_pq.pop();
 
-  dist.insert(std::make_pair(std::pair<int, int>(from), from.get_value()));
+  dist[from] = from.get_value();
   spfa_pq.push(Node(from, dist[from]));
 
   while (!spfa_pq.empty()) {
