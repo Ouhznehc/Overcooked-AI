@@ -208,7 +208,7 @@ int get_shortest_path(int_loc from, int_loc dest) {
     if (now_node.score > dist[now_node.pos])
       continue;
     if (now_node.pos.x == dest.x && now_node.pos.y == dest.y) {
-      std::cerr << "Cycle Count " << cnt << " " << std::endl;
+      // std::cerr << "Cycle Count " << cnt << " " << std::endl;
       return dist[now_node.pos];
     }
     int_loc now_pos = now_node.pos;
