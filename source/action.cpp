@@ -236,6 +236,8 @@ Direction find_best_direction(int src_x, int src_y, int dst_x, int dst_y) {
 
 
 std::string move_towards(location src, location dst) {
+  return "LU";
+
   int src_x = (int)src.x, src_y = (int)src.y;
   int dst_x = (int)dst.x, dst_y = (int)dst.y;
 
