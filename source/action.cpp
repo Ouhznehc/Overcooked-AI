@@ -62,40 +62,40 @@ std::pair<bool, std::string> alert_dest(Player player, location dst) {
   else return { false, " " };
 }
 
-std::pair<bool, std::string> alert_player(Player player0, Player player1, Player player) {
-  double delta_x = std::fabs(player1.x - player0.x) - 1;
-  double delta_y = std::fabs(player1.y - player0.y) - 1;
-  int x_flag, y_flag;
-  if (delta_x < (player0.x_velocity - player1.x_velocity) * (player0.x_velocity - player1.x_velocity) / ACCELARATE) x_flag = 1;
-  else x_flag = 0;
-  if (delta_y < (player0.y_velocity - player1.y_velocity) * (player0.y_velocity - player1.y_velocity) / ACCELARATE) y_flag = 1;
-  else y_flag = 0;
-  if (x_flag && y_flag) {
-    int x_move, y_move;
-    if (player.x == player0.x && player.y == player0.y) {
-      if (player.x_velocity - player1.x_velocity > 0) x_move = -1;
-      else x_move = 1;
-    }
-    else {
-      if (player.x_velocity - player0.x_velocity > 0) x_move = -1;
-      else x_move = 1;
-    }
-    if (player.x == player0.x && player.y == player0.y) {
-      if (player.y_velocity - player1.y_velocity > 0) y_move = -1;
-      else y_move = 1;
-    }
-    else {
-      if (player.y_velocity - player0.y_velocity > 0) y_move = -1;
-      else y_move = 1;
-    }
-    if (x_move == 1 && y_move == 1) return { true, "RD" };
-    if (x_move == 1 && y_move == -1) return { true, "RU" };
-    if (x_move == -1 && y_move == 1) return { true, "LD" };
-    if (x_move == -1 && y_move == -1) return { true, "LU" };
-    assert(0);
-  }
-  else return { false, " " };
-}
+// std::pair<bool, std::string> alert_player(Player player0, Player player1, Player player) {
+//   double delta_x = std::fabs(player1.x - player0.x) - 1;
+//   double delta_y = std::fabs(player1.y - player0.y) - 1;
+//   int x_flag, y_flag;
+//   if (delta_x < (player0.x_velocity - player1.x_velocity) * (player0.x_velocity - player1.x_velocity) / ACCELARATE) x_flag = 1;
+//   else x_flag = 0;
+//   if (delta_y < (player0.y_velocity - player1.y_velocity) * (player0.y_velocity - player1.y_velocity) / ACCELARATE) y_flag = 1;
+//   else y_flag = 0;
+//   if (x_flag && y_flag) {
+//     int x_move, y_move;
+//     if (player.x == player0.x && player.y == player0.y) {
+//       if (player.x_velocity - player1.x_velocity > 0) x_move = -1;
+//       else x_move = 1;
+//     }
+//     else {
+//       if (player.x_velocity - player0.x_velocity > 0) x_move = -1;
+//       else x_move = 1;
+//     }
+//     if (player.x == player0.x && player.y == player0.y) {
+//       if (player.y_velocity - player1.y_velocity > 0) y_move = -1;
+//       else y_move = 1;
+//     }
+//     else {
+//       if (player.y_velocity - player0.y_velocity > 0) y_move = -1;
+//       else y_move = 1;
+//     }
+//     if (x_move == 1 && y_move == 1) return { true, "RD" };
+//     if (x_move == 1 && y_move == -1) return { true, "RU" };
+//     if (x_move == -1 && y_move == 1) return { true, "LD" };
+//     if (x_move == -1 && y_move == -1) return { true, "LU" };
+//     assert(0);
+//   }
+//   else return { false, " " };
+// }
 
 location set_dest_location(location dst) {
   if (dst.x == 0) return { dst.x + 1.5, dst.y + 0.5 };
@@ -165,20 +165,9 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
     auto move = move_towards(src_location, dst_set_location);
     auto rc = alert_dest(player, dst_set_location);
     if (rc.first) return { true, " " };
-    else {
-      return { true, move };
-      auto alert = alert_player(Players[0], Players[1], player);
-      if (!alert.first) return { true, move };
-      else {
-        if (move.size() == 1) return { true, alert.second };
-        else {
-          if (move[0] != alert.second[0]) return{ true, &move[1] };
-          if (move[1] != alert.second[1]) return { true, &move[0] };
-          return{ true, alert.second };
-        }
-      }
-    }
+    return { true, move };
   }
+}
 }
 
 
