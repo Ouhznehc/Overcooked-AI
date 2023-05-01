@@ -57,6 +57,7 @@ std::pair<bool, std::string> alert_dest(Player player, location dst) {
         else return { true, "LD" };
       }
     }
+    else assert(0);
   }
   else return { false, " " };
 }
@@ -91,6 +92,7 @@ std::pair<bool, std::string> alert_player(Player player0, Player player1, Player
     if (x_move == 1 && y_move == -1) return { true, "RU" };
     if (x_move == -1 && y_move == 1) return { true, "LD" };
     if (x_move == -1 && y_move == -1) return { true, "LU" };
+    assert(0);
   }
   else return { false, " " };
 }
