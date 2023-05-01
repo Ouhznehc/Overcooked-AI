@@ -47,15 +47,15 @@ std::pair<bool, std::string> alert_dest(Player player, location dst) {
         else return { true, "RU" };
       }
     }
-  }
-  else if (y_flag) {
-    if (player.y_velocity > 0) {
-      if (player.x_velocity > 0) return { true, "RU" };
-      else return { true, "LU" };
-    }
-    else {
-      if (player.x_velocity > 0) return { true, "RD" };
-      else return { true, "LD" };
+    else if (y_flag) {
+      if (player.y_velocity > 0) {
+        if (player.x_velocity > 0) return { true, "RU" };
+        else return { true, "LU" };
+      }
+      else {
+        if (player.x_velocity > 0) return { true, "RD" };
+        else return { true, "LD" };
+      }
     }
   }
   else return { false, " " };
