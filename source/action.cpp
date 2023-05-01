@@ -17,7 +17,7 @@ double manhattan_distance(location src, location dst) {
 std::pair<bool, std::string> alert_dest(Player player, location dst) {
   double delta_x = dst.x - player.x;
   double delta_y = dst.y - player.y;
-  bool x_flag, y_flag;
+  int x_flag, y_flag;
   if (delta_x > 0 && player.x_velocity > 0) {
     if (delta_x < player.x_velocity * player.x_velocity / 60) x_flag = -1;
     else x_flag = 0;
