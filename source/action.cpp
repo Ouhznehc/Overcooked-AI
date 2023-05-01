@@ -210,7 +210,7 @@ int get_shortest_path(int_loc from, int_loc dest) {
       if (!now_pos[direction].isvalid())
         continue;
       if (dist.find(now_pos[direction]) == dist.end() || dist[now_pos[direction]] < dist[now_pos] + now_pos.get_value()) {
-        fputs("HERE", stderr);
+        fputs("HERE\n", stderr);
         dist[now_pos[direction]] = dist[now_pos] + now_pos.get_value();
         spfa_pq.push(Node(now_pos[direction], dist[now_pos[direction]]));
       }
