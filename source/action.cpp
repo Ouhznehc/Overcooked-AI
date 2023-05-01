@@ -35,7 +35,17 @@ std::pair<bool, std::string> alert_dest(Player player, location dst) {
     if (-delta_y < player.y_velocity * player.y_velocity / ACCELARATE) y_flag = 1;
     else y_flag = 0;
   }
-  if (x_flag || y_flag) return { true, " " };
+  if (x_flag || y_flag) {
+    if (x_flag && y_flag) return { true, " " };
+    else if (x_flag) {
+      if (player.y_velocity > 0) return{ true, "D" };
+      else return { true, "U" };
+    }
+    else if (y_flag) {
+      if (player.x_velocity > 0) return { true, "R" };
+      else return { true, "L" };
+    }
+  }
   else return { false, " " };
 }
 
@@ -138,12 +148,11 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
     if (dst_location.x == width - 1) return { false, "R" };
   }
   else {
+    auto move = move_towards(src_location, dst_set_location);
     auto rc = alert_dest(player, dst_set_location);
     if (rc.first) return { true, rc.second };
     else {
       auto alert = alert_player(Players[0], Players[1], player);
-      std::cerr << alert.first << " " << alert.second << std::endl;
-      auto move = move_towards(src_location, dst_set_location);
       if (!alert.first) return { true, move };
       else {
         if (move.size() == 1) return { true, alert.second };
