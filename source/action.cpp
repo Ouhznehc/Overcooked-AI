@@ -5,7 +5,7 @@
 #define E 1e-7
 #define LIMIT_RANGE 0.3
 #define SAFE_DISTANCE 1.8
-#define ACCELARATE 30
+#define ACCELARATE 60
 #define DELTA_X(src, dst) (dst.x - src.x)
 #define DELTA_Y(src, dst) (dst.y - src.y)
 
