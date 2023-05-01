@@ -52,10 +52,10 @@ void evaluate_map(Player player) {
 
   ValueMap[player_x][player_y] += -inf;
   ValueMap[cliff_x][cliff_y] += -inf;
-  // for (int i = 0; i < 9; i++) {
-  //   ValueMap[player_x + dx[i]][player_y + dy[i]] += -inf;
-  //   ValueMap[cliff_x + dx[i]][cliff_y + dy[i]] += -inf;
-  // }
+  for (int i = 0; i < 9; i++) {
+    ValueMap[player_x + dx[i]][player_y + dy[i]] += -inf;
+    ValueMap[cliff_x + dx[i]][cliff_y + dy[i]] += -inf;
+  }
   // location start_location = { (double)(int)src.x, (double)(int)src.y };
   // location end_location = { (double)(int)dst.x, (double)(int)dst.y };
 }
@@ -278,6 +278,10 @@ std::string move_towards(location src, location dst) {
 
 std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string dest) {
   if (LUT.find(dest) == LUT.end() && map.find(dest) == map.end()) {
+    if (dest == "Plate") {
+      auto rc = move_and_put_or_pick(player, "clean_plate_location");
+      return { true, rc.second };
+    }
     return { true, " " };
   }
 
