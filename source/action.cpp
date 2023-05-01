@@ -95,7 +95,7 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
     return { true, " " };
   }
   auto alert = alert_player(Players[0], Players[1]);
-  if (alert.first) reutrn{ true, " " };
+  if (alert.first) return{ true, " " };
   location player0_location = { Players[0].x, Players[0].y };
   location player1_location = { Players[1].x, Players[1].y };
   // if (manhattan_distance(player0_location, player1_location) <= 2.0) {
