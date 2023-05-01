@@ -38,12 +38,24 @@ std::pair<bool, std::string> alert_dest(Player player, location dst) {
   if (x_flag || y_flag) {
     if (x_flag && y_flag) return { true, " " };
     else if (x_flag) {
-      if (player.y_velocity > 0) return{ true, "D" };
-      else return { true, "U" };
+      if (player.x_velocity > 0) {
+        if (player.y_velocity > 0) return{ true, "LD" };
+        else return { true, "LU" };
+      }
+      else {
+        if (player.y_velocity > 0) return{ true, "RD" };
+        else return { true, "RU" };
+      }
     }
-    else if (y_flag) {
-      if (player.x_velocity > 0) return { true, "R" };
-      else return { true, "L" };
+  }
+  else if (y_flag) {
+    if (player.y_velocity > 0) {
+      if (player.x_velocity > 0) return { true, "RU" };
+      else return { true, "LU" };
+    }
+    else {
+      if (player.x_velocity > 0) return { true, "RD" };
+      else return { true, "LD" };
     }
   }
   else return { false, " " };
