@@ -29,8 +29,8 @@ const std::string direction_name[] = { "LU", "L", "LD", "D", "RD", "R", "RU", "U
 
 
 void evaluate_map(Player player) {
+  memset(ValueMap, 0, sizeof(ValueMap));
   int player_x, player_y, cliff_x, cliff_y;
-
   for (int x = 0; x < width; x++) {
     for (int y = 0; y < width; y++) {
       if (Map[y][x] == '.') ValueMap[x][y] += -1;
@@ -195,6 +195,8 @@ std::map <int_loc, int> dist;
 
 int get_shortest_path(int_loc from, int_loc dest) {
 
+  int cnt = 0;
+
   dist.clear();
   while (!spfa_pq.empty()) spfa_pq.pop();
 
@@ -202,6 +204,7 @@ int get_shortest_path(int_loc from, int_loc dest) {
   spfa_pq.push(Node(from, dist[from]));
 
   while (!spfa_pq.empty()) {
+    ++cnt;
     Node now_node = spfa_pq.top();
     spfa_pq.pop();
     if (now_node.score > dist[now_node.pos])
@@ -216,6 +219,8 @@ int get_shortest_path(int_loc from, int_loc dest) {
       }
     }
   }
+
+  std::cerr << "Cycle Count " << cnt << " " << std::endl;
   return dist[dest];
 }
 
