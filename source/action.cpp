@@ -313,7 +313,7 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
       }
       if (dst_location.y == 0 || dst_location.y == height - 1) {
         if (src_location.x > dst_location.x) return { true, "R" };
-        else return { true, "R" };
+        else return { true, "L" };
       };
     }
     return { true, move };
