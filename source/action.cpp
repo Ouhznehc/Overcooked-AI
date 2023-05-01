@@ -250,32 +250,32 @@ std::string move_towards(location src, location dst) {
   int src_x = (int)src.x, src_y = (int)src.y;
   int dst_x = (int)dst.x, dst_y = (int)dst.y;
 
-  std::cerr << "src:" << src.x << " " << src.y << std::endl;
-  std::cerr << "dst:" << dst.x << " " << dst.y << std::endl;
+  // std::cerr << "src:" << src.x << " " << src.y << std::endl;
+  // std::cerr << "dst:" << dst.x << " " << dst.y << std::endl;
 
   // std::cerr << "here" << std::endl;
 
-  // double delta_x = DELTA_X(src, dst), delta_y = DELTA_Y(src, dst);
-  // int x_flag, y_flag;
-  // if (std::fabs(delta_x) <= LIMIT_RANGE) x_flag = 0;
-  // else if (delta_x > LIMIT_RANGE) x_flag = 1;
-  // else x_flag = -1;
-  // if (std::fabs(delta_y) <= LIMIT_RANGE) y_flag = 0;
-  // else if (delta_y > LIMIT_RANGE) y_flag = 1;
-  // else y_flag = -1;
-  // if (x_flag == 1 && y_flag == 1) return "RD";
-  // if (x_flag == -1 && y_flag == 1) return "LD";
-  // if (x_flag == 1 && y_flag == -1) return "RU";
-  // if (x_flag == -1 && y_flag == -1) return "LU";
-  // if (x_flag == 0 && y_flag == 1) return "D";
-  // if (x_flag == 0 && y_flag == -1) return "U";
-  // if (x_flag == 1 && y_flag == 0) return "R";
-  // if (x_flag == -1 && y_flag == 0) return "L";
+  double delta_x = DELTA_X(src, dst), delta_y = DELTA_Y(src, dst);
+  int x_flag, y_flag;
+  if (std::fabs(delta_x) <= LIMIT_RANGE) x_flag = 0;
+  else if (delta_x > LIMIT_RANGE) x_flag = 1;
+  else x_flag = -1;
+  if (std::fabs(delta_y) <= LIMIT_RANGE) y_flag = 0;
+  else if (delta_y > LIMIT_RANGE) y_flag = 1;
+  else y_flag = -1;
+  if (x_flag == 1 && y_flag == 1) return "RD";
+  if (x_flag == -1 && y_flag == 1) return "LD";
+  if (x_flag == 1 && y_flag == -1) return "RU";
+  if (x_flag == -1 && y_flag == -1) return "LU";
+  if (x_flag == 0 && y_flag == 1) return "D";
+  if (x_flag == 0 && y_flag == -1) return "U";
+  if (x_flag == 1 && y_flag == 0) return "R";
+  if (x_flag == -1 && y_flag == 0) return "L";
 
-  std::string res_name = direction_name[find_best_direction(src_x, src_y, dst_x, dst_y)];
-  fprintf(stderr, "%s\n", res_name.c_str());
+  // std::string res_name = direction_name[find_best_direction(src_x, src_y, dst_x, dst_y)];
+  // fprintf(stderr, "%s\n", res_name.c_str());
 
-  return res_name;
+  // return res_name;
 }
 
 std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string dest) {
