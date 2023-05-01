@@ -233,8 +233,8 @@ std::string move_towards(location src, location dst) {
   int src_x = (int)src.x, src_y = (int)src.y;
   int dst_x = (int)dst.x, dst_y = (int)dst.y;
 
-  // std::cerr << "src:" << src.x << " " << src.y << std::endl;
-  // std::cerr << "dst:" << dst.x << " " << dst.y << std::endl;
+  std::cerr << "src:" << src.x << " " << src.y << std::endl;
+  std::cerr << "dst:" << dst.x << " " << dst.y << std::endl;
 
 
   // double delta_x = DELTA_X(src, dst), delta_y = DELTA_Y(src, dst);
