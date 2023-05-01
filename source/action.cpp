@@ -134,15 +134,6 @@ std::string move_towards(location src, location dst) {
   if (x_flag == -1 && y_flag == 0) return "L";
   return " ";
 
-  // double delta_x = DELTA_X(src, dst), delta_y = DELTA_Y(src, dst);
-  // if (std::fabs(delta_x) > std::fabs(delta_y)) {
-  //   if (delta_x > 0) return "R";
-  //   else return "L";
-  // }
-  // else {
-  //   if (delta_y > 0) return "D";
-  //   else return "U";
-  // }
 }
 
 std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string dest) {
