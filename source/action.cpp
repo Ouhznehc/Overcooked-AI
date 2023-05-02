@@ -277,7 +277,7 @@ std::string move_towards(location src, location dst) {
   // if (x_flag == 1 && y_flag == 0) return "R";
   // if (x_flag == -1 && y_flag == 0) return "L";
 
-  std::string res_name = direction_name[find_best_direction(src_x, src_y, dst_x, dst_y)];
+  std::string res_name = direction_name[find_best_direction(int_loc(src_x, src_y), int_loc(dst_x, dst_y))];
   // fprintf(stderr, "%s\n", res_name.c_str());
 
   return res_name;
