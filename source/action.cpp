@@ -170,6 +170,12 @@ struct int_loc {
   bool operator < (const int_loc& b) const {
     return x != b.x ? x < b.x : y < b.y;
   }
+  bool operator != (const int_loc& b) const {
+    return x != b.x || y != b.y;
+  }
+  bool operator == (const int_loc& b) const {
+    return !((*this) != b);
+  }
   int_loc operator [](int direction) const {
     return int_loc(x + dx[direction], y + dy[direction]);
   }
@@ -192,9 +198,9 @@ struct Node {
 
 std::priority_queue <Node> spfa_pq;
 std::map <int_loc, int> dist;
+std::map <int_loc, int_loc> frompoint;
 
-int get_shortest_path(int_loc from, int_loc dest) {
-
+int_loc get_shortest_path(int_loc from, int_loc dest) {
 
   dist.clear();
   while (!spfa_pq.empty()) spfa_pq.pop();
@@ -208,7 +214,7 @@ int get_shortest_path(int_loc from, int_loc dest) {
     if (now_node.score > dist[now_node.pos])
       continue;
     if (now_node.pos.x == dest.x && now_node.pos.y == dest.y) {
-      // std::cerr << "Cycle Count " << cnt << " " << std::endl;
+      goto end;
       return dist[now_node.pos];
     }
     int_loc now_pos = now_node.pos;
@@ -217,28 +223,29 @@ int get_shortest_path(int_loc from, int_loc dest) {
         continue;
       if (dist.find(now_pos[direction]) == dist.end() || dist[now_pos[direction]] < dist[now_pos] + now_pos.get_value()) {
         dist[now_pos[direction]] = dist[now_pos] + now_pos.get_value();
+        frompoint[now_pos[direction]] = now_pos;
         spfa_pq.push(Node(now_pos[direction], dist[now_pos[direction]]));
       }
     }
   }
 
+end:
   // std::cerr << "Cycle Count " << cnt << " " << std::endl;
-  return dist[dest];
+  int_loc nowp = dest;
+  while (frompoint[nowp] != from) {
+    nowp = frompoint[nowp];
+  }
+  return nowp;
 }
 
-Direction find_best_direction(int src_x, int src_y, int dst_x, int dst_y) {
-  if (src_x == dst_x && src_y == dst_y)
+Direction find_best_direction(int_loc src, int_loc dst) {
+  if (src == dst)
     return Direction_N;
+  int_loc nxtloc = get_shortest_path(src, dst);
   Direction res_direction = Direction_N;
-  int max_score = INT_MIN;
-  for (int dir = 0; dir < Direction_N; dir++) {
-    int res = get_shortest_path(int_loc(src_x, src_y)[dir], int_loc(dst_x, dst_y));
-    if (res > max_score) {
-      max_score = res;
-      res_direction = (Direction)dir;
-    }
-  }
-  return res_direction;
+  for (int dir = 0; dir < Direction_N; dir++)
+    if (src[dir] == nxtloc) return (Direction)dir;
+  return Direction_N;
 }
 
 
