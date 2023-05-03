@@ -163,7 +163,7 @@ bool check_arive(location src, location dst) {
 
 struct int_loc {
   int x, y;
-  int_loc(int _x = 0, int _y = 0): x(_x), y(_y) {}
+  int_loc(int _x = 0, int _y = 0) : x(_x), y(_y) {}
   operator std::pair<int, int>() const {
     return std::pair<int, int>(x, y);
   }
@@ -190,7 +190,7 @@ struct int_loc {
 struct Node {
   int_loc pos;
   int score;
-  Node(int_loc _pos = int_loc(), int _score = 0): pos(_pos), score(_score) {}
+  Node(int_loc _pos = int_loc(), int _score = 0) : pos(_pos), score(_score) {}
   bool operator < (const Node& b) const {
     return score < b.score;
   }
@@ -285,14 +285,14 @@ std::string move_towards(location src, location dst) {
 
 std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string dest) {
   if (LUT.find(dest) == LUT.end() && map.find(dest) == map.end()) {
-    // if (dest == "Plate") {
-    //   auto rc = move_and_put_or_pick(player, "clean_plate_location");
-    //   return { true, rc.second };
-    // }
-    // if (dest == "DirtyPlates") {
-    //   auto rc = move_and_put_or_pick(player, "dirty_plate_location");
-    //   return { true, rc.second };
-    // }
+    if (dest == "Plate") {
+      auto rc = move_and_put_or_pick(player, "clean_plate_location");
+      return { true, rc.second };
+    }
+    if (dest == "DirtyPlates") {
+      auto rc = move_and_put_or_pick(player, "dirty_plate_location");
+      return { true, rc.second };
+    }
     return { true, " " };
   }
 
