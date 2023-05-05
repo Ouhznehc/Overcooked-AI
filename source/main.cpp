@@ -39,6 +39,7 @@ int main() {
         std::pair<std::string, std::string> strategy = allocate_task();
         std::string player0_Action = strategy.first;
         std::string player1_Action = strategy.second;
+        player0_Action = "Move R";
         /* 合成一个字符串再输出，否则输出有可能会被打断 */
         std::string action = player0_Action + "\n" + player1_Action + "\n";
         std::cout << action;
