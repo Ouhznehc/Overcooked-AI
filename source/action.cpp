@@ -341,11 +341,15 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
 
 
 std::pair<bool, std::string> interact(Player player, std::string object) {
-  static int flag = 0;
+  static int palyer0_flag = 0;
+  static int palyer1_flag = 0;
+  int* flag;
+  if (player.x == Players[0].x && player.y == Players[0].y) flag = &palyer0_flag;
+  else flag = &palyer1_flag;
   for (int i = 0; i < N; i++) {
     if (Entity[i].container == Container::None) {
       if (object == "fish") {
-        std::cerr << "None " << flag << std::endl;
+        std::cerr << "None " << *flag << std::endl;
         std::cerr << Entity[i].entity[0] << std::endl;
       }
       if (Entity[i].entity[0] != object) continue;
@@ -357,17 +361,17 @@ std::pair<bool, std::string> interact(Player player, std::string object) {
       }
       if (Entity[i].entity[1] != object) continue;
     }
-    if (Entity[i].total_frame != 0 || !flag) {
+    if (Entity[i].total_frame != 0 || !*flag) {
       std::cerr << "into " << flag << object << std::endl;
-      if (flag && Entity[i].current_frame == Entity[i].total_frame - 1) {
-        flag = 0;
+      if (*flag && Entity[i].current_frame == Entity[i].total_frame - 1) {
+        *flag = 0;
         return { false, " " };
       };
       if ((object == "c_fish" || object == "rice") && flag) {
-        flag = 0;
+        *flag = 0;
         return { false , " " };
       };
-      flag = 1;
+      *flag = 1;
       location object_location = { Entity[i].x, Entity[i].y };
       if (object_location.y == 0) return { true, "U" };
       if (object_location.y == height - 1) return { true, "D" };
