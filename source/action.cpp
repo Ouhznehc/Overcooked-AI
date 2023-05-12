@@ -341,9 +341,14 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
 
 
 std::pair<bool, std::string> interact(Player player, std::string object) {
+  static int flag = 0;
   for (int i = 0; i < N; i++) {
     if (Entity[i].entity[0] == object && Entity[i].total_frame != 0) {
-      if (Entity[i].current_frame == Entity[i].total_frame) return { false , " " };
+      if (flag && Entity[i].current_frame == Entity[i].total_frame) {
+        flag = 0;
+        return { false, " " };
+      };
+      flag = 1;
       location object_location = { Entity[i].x, Entity[i].y };
       if (object_location.y == 0) return { true, "U" };
       if (object_location.y == height - 1) return { true, "D" };
