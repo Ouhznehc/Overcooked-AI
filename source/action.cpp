@@ -353,8 +353,8 @@ std::pair<bool, std::string> interact(Player player, std::string object) {
       // std::cerr << Entity[i].entity[1] << std::endl;
       if (Entity[i].entity[1] != object) continue;
     }
-    if ((Entity[i].total_frame != 0 || !flag)) {
-      std::cerr << "into" << std::endl;
+    if (Entity[i].total_frame != 0 || !flag) {
+      std::cerr << "into" << flag << std::endl;
       if (flag && Entity[i].current_frame == Entity[i].total_frame - 1) {
         flag = 0;
         return { false, " " };
