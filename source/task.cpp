@@ -4,7 +4,7 @@
 #include <debug.h>
 
 std::deque<task> task_pool;
-task player0_task_pool[6] = { {schedule_move_and_put_or_pick, "rice"} , {schedule_move_and_put_or_pick, "Pot"}, {schedule_interact, "rice"}, {schedule_move_and_put_or_pick, "Plate"}, {schedule_move_and_put_or_pick, "s_rice"}, {schedule_move_and_put_or_pick, "service_window"} };
+task player0_task_pool[9] = { {schedule_move_and_put_or_pick, "fish"} , {schedule_move_and_put_or_pick, "Chop"}, {schedule_interact, "fish"}, {schedule_move_and_put_or_pick, "c_fish"}, {schedule_move_and_put_or_pick, "Pan"}, {schedule_interact, "c_fish"}, {schedule_move_and_put_or_pick, "Plate"}, {schedule_move_and_put_or_pick, "s_fish"},  {schedule_move_and_put_or_pick, "service_window"} };
 task player1_task_pool[4] = { {schedule_move_and_put_or_pick, "DirtyPlates"}, {schedule_move_and_put_or_pick, "sink"}, {schedule_stop, " "}, {schedule_interact, "DirtyPlates"} };
 task* player0_task;
 task* player1_task;
@@ -17,7 +17,7 @@ std::pair<std::string, std::string> allocate_task() {
   auto rc0 = player0_task->function(Players[0], player0_task->object);
   auto rc1 = player1_task->function(Players[1], player1_task->object);
   if (rc0.first == false) {
-    player0_current = (player0_current + 1) % 6;
+    player0_current = (player0_current + 1) % 9;
     player0_task = &player0_task_pool[player0_current];
   }
   if (rc1.first == false) {
