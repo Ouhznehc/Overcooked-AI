@@ -27,6 +27,7 @@ std::pair<std::string, std::string> allocate_task() {
       player0_task = player0_s_fish;
       mod = 9;
     }
+    assert(0);
   }
   if (player1_task == NULL) player1_task = player1_task_pool;
   auto rc0 = player0_task[player0_current].function(Players[0], player0_task[player0_current].object);
