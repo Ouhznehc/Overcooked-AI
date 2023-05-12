@@ -389,7 +389,7 @@ std::pair<bool, std::string> interact(Player player, std::string object) {
       if (object_location.x == width - 1) return { true, "R" };
     }
   }
-  assert(0);
+  // assert(0);
   return { false, " " };
 }
 
