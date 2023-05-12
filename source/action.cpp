@@ -350,7 +350,7 @@ std::pair<bool, std::string> interact(Player player, std::string object) {
     }
     else {
       std::cerr << "FUCK" << std::endl;
-      std::cerr << Entity[i].entity[0] << std::endl;
+      std::cerr << Entity[i].entity[1] << std::endl;
       if (Entity[i].entity[1] != object) continue;
     }
     if ((Entity[i].total_frame != 0 || !flag)) {
