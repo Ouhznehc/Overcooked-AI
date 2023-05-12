@@ -346,7 +346,7 @@ std::pair<bool, std::string> interact(Player player, std::string object) {
   int* flag;
   if (player.x == Players[0].x && player.y == Players[0].y) flag = &palyer0_flag;
   else flag = &palyer1_flag;
-  for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < N; i++) {
     if (Entity[i].container == Container::None) {
       // if (object == "fish") {
       //   std::cerr << "None " << *flag << std::endl;
@@ -374,13 +374,13 @@ std::pair<bool, std::string> interact(Player player, std::string object) {
     }
     if (Entity[i].total_frame != 0 || !*flag) {
       // std::cerr << "into " << flag << object << std::endl;
-      if (*flag && Entity[i].current_frame == Entity[i].total_frame - 1) {
-        *flag = 0;
-        return { false, " " };
-      };
       if ((object == "c_fish" || object == "rice") && flag) {
         *flag = 0;
         return { false , " " };
+      };
+      if (*flag && Entity[i].current_frame == Entity[i].total_frame - 1) {
+        *flag = 0;
+        return { false, " " };
       };
       *flag = 1;
       location object_location = { Entity[i].x, Entity[i].y };
