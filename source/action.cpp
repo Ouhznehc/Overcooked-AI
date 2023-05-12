@@ -361,7 +361,7 @@ std::pair<bool, std::string> interact(Player player, std::string object) {
       // std::cerr << Entity[i].entity[1] << std::endl;
       // }
 
-      // assert(Entity[i].entity[1] != "");
+      assert(Entity[i].entity[1] != "");
       if (Entity[i].entity[1] != object) continue;
     }
     if (Entity[i].total_frame != 0 || !*flag) {
