@@ -164,6 +164,8 @@ bool frame_read(int now_frame) {
             */
             if (s == "Plate")
                 Entity[i].container = Container::Plate;
+            if (s == "Pot")
+                Entity[i].container = Container::Pot;
             else if (s == "DirtyPlates") {
                 Entity[i].container = Container::DirtyPlates;
                 tmp >> Entity[i].sum;
