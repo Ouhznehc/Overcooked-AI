@@ -5,7 +5,7 @@
 
 std::deque<task> task_pool;
 task player0_task_pool[6] = { {schedule_move_and_put_or_pick, "rice"} , {schedule_move_and_put_or_pick, "Pot"}, {schedule_interact, "rice"}, {schedule_move_and_put_or_pick, "Plate"}, {schedule_move_and_put_or_pick, "s_rice"}, {schedule_move_and_put_or_pick, "service_window"} };
-task player1_task_pool[4] = { {schedule_move_and_put_or_pick, "DirtyPlates"}, {schedule_move_and_put_or_pick, "sink"}, {schedule_stop, " "}, {schedule_interact, "DirtyPlates"} };
+task player1_task_pool[4] = { {schedule_move_and_put_or_pick, "DirtyPlates"}, {schedule_move_and_put_or_pick, "sink"}, {schedule_stop, " "}, {schedule_interact, "sink"} };
 task* player0_task;
 task* player1_task;
 int player0_current;
