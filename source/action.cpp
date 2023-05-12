@@ -344,17 +344,17 @@ std::pair<bool, std::string> interact(Player player, std::string object) {
   static int flag = 0;
   for (int i = 0; i < N; i++) {
     if (Entity[i].container == Container::None) {
-      // if (object == "DirtyPlates") {
-      //   std::cerr << "None" << std::endl;
-      //   std::cerr << Entity[i].entity[0] << std::endl;
-      // }
+      if (object == "fish") {
+        std::cerr << "None" << std::endl;
+        std::cerr << Entity[i].entity[0] << std::endl;
+      }
       if (Entity[i].entity[0] != object) continue;
     }
     else {
-      // if (object == "DirtyPlates") {
-      //   std::cerr << "FUCK" << std::endl;
-      //   std::cerr << Entity[i].entity[1] << std::endl;
-      // }
+      if (object == "fish") {
+        std::cerr << "FUCK" << std::endl;
+        std::cerr << Entity[i].entity[1] << std::endl;
+      }
       if (Entity[i].entity[1] != object) continue;
     }
     if (Entity[i].total_frame != 0 || !flag) {
