@@ -357,9 +357,10 @@ std::pair<bool, std::string> interact(Player player, std::string object) {
     }
     else {
       // if (object == "fish") {
-      //   std::cerr << "FUCK" << std::endl;
-      //   std::cerr << Entity[i].entity[1] << std::endl;
+      std::cerr << "FUCK" << std::endl;
+      std::cerr << Entity[i].entity[1] << std::endl;
       // }
+
       assert(Entity[i].entity[1] != "");
       if (Entity[i].entity[1] != object) continue;
     }
