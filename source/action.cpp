@@ -359,7 +359,7 @@ std::pair<bool, std::string> interact(Player player, std::string object) {
         flag = 0;
         return { false, " " };
       };
-      if (object == "Pot" && flag) {
+      if (object == "rice" && flag) {
         flag = 0;
         return { false , " " };
       };
