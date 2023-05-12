@@ -8,8 +8,6 @@ all:
 		cd build && cmake .. -DCMAKE_BUILD_TYPE=Debug; fi
 	@make -C build
 
-compile:
-	g++ -O2 -fsanti
 
 clean:
 	@if [[ -d build ]]; then \
