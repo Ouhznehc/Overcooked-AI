@@ -19,15 +19,15 @@ std::pair<std::string, std::string> allocate_task() {
       player0_task = player0_kelp;
       mod = 4;
     }
-    if (Order[0].recipe[0] == "s_rice") {
+    else if (Order[0].recipe[0] == "s_rice") {
       player0_task = player0_s_rice;
       mod = 6;
     }
-    if (Order[0].recipe[0] == "s_fish") {
+    else if (Order[0].recipe[0] == "s_fish") {
       player0_task = player0_s_fish;
       mod = 9;
     }
-    assert(0);
+    else assert(0);
   }
   if (player1_task == NULL) player1_task = player1_task_pool;
   auto rc0 = player0_task[player0_current].function(Players[0], player0_task[player0_current].object);
