@@ -348,21 +348,21 @@ std::pair<bool, std::string> interact(Player player, std::string object) {
   else flag = &palyer1_flag;
   for (int i = 0; i < N; i++) {
     if (Entity[i].container == Container::None) {
-      if (object == "fish") {
-        std::cerr << "None " << *flag << std::endl;
-        std::cerr << Entity[i].entity[0] << std::endl;
-      }
+      // if (object == "fish") {
+      //   std::cerr << "None " << *flag << std::endl;
+      //   std::cerr << Entity[i].entity[0] << std::endl;
+      // }
       if (Entity[i].entity[0] != object) continue;
     }
     else {
-      if (object == "fish") {
-        std::cerr << "FUCK" << std::endl;
-        std::cerr << Entity[i].entity[1] << std::endl;
-      }
+      // if (object == "fish") {
+      //   std::cerr << "FUCK" << std::endl;
+      //   std::cerr << Entity[i].entity[1] << std::endl;
+      // }
       if (Entity[i].entity[1] != object) continue;
     }
     if (Entity[i].total_frame != 0 || !*flag) {
-      std::cerr << "into " << flag << object << std::endl;
+      // std::cerr << "into " << flag << object << std::endl;
       if (*flag && Entity[i].current_frame == Entity[i].total_frame - 1) {
         *flag = 0;
         return { false, " " };
