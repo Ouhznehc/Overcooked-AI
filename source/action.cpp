@@ -352,6 +352,7 @@ std::pair<bool, std::string> interact(Player player, std::string object) {
       //   std::cerr << "None " << *flag << std::endl;
       //   std::cerr << Entity[i].entity[0] << std::endl;
       // }
+      assert(Entity[i].entity[0] != "");
       if (Entity[i].entity[0] != object) continue;
     }
     else {
@@ -359,6 +360,7 @@ std::pair<bool, std::string> interact(Player player, std::string object) {
       //   std::cerr << "FUCK" << std::endl;
       //   std::cerr << Entity[i].entity[1] << std::endl;
       // }
+      assert(Entity[i].entity[1] != "");
       if (Entity[i].entity[1] != object) continue;
     }
     if (Entity[i].total_frame != 0 || !*flag) {
