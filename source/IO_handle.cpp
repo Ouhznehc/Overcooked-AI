@@ -188,6 +188,7 @@ void init() {
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
             switch (Map[i][j]) {
+            case 'p': LUT["pot"].push_back({ (double)j, (double)i }); break;
             case 'c': LUT["chop"].push_back({ (double)j, (double)i }); break;
             case 'k': LUT["sink"].push_back({ (double)j, (double)i }); break;
             case 'r': LUT["clean_plate_location"].push_back({ (double)j, (double)i }); break;

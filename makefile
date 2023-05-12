@@ -24,7 +24,7 @@ submit:
 
 test: all
 	@clear
-	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l maps/level2/level2-1.txt -p build/main -c
+	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l maps/level2/level2-2.txt -p build/main -c
 
 run: all
 	@clear
@@ -32,4 +32,4 @@ run: all
 
 fast_test: all
 	@clear
-	@../test/runner -l maps/level2/level2-1.txt -p build/main
+	@../test/runner -l maps/level2/level2-2.txt -p build/main
