@@ -16,8 +16,8 @@ std::pair<std::string, std::string> allocate_task() {
   // if (player0_current == 0) {
   //   player0_task = &player0_kelp[]
   // }
-  auto rc0 = player0_task[player0_current].function(Players[0], player0_task->object);
-  auto rc1 = player1_task[player1_current].function(Players[1], player1_task->object);
+  auto rc0 = player0_task[player0_current].function(Players[0], player0_task[player0_current]->object);
+  auto rc1 = player1_task[player1_current].function(Players[1], player1_task[player1_current]->object);
   if (rc0.first == false) {
     player0_current = (player0_current + 1) % 9;
   }
