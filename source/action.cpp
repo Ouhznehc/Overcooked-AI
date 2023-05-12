@@ -344,7 +344,13 @@ std::pair<bool, std::string> interact(Player player, std::string object) {
   static int flag = 0;
   for (int i = 0; i < N; i++) {
     // std::cerr << Entity[i].entity[1] << std::endl;
-    if (Entity[i].entity[1] == object && (Entity[i].total_frame != 0 || !flag)) {
+    if (Entity[i].container == Container::None) {
+      if (Entity[i].entity[0] != object) continue;
+    }
+    else {
+      if (Entity[i].entity[1] != object) continue;
+    }
+    if ((Entity[i].total_frame != 0 || !flag)) {
       if (flag && Entity[i].current_frame == Entity[i].total_frame - 1) {
         flag = 0;
         return { false, " " };
