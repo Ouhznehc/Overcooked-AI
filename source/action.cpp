@@ -349,6 +349,10 @@ std::pair<bool, std::string> interact(Player player, std::string object) {
         flag = 0;
         return { false, " " };
       };
+      if (object == "Pot" && flag) {
+        flag = 0;
+        return { false , " " };
+      };
       flag = 1;
       location object_location = { Entity[i].x, Entity[i].y };
       if (object_location.y == 0) return { true, "U" };
