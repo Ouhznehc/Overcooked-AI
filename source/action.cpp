@@ -369,7 +369,7 @@ std::pair<bool, std::string> interact(Player player, std::string object) {
       //   assert(0);
       // }
       assert(Entity[i].entity[0] != "");
-      if (Entity[i].entity[1] != object) continue;
+      if (Entity[i].entity[1] == "" || Entity[i].entity[1] != object) continue;
     }
     if (Entity[i].total_frame != 0 || !*flag) {
       // std::cerr << "into " << flag << object << std::endl;
