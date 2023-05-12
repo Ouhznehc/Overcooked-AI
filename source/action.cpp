@@ -342,10 +342,10 @@ std::pair<bool, std::string> move_and_put_or_pick(Player player, std::string des
 
 std::pair<bool, std::string> interact(Player player, std::string object) {
   static int flag = 0;
+  std::cerr << "===========" << std::endl;
   for (int i = 0; i < N; i++) {
     if (Entity[i].container == Container::None) {
       if (object == "fish") {
-        std::cerr << "===========" << std::endl;
         std::cerr << "None" << std::endl;
         std::cerr << Entity[i].entity[0] << std::endl;
       }
