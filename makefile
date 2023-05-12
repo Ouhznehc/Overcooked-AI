@@ -28,7 +28,7 @@ test: all
 
 run: all
 	@clear
-	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l maps/level2/level2-2.txt -c
+	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l maps/level2/level2-1.txt -c
 
 fast_test: all
 	@clear
