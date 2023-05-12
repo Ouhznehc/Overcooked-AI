@@ -346,7 +346,7 @@ std::pair<bool, std::string> interact(Player player, std::string object) {
   int* flag;
   if (player.x == Players[0].x && player.y == Players[0].y) flag = &palyer0_flag;
   else flag = &palyer1_flag;
-  for (int i = 0; i < N; i++) {
+  for (int i = 0; i < 10; i++) {
     if (Entity[i].container == Container::None) {
       // if (object == "fish") {
       //   std::cerr << "None " << *flag << std::endl;
