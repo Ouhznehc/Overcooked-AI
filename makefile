@@ -8,6 +8,10 @@ all:
 		cd build && cmake .. -DCMAKE_BUILD_TYPE=Debug; fi
 	@make -C build
 
+compile:
+	@find source -type f -name "*.cpp" -exec \
+    g++ -std=c++20 -fsanitize=address -O2 -I include -o main {} +
+
 clean:
 	@if [[ -d build ]]; then \
 		rm -r build; fi

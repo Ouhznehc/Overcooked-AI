@@ -17,7 +17,7 @@ IngredientBox 0 6 rice 0
 150 fish -chop-> c_fish
 250 c_fish -pan-> s_fish
 250 rice -pot-> s_rice
-14400 123456 3
+14400 12323 3
 5400 80 40 s_fish
 5400 70 30 s_rice
 5400 30 20 kelp
