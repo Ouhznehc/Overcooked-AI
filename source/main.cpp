@@ -1,7 +1,5 @@
-#include <bits/stdc++.h>
-#include <enum.h>
-#include <IO_handle.h>
-
+#include <variable.h>
+#include <input.h>
 
 int main() {
     srand(time(0));
