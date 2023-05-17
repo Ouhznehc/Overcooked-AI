@@ -120,7 +120,7 @@ bool frame_read(int now_frame) {
     ss >> entity_count;
     /* 读入实体坐标 */
     for (int i = 0; i < entity_count; i++) {
-        ss >> entity[i].x >> entity[i].y;
+        ss >> entity[i].location.x >> entity[i].location.y;
         getline(ss, s);
         std::stringstream tmp(s);
         entity[i].entity.clear();

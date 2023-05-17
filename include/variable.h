@@ -2,7 +2,6 @@
 #define __VARIABLE_H__
 
 #include <enum.h>
-#include <bits/stdc++.h>
 
 #define N 25
 

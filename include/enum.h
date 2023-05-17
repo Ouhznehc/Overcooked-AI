@@ -1,6 +1,8 @@
 #ifndef __ENUM_H__
 #define __ENUM_H__
 
+#include <bits/stdc++.h>
+
 typedef struct Location {
     double x;
     double y;
