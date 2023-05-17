@@ -40,13 +40,6 @@ typedef struct Order {
     int price; // 收益
     int frequency; // 出现频率
     std::vector<std::string> recipe; // 需要食材
-    bool operator == (const Order& b) {
-        if (this->recipe.size() != b.recipe.size()) return false;
-        for (int i = 0; i < this->recipe.size(); i++) {
-            if (this->recipe[i] != b.recipe[i]) return false;
-        }
-        return true;
-    }
 }order_t;
 
 typedef struct Player {
