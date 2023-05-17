@@ -218,6 +218,14 @@ static void update_order_lut() {
         packed_task.push_back({ move_towards, "service_window", items });
         order_lut[total_order[i].recipe] = packed_task;
     }
+    packed_task_t packed_task;
+    packed_task.clear();
+    packed_task.push_back({ set_status, "wash", {""} });
+    packed_task.push_back({ move_towards, "dirty_plate_location", {""} });
+    packed_task.push_back({ move_towards, "sink", {""} });
+    packed_task.push_back({ interact_with, "DirtyPlates", {""} });
+    packed_task.push_back({ set_status, "leisure", {""} });
+    order_lut[{"wash_plates"}] = packed_task;
 }
 
 void init() {
