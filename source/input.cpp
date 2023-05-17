@@ -200,7 +200,7 @@ static void update_order_lut() {
         }
         assert(items == total_order[i].recipe);
         packed_task.push_back({ move_towards, "Plate", items });
-        order_lut[total_order[i].recipe] = packed_task;
+        order_lut[total_order[i]] = packed_task;
     }
 }
 
