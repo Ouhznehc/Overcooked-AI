@@ -30,9 +30,9 @@ test: all
 	@clear
 	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l maps/level2/level2-4.txt -p build/main -c
 
-run: all
+run:
 	@clear
-	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l maps/level2/level2-1.txt -c
+	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l maps/level3/level3-1.txt -c
 
 fast_test: all
 	@clear

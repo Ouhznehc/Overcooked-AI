@@ -171,8 +171,25 @@ static void update_static_lut() {
     }
 }
 
+static void update_order_lut() {
+    for (int i = 0; i < total_order_count; i++) {
+        std::vector<std::string> items;
+        task_t task;
+        packed_task_t packed_task;
+        for (auto recipe : total_order[i].recipe) {
+            if (recipe == "fish" || recipe == "rice" || recipe == "kelp") {
+                task = { move_towards, recipe, items };
+            }
+
+            std::cerr << "Unknown Recipe" << std::endl;
+            assert(0);
+        }
+    }
+}
+
 void init() {
     update_static_lut();
+    update_order_lut();
 
 }
 

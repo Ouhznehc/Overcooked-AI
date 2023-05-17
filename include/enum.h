@@ -65,8 +65,9 @@ typedef struct Entity {
 }entity_t;
 
 typedef struct Task {
-    std::pair<bool, std::string>(*function)(std::string object);
+    std::pair<bool, std::string>(*function)(std::string object, std::vector<std::string>);
     std::string object;
+    std::vector<std::string> item;
 }task_t;
 
 typedef std::vector<task_t> packed_task_t;
