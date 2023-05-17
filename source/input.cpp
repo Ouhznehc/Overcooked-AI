@@ -173,6 +173,7 @@ static void update_static_lut() {
 
 void init() {
     update_static_lut();
+
 }
 
 void update_dynamic_lut() {

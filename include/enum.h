@@ -40,6 +40,13 @@ typedef struct Order {
     int price; // 收益
     int frequency; // 出现频率
     std::vector<std::string> recipe; // 需要食材
+    bool operator == (const Order& b) {
+        if (this->recipe.size() != b.recipe.size()) return false;
+        for (int i = 0; i < this->recipe.size(); i++) {
+            if (this->recipe[i] != b.recipe[i]) return false;
+        }
+        return true;
+    }
 }order_t;
 
 typedef struct Player {
@@ -56,5 +63,12 @@ typedef struct Entity {
     int current_frame, total_frame; // 容器加工进度
     int sum; // 特指脏盘子数量
 }entity_t;
+
+typedef struct Task {
+    std::pair<bool, std::string>(*function)(std::string object);
+    std::string object;
+}task_t;
+
+typedef std::vector<task_t> packed_task_t;
 
 #endif
