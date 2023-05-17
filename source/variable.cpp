@@ -35,4 +35,5 @@ player_t player[2];
 
 /*======== LUT ========*/
 std::map<std::string, std::vector<Location>> static_lut;
-std::map<std::vector<std::string>, std::vector<Location>> dynamic_lut;
+std::map<std::string, std::vector<Location>> dynamic_lut;
+std::map <order_t, packed_task_t> order_lut;

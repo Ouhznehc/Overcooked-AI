@@ -43,7 +43,7 @@ extern Player player[2];
 
 /*======== LUT ========*/
 extern std::map<std::string, std::vector<Location>> static_lut;
-extern std::map<std::vector<std::string>, std::vector<Location>> dynamic_lut;
+extern std::map<std::string, std::vector<Location>> dynamic_lut;
 extern std::map <order_t, packed_task_t> order_lut;
 
 #endif
