@@ -182,14 +182,25 @@ static void update_order_lut() {
                 packed_task.push_back({ move_towards, recipe, items });
                 packed_task.push_back({ move_towards, "Plate", items });
             }
-            if (recipe == "c_fish") {
+            else if (recipe == "c_fish") {
                 packed_task.push_back({ move_towards, "fish", items });
                 packed_task.push_back({ move_towards, "Chop", items });
                 packed_task.push_back({ interact_with, "fish", items });
+                packed_task.push_back({ move_towards, "c_fish", items });
+                packed_task.push_back({ move_towards, "Plate", items });
             }
-            std::cerr << "Unknown Recipe" << std::endl;
-            assert(0);
+            else if (recipe == "s_rice") {
+
+            }
+            else {
+                std::cerr << "Unknown Recipe" << std::endl;
+                assert(0);
+            }
+            items.push_back(recipe);
         }
+        assert(items == total_order[i].recipe);
+        packed_task.push_back({ move_towards, "Plate", items });
+        order_lut[total_order[i]] = packed_task;
     }
 }
 
