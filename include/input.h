@@ -3,6 +3,7 @@
 
 #include <variable.h>
 #include <schedule.h>
+
 /* 初始化时的读入。 */
 void init_read();
 

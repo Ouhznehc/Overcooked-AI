@@ -178,9 +178,8 @@ static void update_order_lut() {
         packed_task_t packed_task;
         for (auto recipe : total_order[i].recipe) {
             if (recipe == "fish" || recipe == "rice" || recipe == "kelp") {
-                task = { move_towards, recipe, items };
+                move_towards(recipe, items);
             }
-
             std::cerr << "Unknown Recipe" << std::endl;
             assert(0);
         }
