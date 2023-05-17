@@ -190,7 +190,22 @@ static void update_order_lut() {
                 packed_task.push_back({ move_towards, "Plate", items });
             }
             else if (recipe == "s_rice") {
-
+                packed_task.push_back({ move_towards, "rice", items });
+                packed_task.push_back({ move_towards, "Pot", items });
+                packed_task.push_back({ interact_with, "rice", items });
+                packed_task.push_back({ move_towards, "Plate", items });
+                packed_task.push_back({ move_towards, "s_rice", items });
+                packed_task.push_back({ move_towards, "clean_plate_location", items });
+            }
+            else if (recipe == "s_fish") {
+                packed_task.push_back({ move_towards, "fish", items });
+                packed_task.push_back({ move_towards, "Chop", items });
+                packed_task.push_back({ interact_with, "fish", items });
+                packed_task.push_back({ move_towards, "c_fish", items });
+                packed_task.push_back({ move_towards, "Pan", items });
+                packed_task.push_back({ move_towards, "Plate", items });
+                packed_task.push_back({ move_towards, "s_fish", items });
+                packed_task.push_back({ move_towards, "clean_plate_location", items });
             }
             else {
                 std::cerr << "Unknown Recipe" << std::endl;
@@ -200,6 +215,7 @@ static void update_order_lut() {
         }
         assert(items == total_order[i].recipe);
         packed_task.push_back({ move_towards, "Plate", items });
+        packed_task.push_back({ move_towards, "service_window", items });
         order_lut[total_order[i].recipe] = packed_task;
     }
 }
