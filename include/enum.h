@@ -6,6 +6,10 @@
 typedef struct Location {
     double x;
     double y;
+    Location() {
+        this->x = 0;
+        this->y = 0;
+    }
     Location(int x, int y) {
         this->x = (double)x;
         this->y = (double)y;
