@@ -47,14 +47,14 @@ void init_read() {
     assert(player_count == 2);
     for (int i = 0; i < player_count; i++) {
         ss >> player[i].location.x >> player[i].location.y;
-        player[i].entity.clear();
+        player[i].item.clear();
     }
 
     /* 读入实体信息：坐标、实体组成 */
     ss >> entity_count;
     for (int i = 0; i < entity_count; i++) {
         ss >> entity[i].location.x >> entity[i].location.y >> s;
-        entity[i].entity.push_back(s);
+        entity[i].item.push_back(s);
     }
 }
 
@@ -97,7 +97,7 @@ bool frame_read(int now_frame) {
         ss >> player[i].location.x >> player[i].location.y >> player[i].x_velocity >> player[i].y_velocity >> player[i].live;
         getline(ss, s);
         std::stringstream tmp(s);
-        player[i].entity.clear();
+        player[i].item.clear();
         while (tmp >> s) {
             /*
                 若若该玩家手里有东西，则接下来一个分号，分号后一个空格，空格后为一个实体。
@@ -113,7 +113,7 @@ bool frame_read(int now_frame) {
             /* 若你不需要处理这些，可直接忽略 */
             if (s == ";" || s == ":" || s == "@" || s == "*")
                 continue;
-            player[i].entity.push_back(s);
+            player[i].item.push_back(s);
         }
     }
 
@@ -123,7 +123,7 @@ bool frame_read(int now_frame) {
         ss >> entity[i].location.x >> entity[i].location.y;
         getline(ss, s);
         std::stringstream tmp(s);
-        entity[i].entity.clear();
+        entity[i].item.clear();
         entity[i].current_frame = entity[i].total_frame = 0;
         entity[i].sum = 1;
         while (tmp >> s) {
@@ -145,7 +145,7 @@ bool frame_read(int now_frame) {
             }
             if (s == "DirtyPlates")
                 tmp >> entity[i].sum;
-            entity[i].entity.push_back(s);
+            entity[i].item.push_back(s);
         }
     }
     return false;
@@ -172,7 +172,14 @@ static void update_static_lut() {
 }
 
 void init() {
-
     update_static_lut();
+}
 
+void update_dynamic_lut() {
+    dynamic_lut.clear();
+    for (int i = 0; i < entity_count; i++) {
+        for (auto it : entity[i].item) {
+            dynamic_lut[it].push_back(entity[i].location);
+        }
+    }
 }

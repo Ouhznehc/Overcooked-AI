@@ -21,40 +21,40 @@ typedef struct Location {
     bool operator == (const Location& b) {
         return this->x == b.x && this->y == b.y;
     }
-}Location;
+}location_t;
 
 typedef struct Ingredient {
     Location location;
     int price; // 坐标以及花费
     std::string name;// 原料名称
-}Ingredient;
+}ingredient_t;
 
 typedef struct Recipe {
     int time; // 加工耗时
     std::string name_before, name_after; // 加工前后名称
     std::string kind; // 加工容器
-}Recipe;
+}recipe_t;
 
 typedef struct Order {
     int valid_frame; // 消失帧
     int price; // 收益
     int frequency; // 出现频率
     std::vector<std::string> recipe; // 需要食材
-}Order;
+}order_t;
 
 typedef struct Player {
     Location location;
     double x_velocity; // 速度
     double y_velocity;
     int live;// 复活倒计时时间， 0表示存活
-    std::vector<std::string> entity; // 手持实体
-}Player;
+    std::vector<std::string> item; // 手持实体
+}player_t;
 
 typedef struct Entity {
     Location location;
-    std::vector<std::string> entity; // 实体上的的实体
+    std::vector<std::string> item; // 实体上的的实体
     int current_frame, total_frame; // 容器加工进度
     int sum; // 特指脏盘子数量
-}Entity;
+}entity_t;
 
 #endif

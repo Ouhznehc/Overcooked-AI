@@ -7,17 +7,17 @@ char map[N][N];
 
 /*======== ingredient ========*/
 int ingredient_count;
-Ingredient ingredient_box[N];
+ingredient_t ingredient_box[N];
 
 /*======== recipe ========*/
 int recipe_count;
-Recipe recipe[N];
+recipe_t recipe[N];
 
 /*======== order ========*/
 int total_order_count;
 int order_count;
-Order total_order[N];
-Order order[N];
+order_t total_order[N];
+order_t order[N];
 
 /*======== common ========*/
 int total_time;
@@ -27,11 +27,11 @@ int fund;
 
 /*======== entity ========*/
 int entity_count;
-Entity entity[N];
+entity_t entity[N];
 
 /*======== player ========*/
 int player_count;
-Player player[2];
+player_t player[2];
 
 /*======== LUT ========*/
 std::map<std::string, std::vector<Location>> static_lut;

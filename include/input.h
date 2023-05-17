@@ -10,6 +10,6 @@ bool frame_read(int now_frame);
 
 void init();
 
-void look_up_table();
+void update_dynamic_lut();
 
 #endif
