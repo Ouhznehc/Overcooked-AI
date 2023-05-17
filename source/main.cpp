@@ -1,9 +1,6 @@
 #include <bits/stdc++.h>
-#include <common.h>
 #include <enum.h>
-#include <debug.h>
 #include <IO_handle.h>
-#include <task.h>
 
 
 int main() {
@@ -24,21 +21,11 @@ int main() {
     for (int i = 0; i < totalFrame; i++) {
         bool skip = frame_read(i);
         if (skip) continue;
-        // if (Fund >= 200) {
-        //     std::cout << "Frame " << i << "\n";
-        //     std::cout << "Move \nMove \n";
-        //     std::cout.flush();
-        //     continue;
-        // }
         look_up_table();
-        // for (auto it : map) {
-        //     std::cerr << it.first << " " << it.second.begin()->x << " " << it.second.begin()->y << std::endl;
-        // }
         /* 输出当前帧的操作，此处仅作示例 */
         std::cout << "Frame " << i << "\n";
-        std::pair<std::string, std::string> strategy = allocate_task();
-        std::string player0_Action = strategy.first;
-        std::string player1_Action = strategy.second;
+        std::string player0_Action = "Move ";
+        std::string player1_Action = "Move ";
         /* 合成一个字符串再输出，否则输出有可能会被打断 */
         std::string action = player0_Action + "\n" + player1_Action + "\n";
         std::cout << action;

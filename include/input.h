@@ -1,6 +1,7 @@
-#ifndef __IO_HANDLE__
-#define __IO_HANDLE__
+#ifndef __INPUT_H__
+#define __INPUT_H__
 
+#include <variable.h>
 /* 初始化时的读入。 */
 void init_read();
 
