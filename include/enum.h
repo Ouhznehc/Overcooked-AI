@@ -47,9 +47,6 @@ typedef struct Order {
         }
         return true;
     }
-    bool operator < (const Order& b) {
-        return this->price < b.price;
-    }
 }order_t;
 
 typedef struct Player {
