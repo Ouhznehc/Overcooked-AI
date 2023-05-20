@@ -228,7 +228,6 @@ static void update_order_lut() {
     packed_task.clear();
     packed_task.push_back({ action::lazy_around, "dirty_plate_location", {""} });
     order_lut[{"lazy_around"}] = packed_task;
-    std::cerr << "init finish" << std::endl;
 }
 
 void init() {
