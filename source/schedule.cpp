@@ -10,14 +10,15 @@ static void update_current_task() {
   if (wash_work.task_cnt == -1) {
     wash_work.task_cnt = 0;
     if (dynamic_lut.find("DirtyPlates") != dynamic_lut.end()) {
+      std::cerr << "wash_work: " << "wash_plates" << std::endl;
       wash_work.current_task = order_lut[{"wash_plates"}];
     }
     else {
+      std::cerr << "wash_work: " << "lazy_around" << std::endl;
       wash_work.current_task = order_lut[{"lazy_around"}];
     }
   }
   std::cerr << "cook_work: " << cook_work.current_task[0].object << std::endl;
-  std::cerr << "wash_work: " << wash_work.current_task[0].object << std::endl;
 }
 
 static std::pair<Location, Location> fetch_task_dst() {
