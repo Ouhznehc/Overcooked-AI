@@ -17,6 +17,7 @@ static void update_current_task() {
   if (cook_work.task_cnt == -1) {
     cook_work.task_cnt = 0;
     if (dynamic_lut.find("Plate") != dynamic_lut.end()) {
+      assert(order_lut.find(order[0].recipe) != order_lut.end());
       cook_work.current_task = order_lut[order[0].recipe];
     }
     else {
