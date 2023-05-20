@@ -109,6 +109,7 @@ std::string handle_task(task_t task, int id) {
     player[id].status = work_status::busy;
     rc = interact_with_object(player[id].src, player[id].dst, task.object, task.item, id);
     action = rc.second;
+    break;
   case action::lazy_around:
     // std::cerr << "player#" << id << " lazy_around" << std::endl;
     rc = lazy_around_dog(player[id].src, player[id].dst, id);
