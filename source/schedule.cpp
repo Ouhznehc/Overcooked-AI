@@ -135,7 +135,9 @@ std::string handle_task(task_t task, int id) {
 
 std::pair<std::string, std::string> schedule_task() {
   std::string player0_action, player1_action;
+  std::cerr << "begin allocate" << std::endl;
   auto task = allocate_task();
+  std::cerr << "end allocate" << std::endl;
   auto player0_task = task.first, player1_task = task.second;
   std::cerr << "begin handle" << std::endl;
   player0_action = handle_task(player0_task, player::player0);
