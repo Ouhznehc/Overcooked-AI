@@ -46,7 +46,7 @@ void init_read() {
     ss >> player_count;
     assert(player_count == 2);
     for (int i = 0; i < player_count; i++) {
-        ss >> player[i].location.x >> player[i].location.y;
+        ss >> player[i].src.x >> player[i].src.y;
         player[i].item.clear();
     }
 
@@ -94,7 +94,7 @@ bool frame_read(int now_frame) {
     assert(player_count == 2);
     /* 读入玩家坐标、x方向速度、y方向速度、剩余复活时间 */
     for (int i = 0; i < player_count; i++) {
-        ss >> player[i].location.x >> player[i].location.y >> player[i].x_velocity >> player[i].y_velocity >> player[i].live;
+        ss >> player[i].src.x >> player[i].src.y >> player[i].x_velocity >> player[i].y_velocity >> player[i].live;
         getline(ss, s);
         std::stringstream tmp(s);
         player[i].item.clear();
@@ -179,33 +179,33 @@ static void update_order_lut() {
         packed_task.clear();
         for (auto recipe : total_order[i].recipe) {
             if (recipe == "fish" || recipe == "rice" || recipe == "kelp") {
-                packed_task.push_back({ move_towards, recipe, items });
-                packed_task.push_back({ move_towards, "Plate", items });
+                packed_task.push_back({ action::move_towards, recipe, items });
+                packed_task.push_back({ action::move_towards, "Plate", items });
             }
             else if (recipe == "c_fish") {
-                packed_task.push_back({ move_towards, "fish", items });
-                packed_task.push_back({ move_towards, "Chop", items });
-                packed_task.push_back({ interact_with, "fish", items });
-                packed_task.push_back({ move_towards, "c_fish", items });
-                packed_task.push_back({ move_towards, "Plate", items });
+                packed_task.push_back({ action::move_towards, "fish", items });
+                packed_task.push_back({ action::move_towards, "Chop", items });
+                packed_task.push_back({ action::interact_with, "Chop", {"fish"} });
+                packed_task.push_back({ action::move_towards, "Chop", {"c_fish"} });
+                packed_task.push_back({ action::move_towards, "Plate", items });
             }
             else if (recipe == "s_rice") {
-                packed_task.push_back({ move_towards, "rice", items });
-                packed_task.push_back({ move_towards, "Pot", items });
-                packed_task.push_back({ interact_with, "rice", items });
-                packed_task.push_back({ move_towards, "Plate", items });
-                packed_task.push_back({ move_towards, "s_rice", items });
-                packed_task.push_back({ move_towards, "clean_plate_location", items });
+                packed_task.push_back({ action::move_towards, "rice", items });
+                packed_task.push_back({ action::move_towards, "Pot", items });
+                packed_task.push_back({ action::interact_with, "Pot", {"rice" } });
+                packed_task.push_back({ action::move_towards, "Plate", items });
+                packed_task.push_back({ action::move_towards, "Pot", {"s_rice"} });
+                packed_task.push_back({ action::move_towards, "clean_plate_location", items });
             }
             else if (recipe == "s_fish") {
-                packed_task.push_back({ move_towards, "fish", items });
-                packed_task.push_back({ move_towards, "Chop", items });
-                packed_task.push_back({ interact_with, "fish", items });
-                packed_task.push_back({ move_towards, "c_fish", items });
-                packed_task.push_back({ move_towards, "Pan", items });
-                packed_task.push_back({ move_towards, "Plate", items });
-                packed_task.push_back({ move_towards, "s_fish", items });
-                packed_task.push_back({ move_towards, "clean_plate_location", items });
+                packed_task.push_back({ action::move_towards, "fish", items });
+                packed_task.push_back({ action::move_towards, "Chop", items });
+                packed_task.push_back({ action::interact_with, "Chop", {"fish"} });
+                packed_task.push_back({ action::move_towards, "Chop", {"c_fish"} });
+                packed_task.push_back({ action::move_towards, "Pan", {"c_fish"} });
+                packed_task.push_back({ action::move_towards, "Plate", items });
+                packed_task.push_back({ action::move_towards, "Pan", {"s_fish"} });
+                packed_task.push_back({ action::move_towards, "clean_plate_location", items });
             }
             else {
                 std::cerr << "Unknown Recipe" << std::endl;
@@ -214,24 +214,29 @@ static void update_order_lut() {
             items.push_back(recipe);
         }
         assert(items == total_order[i].recipe);
-        packed_task.push_back({ move_towards, "Plate", items });
-        packed_task.push_back({ move_towards, "service_window", items });
+        packed_task.push_back({ action::move_towards, "Plate", items });
+        packed_task.push_back({ action::move_towards, "service_window", items });
         order_lut[total_order[i].recipe] = packed_task;
     }
     packed_task_t packed_task;
     packed_task.clear();
-    packed_task.push_back({ set_status, "wash", {""} });
-    packed_task.push_back({ move_towards, "dirty_plate_location", {""} });
-    packed_task.push_back({ move_towards, "sink", {""} });
-    packed_task.push_back({ interact_with, "DirtyPlates", {""} });
-    packed_task.push_back({ set_status, "leisure", {""} });
+    packed_task.push_back({ action::move_towards, "dirty_plate_location", {""} });
+    packed_task.push_back({ action::move_towards, "sink", {""} });
+    packed_task.push_back({ action::interact_with, "sink", {"DirtyPlates"} });
     order_lut[{"wash_plates"}] = packed_task;
+
+    packed_task_t packed_task;
+    packed_task.clear();
+    packed_task.push_back({ action::lazy_around, "dirty_plate_location", {""} });
+    order_lut[{"lazy_around"}] = packed_task;
 }
 
 void init() {
     update_static_lut();
     update_order_lut();
-
+    cook_work.player = wash_work.player = player::null;
+    cook_work.task_cnt = wash_work.task_cnt = -1;
+    player[0].status = player[1].status = work_status::leisure;
 }
 
 void update_dynamic_lut() {
@@ -240,5 +245,8 @@ void update_dynamic_lut() {
         for (auto it : entity[i].item) {
             dynamic_lut[it].push_back(entity[i].location);
         }
+    }
+    for (int i = 0; i < player_count; i++) {
+        if (player[i].item.size()) player[i].status = work_status::busy;
     }
 }

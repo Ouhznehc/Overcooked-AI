@@ -22,11 +22,12 @@ int main() {
         update_dynamic_lut();
         /* 输出当前帧的操作，此处仅作示例 */
         std::cout << "Frame " << i << "\n";
-        std::string player0_Action = "Move ";
-        std::string player1_Action = "Move ";
+        auto action = schedule_task();
+        auto player0_action = action.first;
+        auto player1_action = action.second;
         /* 合成一个字符串再输出，否则输出有可能会被打断 */
-        std::string action = player0_Action + "\n" + player1_Action + "\n";
-        std::cout << action;
+        std::string output = player0_action + "\n" + player1_action + "\n";
+        std::cout << output;
 
         /* 不要忘记刷新输出流，否则游戏将无法及时收到响应 */
         std::cout.flush();

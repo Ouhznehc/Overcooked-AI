@@ -3,6 +3,23 @@
 
 #include <bits/stdc++.h>
 
+enum work_status {
+    busy,
+    leisure
+};
+
+enum player {
+    null = -1,
+    player0 = 0,
+    player1 = 1,
+};
+
+enum action {
+    move_towards,
+    interact_with,
+    lazy_around
+};
+
 typedef struct Location {
     double x;
     double y;
@@ -20,6 +37,11 @@ typedef struct Location {
     }
     bool operator == (const Location& b) {
         return this->x == b.x && this->y == b.y;
+    }
+
+    void operator = (const Location& b) {
+        this->x = b.x;
+        this->y = b.y;
     }
 }location_t;
 
@@ -43,7 +65,10 @@ typedef struct Order {
 }order_t;
 
 typedef struct Player {
-    Location location;
+    Location src;
+    Location dst;
+    std::string move_direction;
+    int status;
     double x_velocity; // 速度
     double y_velocity;
     int live;// 复活倒计时时间， 0表示存活
@@ -58,11 +83,17 @@ typedef struct Entity {
 }entity_t;
 
 typedef struct Task {
-    std::pair<bool, std::string>(*function)(std::string object, std::vector<std::string>);
+    int action;
     std::string object;
     std::vector<std::string> item;
 }task_t;
 
 typedef std::vector<task_t> packed_task_t;
+
+typedef struct Work {
+    int player;
+    packed_task_t current_task;
+    int task_cnt;
+}wort_t;
 
 #endif

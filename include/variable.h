@@ -46,4 +46,7 @@ extern std::map<std::string, std::vector<Location>> static_lut;
 extern std::map<std::string, std::vector<Location>> dynamic_lut;
 extern std::map <std::vector<std::string>, packed_task_t> order_lut;
 
+/*======== task =======*/
+extern wort_t cook_work;
+extern wort_t wash_work;
 #endif
