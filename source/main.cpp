@@ -21,11 +21,6 @@ int main() {
         bool skip = frame_read(i);
         if (skip) continue;
         update_dynamic_lut();
-        for (int i = 0; i < entity_count; i++) {
-            for (int j = 0; j < entity[i].item.size(); j++) {
-                std::cerr << entity[i].item[j] << ": " << entity[i].current_frame << " / " << entity[i].total_frame << std::endl;
-            }
-        }
         /* 输出当前帧的操作，此处仅作示例 */
         std::cout << "Frame " << i << "\n";
         auto action = schedule_task();
