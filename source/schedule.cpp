@@ -16,6 +16,8 @@ static void update_current_task() {
       wash_work.current_task = order_lut[{"lazy_around"}];
     }
   }
+  std::cerr << "cook_work: " << cook_work.current_task[0].object << std::endl;
+  std::cerr << "wash_work: " << wash_work.current_task[0].object << std::endl;
 }
 
 static std::pair<Location, Location> fetch_task_dst() {
