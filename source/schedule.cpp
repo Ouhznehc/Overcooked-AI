@@ -128,9 +128,6 @@ std::string handle_task(task_t task, int id) {
     if (cook_work.player == id) cook_work.task_cnt++;
     else wash_work.task_cnt++;
   }
-  if (id == player::player1) {
-    std::cerr << remain_frame << ": " << task.action << " " << task.object << " " << rc.first << std::endl;
-  }
   if (cook_work.task_cnt == cook_work.current_task.size()) cook_work.task_cnt = -1;
   if (wash_work.task_cnt == wash_work.current_task.size()) wash_work.task_cnt = -1;
   return action;
