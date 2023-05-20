@@ -1,4 +1,5 @@
 #include <variable.h>
+#include <schedule.h>
 #include <input.h>
 
 int main() {
