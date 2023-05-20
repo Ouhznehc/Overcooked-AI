@@ -4,11 +4,11 @@
 
 static void update_current_task() {
   if (cook_work.task_cnt == -1) {
-    cook_work.task_cnt == 0;
+    cook_work.task_cnt = 0;
     cook_work.current_task = order_lut[order[0].recipe];
   }
   if (wash_work.task_cnt == -1) {
-    wash_work.task_cnt == 0;
+    wash_work.task_cnt = 0;
     if (dynamic_lut.find("DirtyPlates") != dynamic_lut.end()) {
       wash_work.current_task = order_lut[{"wash_plates"}];
     }
