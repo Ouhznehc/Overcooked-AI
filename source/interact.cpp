@@ -16,7 +16,7 @@ std::pair<bool, std::string> interact_with_object(Location src, Location dst, st
   if (object == "Pot" || object == "Pan") return { false, "Interact " + interact_direction };
   for (int i = 0; i < entity_count; i++) {
     std::cerr << entity[i].item[0] << std::endl;
-    if (entity[i].item[0] == object) {
+    if (entity[i].item[0] == item[0]) {
       if (entity[i].current_frame == entity[i].total_frame - 1) return { false, "Interact " + interact_direction };
       else return { false, "Interact " + interact_direction };
     }
