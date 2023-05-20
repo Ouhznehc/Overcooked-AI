@@ -3,10 +3,6 @@
 #include <interact.h>
 
 static void update_current_task() {
-  if (cook_work.task_cnt == -1) {
-    cook_work.task_cnt = 0;
-    cook_work.current_task = order_lut[order[0].recipe];
-  }
   if (wash_work.task_cnt == -1) {
     wash_work.task_cnt = 0;
     if (dynamic_lut.find("DirtyPlates") != dynamic_lut.end()) {
@@ -16,6 +12,15 @@ static void update_current_task() {
     else {
       // std::cerr << "wash_work: " << "lazy_around" << std::endl;
       wash_work.current_task = order_lut[{"lazy_around"}];
+    }
+  }
+  if (cook_work.task_cnt == -1) {
+    cook_work.task_cnt = 0;
+    if (dynamic_lut.find("Plate") != dynamic_lut.end()) {
+      cook_work.current_task = order_lut[order[0].recipe];
+    }
+    else {
+      cook_work.current_task = wash_work.current_task;
     }
   }
   // std::cerr << "cook_work: " << cook_work.current_task[0].object << std::endl;
@@ -28,9 +33,8 @@ static std::pair<Location, Location> fetch_task_dst() {
   if (static_lut.find(cook_object) != static_lut.end()) cook_dst = static_lut.at(cook_object)[0];
   else if (dynamic_lut.find(cook_object) != dynamic_lut.end()) cook_dst = dynamic_lut.at(cook_object)[0];
   else {
-    cook_dst = static_lut.at("clean_plate_location")[0];
-    // std::cerr << "cannot find dst" << std::endl;;
-    // assert(0);
+    std::cerr << "cannot find dst" << std::endl;;
+    assert(0);
   }
   if (static_lut.find(wash_object) != static_lut.end()) wash_dst = static_lut.at(wash_object)[0];
   else if (dynamic_lut.find(wash_object) != dynamic_lut.end()) wash_dst = dynamic_lut.at(wash_object)[0];
