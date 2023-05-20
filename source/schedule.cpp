@@ -100,17 +100,17 @@ std::string handle_task(task_t task, int id) {
   std::pair<bool, std::string> rc;
   switch (task.action) {
   case action::move_towards:
-    std::cerr << "player#" << id << " move_towards" << std::endl;
+    // std::cerr << "player#" << id << " move_towards" << std::endl;
     rc = move_towards_by_location(player[id].src, player[id].dst, id);
     action = rc.second;
     break;
   case action::interact_with:
-    std::cerr << "player#" << id << " interact_with" << std::endl;
+    // std::cerr << "player#" << id << " interact_with" << std::endl;
     player[id].status = work_status::busy;
     rc = interact_with_object(task.object, task.item, id);
     action = rc.second;
   case action::lazy_around:
-    std::cerr << "player#" << id << " lazy_around" << std::endl;
+    // std::cerr << "player#" << id << " lazy_around" << std::endl;
     rc = lazy_around_dog(player[id].src, player[id].dst, id);
     action = rc.second;
   default:
