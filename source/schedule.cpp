@@ -2,7 +2,7 @@
 #include <move.h>
 #include <interact.h>
 
-static void update_current_task() {
+void update_current_task() {
   if (cook_work.task_cnt == -1) {
     cook_work.task_cnt = 0;
     cook_work.current_task = order_lut[order[0].recipe];
@@ -18,7 +18,7 @@ static void update_current_task() {
   }
 }
 
-static std::pair<Location, Location> fetch_task_dst() {
+std::pair<Location, Location> fetch_task_dst() {
   Location cook_dst, wash_dst;
   std::string cook_object = cook_work.current_task[cook_work.task_cnt].object;
   std::string wash_object = wash_work.current_task[wash_work.task_cnt].object;
@@ -37,11 +37,11 @@ static std::pair<Location, Location> fetch_task_dst() {
   return { cook_dst, wash_dst };
 }
 
-static double distance(Location a, Location b) {
+double distance(Location a, Location b) {
   return std::max(std::fabs(a.x - b.x), std::fabs(a.y - b.y));
 }
 
-static std::pair<task_t, task_t> allocate_task_by_location(Location cook_dst, Location wash_dst) {
+std::pair<task_t, task_t> allocate_task_by_location(Location cook_dst, Location wash_dst) {
   task_t player0_task, player1_task;
   if (player[0].status == work_status::busy) {
     if (cook_work.player == player::player0) {
@@ -85,7 +85,7 @@ static std::pair<task_t, task_t> allocate_task_by_location(Location cook_dst, Lo
   return { player0_task, player1_task };
 }
 
-static std::pair<task_t, task_t> allocate_task() {
+std::pair<task_t, task_t> allocate_task() {
   update_current_task();
   auto dst = fetch_task_dst();
   auto cook_dst = dst.first, wash_dst = dst.second;
