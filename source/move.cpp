@@ -32,7 +32,7 @@ std::pair<bool, std::string> move_towards_by_location(Location src, Location dst
   Location move_src = fetch_move_src(src);
   Location move_dst = fetch_move_dst(dst);
   if (is_arive(move_src, move_dst, id)) {
-    pick_direction = fetch_pick_direction(move_src, move_dst);
+    pick_direction = fetch_pick_direction(move_src, dst);
     return { false, "PutOrPick " + pick_direction };
   }
   if (move_src.x > move_dst.x) move_direction += "L";
