@@ -29,25 +29,20 @@ static void update_current_task() {
 
 static std::pair<Location, Location> fetch_task_dst() {
   Location cook_dst, wash_dst;
-  std::cerr << "2.0" << std::endl;
-  std::cerr << &cook_work.current_task << " " << cook_work.task_cnt << " " << cook_work.current_task[cook_work.task_cnt].object << std::endl;
   std::string cook_object = cook_work.current_task[cook_work.task_cnt].object;
   std::string wash_object = wash_work.current_task[wash_work.task_cnt].object;
-  std::cerr << "2.1" << std::endl;
   if (static_lut.find(cook_object) != static_lut.end()) cook_dst = static_lut.at(cook_object)[0];
   else if (dynamic_lut.find(cook_object) != dynamic_lut.end()) cook_dst = dynamic_lut.at(cook_object)[0];
   else {
     std::cerr << "cannot find dst" << std::endl;;
     assert(0);
   }
-  std::cerr << "2.2" << std::endl;
   if (static_lut.find(wash_object) != static_lut.end()) wash_dst = static_lut.at(wash_object)[0];
   else if (dynamic_lut.find(wash_object) != dynamic_lut.end()) wash_dst = dynamic_lut.at(wash_object)[0];
   else {
     std::cerr << "cannot find dst" << std::endl;;
     assert(0);
   }
-  std::cerr << "2.3" << std::endl;
   return { cook_dst, wash_dst };
 }
 
@@ -100,11 +95,8 @@ static std::pair<task_t, task_t> allocate_task_by_location(Location cook_dst, Lo
 }
 
 static std::pair<task_t, task_t> allocate_task() {
-  std::cerr << "1" << std::endl;
   update_current_task();
-  std::cerr << "2" << std::endl;
   auto dst = fetch_task_dst();
-  std::cerr << "3" << std::endl;
   auto cook_dst = dst.first, wash_dst = dst.second;
   return allocate_task_by_location(cook_dst, wash_dst);
 }
