@@ -94,8 +94,11 @@ static std::pair<task_t, task_t> allocate_task_by_location(Location cook_dst, Lo
 }
 
 static std::pair<task_t, task_t> allocate_task() {
+  std::cerr << "1" << std::endl;
   update_current_task();
+  std::cerr << "2" << std::endl;
   auto dst = fetch_task_dst();
+  std::cerr << "3" << std::endl;
   auto cook_dst = dst.first, wash_dst = dst.second;
   return allocate_task_by_location(cook_dst, wash_dst);
 }
@@ -135,11 +138,8 @@ std::string handle_task(task_t task, int id) {
 
 std::pair<std::string, std::string> schedule_task() {
   std::string player0_action, player1_action;
-  std::cerr << "begin allocate" << std::endl;
   auto task = allocate_task();
-  std::cerr << "end allocate" << std::endl;
   auto player0_task = task.first, player1_task = task.second;
-  std::cerr << "begin handle" << std::endl;
   player0_action = handle_task(player0_task, player::player0);
   player1_action = handle_task(player1_task, player::player1);
   return { player0_action, player1_action };
