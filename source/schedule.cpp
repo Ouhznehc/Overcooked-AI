@@ -114,6 +114,7 @@ std::string handle_task(task_t task, int id) {
     // std::cerr << "player#" << id << " lazy_around" << std::endl;
     rc = lazy_around_dog(player[id].src, player[id].dst, id);
     action = rc.second;
+    break;
   default:
     break;
   }
