@@ -28,7 +28,7 @@ static std::pair<Location, Location> fetch_task_dst() {
   if (static_lut.find(cook_object) != static_lut.end()) cook_dst = static_lut.at(cook_object)[0];
   else if (dynamic_lut.find(cook_object) != dynamic_lut.end()) cook_dst = dynamic_lut.at(cook_object)[0];
   else {
-    cook_dst = static_lut.at("sink")[0];
+    cook_dst = static_lut.at("clean_plate_location")[0];
     // std::cerr << "cannot find dst" << std::endl;;
     // assert(0);
   }
@@ -97,9 +97,6 @@ static std::pair<task_t, task_t> allocate_task() {
 }
 
 std::string handle_task(task_t task, int id) {
-  if (id == player::player1) {
-    std::cerr << remain_frame << ": " << task.action << " " << task.object << std::endl;
-  }
   std::string action;
   std::pair<bool, std::string> rc;
   switch (task.action) {
@@ -126,6 +123,9 @@ std::string handle_task(task_t task, int id) {
     player[id].status = work_status::leisure;
     if (cook_work.player == id) cook_work.task_cnt++;
     else wash_work.task_cnt++;
+  }
+  if (id == player::player1) {
+    std::cerr << remain_frame << ": " << task.action << " " << task.object << " " << rc.first << std::endl;
   }
   if (cook_work.task_cnt == cook_work.current_task.size()) cook_work.task_cnt = -1;
   if (wash_work.task_cnt == wash_work.current_task.size()) wash_work.task_cnt = -1;
