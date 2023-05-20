@@ -225,7 +225,6 @@ static void update_order_lut() {
     packed_task.push_back({ action::interact_with, "sink", {"DirtyPlates"} });
     order_lut[{"wash_plates"}] = packed_task;
 
-    packed_task_t packed_task;
     packed_task.clear();
     packed_task.push_back({ action::lazy_around, "dirty_plate_location", {""} });
     order_lut[{"lazy_around"}] = packed_task;
