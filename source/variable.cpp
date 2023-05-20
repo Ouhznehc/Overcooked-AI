@@ -37,3 +37,7 @@ player_t player[2];
 std::map<std::string, std::vector<Location>> static_lut;
 std::map<std::string, std::vector<Location>> dynamic_lut;
 std::map <std::vector<std::string>, packed_task_t> order_lut;
+
+/*======== task =======*/
+wort_t cook_work;
+wort_t wash_work;
