@@ -20,7 +20,7 @@ static void update_current_task() {
       cook_work.current_task = order_lut[order[0].recipe];
     }
     else {
-      cook_work.current_task = wash_work.current_task;
+      cook_work.current_task = order_lut[{"lazy_around"}];
     }
   }
   // std::cerr << "cook_work: " << cook_work.current_task[0].object << std::endl;
