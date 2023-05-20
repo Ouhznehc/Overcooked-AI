@@ -22,7 +22,7 @@ static std::string fetch_pick_direction(Location src, Location dst) {
   if (dst.x == 0) return "L";
   if (dst.x == width - 1) return "R";
   if (dst.y == 0) return "U";
-  if (dst.y == height - 1) "D";
+  if (dst.y == height - 1) return "D";
   assert(0);
 }
 
