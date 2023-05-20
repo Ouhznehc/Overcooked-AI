@@ -97,6 +97,9 @@ static std::pair<task_t, task_t> allocate_task() {
 }
 
 std::string handle_task(task_t task, int id) {
+  if (id == player::player0) {
+    std::cerr << task.action << " " << task.object << std::endl;
+  }
   std::string action;
   std::pair<bool, std::string> rc;
   switch (task.action) {
