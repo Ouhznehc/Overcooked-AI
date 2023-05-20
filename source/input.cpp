@@ -140,6 +140,7 @@ bool frame_read(int now_frame) {
                 continue;
             if (s == ";") {
                 tmp >> entity[i].current_frame >> s >> entity[i].total_frame;
+                std::cerr << "input: " << entity[i].current_frame << "  " << entity[i].total_frame << std::endl;
                 assert(0);
                 assert(s == "/");
                 break;
