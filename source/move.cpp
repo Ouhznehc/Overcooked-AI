@@ -5,7 +5,7 @@ static Location fetch_move_src(Location src) {
 }
 
 static Location fetch_move_dst(Location dst) {
-  std::cerr << dst.x << " " dst.y << std::endl;
+  std::cerr << dst.x << " " << dst.y << std::endl;
   if (dst.x == 0) return { dst.x + 1.5, dst.y + 0.5 };
   if (dst.x == width) return { dst.x - 0.5, dst.y + 0.5 };
   if (dst.y == 0) return { dst.x + 0.5, dst.y + 1.5 };
