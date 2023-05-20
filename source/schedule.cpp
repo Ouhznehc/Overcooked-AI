@@ -131,6 +131,6 @@ std::pair<std::string, std::string> schedule_task() {
   auto task = allocate_task();
   auto player0_task = task.first, player1_task = task.second;
   player0_action = handle_task(player0_task, player::player0);
-  player1_action = handle_task(player0_task, player::player1);
+  player1_action = handle_task(player1_task, player::player1);
   return { player0_action, player1_action };
 }
