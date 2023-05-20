@@ -12,7 +12,6 @@ int main() {
     int frame;
     init_read();
     init();
-    assert(0);
     /*
         你可以在读入后进行一些相关预处理，时间限制：5秒钟
         init();
