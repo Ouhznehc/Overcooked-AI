@@ -29,7 +29,7 @@ static void update_current_task() {
 static std::pair<Location, Location> fetch_task_dst() {
   Location cook_dst, wash_dst;
   std::cerr << "2.0" << std::endl;
-  std::cerr << &cook_work.current_task << " " << cook_work.task_cnt << std::endl;
+  std::cerr << &cook_work.current_task << " " << cook_work.task_cnt << " " << cook_work.current_task[cook_work.task_cnt].object << std::endl;
   std::string cook_object = cook_work.current_task[cook_work.task_cnt].object;
   std::string wash_object = wash_work.current_task[wash_work.task_cnt].object;
   std::cerr << "2.1" << std::endl;
