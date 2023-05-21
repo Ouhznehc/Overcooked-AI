@@ -23,6 +23,9 @@ submit:
 		https://exam.problemsolving.top:8085/api/v2/submission/lab
 	@rm -r ${TEMP}
 
+MAP = maps/level4/level4-4.txt
+
+
 test: all
 	@clear
 	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l maps/level4/level4-3.txt -p build/main -c
@@ -33,7 +36,7 @@ run:
 
 fast_test: all
 	@clear
-	@../test/runner -l maps/level4/level4-3.txt -p build/main
+	@../test/runner -l ${MAP} -p build/main
 
 compile:
 	@find source -type f -name "*.cpp" -exec \
