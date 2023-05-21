@@ -156,6 +156,7 @@ static void update_static_lut() {
     for (int i = 0; i < width; i++) {
         for (int j = 0; j < height; j++) {
             switch (map[i][j]) {
+            case 's': static_lut["hot"].push_back(Location(i, j)); break;
             case 'c': static_lut["Chop"].push_back(Location(i, j)); break;
             case 'k': static_lut["sink"].push_back(Location(i, j)); break;
             case 'r': static_lut["clean_plate_location"].push_back(Location(i, j)); break;
@@ -194,9 +195,9 @@ static void update_order_lut() {
                 packed_task.push_back({ action::move_towards, "rice", {""} });
                 packed_task.push_back({ action::move_towards, "Pot", {""} });
                 packed_task.push_back({ action::interact_with, "Pot", {"rice" } });
-                packed_task.push_back({ action::move_towards, "Plate", items });
                 packed_task.push_back({ action::move_towards, "Pot", {"s_rice"} });
-                packed_task.push_back({ action::move_towards, "clean_plate_location", items });
+                packed_task.push_back({ action::move_towards, "Plate", items });
+                packed_task.push_back({ action::move_towards, "hot", {""} });
             }
             else if (recipe == "s_fish") {
                 packed_task.push_back({ action::move_towards, "fish", {""} });
@@ -204,9 +205,9 @@ static void update_order_lut() {
                 packed_task.push_back({ action::interact_with, "Chop", {"fish"} });
                 packed_task.push_back({ action::move_towards, "Chop", {"c_fish"} });
                 packed_task.push_back({ action::move_towards, "Pan", {""} });
-                packed_task.push_back({ action::move_towards, "Plate", items });
                 packed_task.push_back({ action::move_towards, "Pan", {"s_fish"} });
-                packed_task.push_back({ action::move_towards, "clean_plate_location", {""} });
+                packed_task.push_back({ action::move_towards, "Plate",  items });
+                packed_task.push_back({ action::move_towards, "hot", {""} });
             }
             else {
                 std::cerr << "Unknown Recipe" << std::endl;
