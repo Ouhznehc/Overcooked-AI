@@ -26,6 +26,11 @@ enum Direction {
 };
 const std::string direction_name[] = { "LU", "L", "LD", "D", "RD", "R", "RU", "U", " " };
 
+bool is_around(int x, int y) {
+  if (x == 0 || x == width - 1) return true;
+  if (y == 0 || y == height - 1) return true;
+  return false;
+}
 
 void evaluate_map(int id) {
   memset(ValueMap, 0, sizeof(ValueMap));
@@ -33,6 +38,11 @@ void evaluate_map(int id) {
   for (int x = 0; x < width; x++) {
     for (int y = 0; y < height; y++) {
       if (map[x][y] == '.') ValueMap[x][y] += -1;
+      else if (map[x][y] == '*' && !is_around(x, y)) {
+        for (int i = 0; i < 9; i++) {
+          ValueMap[x + dx[i]][y + dy[i]] += -inf;
+        }
+      }
       else ValueMap[x][y] += -100 * inf;
       if (map[x][y] == '_') {
         cliff_x = x;
@@ -43,8 +53,8 @@ void evaluate_map(int id) {
   player_x = (int)player[id].src.x;
   player_y = (int)player[id].src.y;
 
-  ValueMap[player_x][player_y] += -100 * inf;
-  ValueMap[cliff_x][cliff_y] += -100 * inf;
+  ValueMap[player_x][player_y] += -inf;
+  ValueMap[cliff_x][cliff_y] += -inf;
   for (int i = 0; i < 9; i++) {
     ValueMap[player_x + dx[i]][player_y + dy[i]] += -inf;
     ValueMap[cliff_x + dx[i]][cliff_y + dy[i]] += -inf;
