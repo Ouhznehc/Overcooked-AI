@@ -35,7 +35,7 @@ typedef struct Location {
         this->x = x;
         this->y = y;
     }
-    bool operator == (const Location& b) {
+    bool operator == (const Location b) {
         return this->x == b.x && this->y == b.y;
     }
 

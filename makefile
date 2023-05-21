@@ -15,6 +15,7 @@ compile:
 clean:
 	@if [[ -d build ]]; then \
 		rm -r build; fi
+	@rm main
 
 submit:
 	$(eval TEMP := $(shell mktemp -d))
@@ -36,4 +37,4 @@ run:
 
 fast_test: all
 	@clear
-	@../test/runner -l maps/level1/level1-1.txt -p build/main
+	@../test/runner -l maps/level1/level1-2.txt -p build/main
