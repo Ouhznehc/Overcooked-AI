@@ -177,6 +177,7 @@ static void update_order_lut() {
         items.clear();
         packed_task_t packed_task;
         packed_task.clear();
+        std::sort(total_order[i].recipe.begin(), total_order[i].recipe.end());
         for (auto recipe : total_order[i].recipe) {
             if (recipe == "fish" || recipe == "rice" || recipe == "kelp") {
                 packed_task.push_back({ action::move_towards, recipe, items });
