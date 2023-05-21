@@ -119,6 +119,7 @@ std::string handle_task(task_t task, int id) {
           }
         }
       }
+      if (task.object == "Chop" && task.item[0] == "c_fish") flag = 1;
     }
     else flag = 1;
     if (!flag) rc = { true, "Move " };
