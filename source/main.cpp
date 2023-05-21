@@ -23,6 +23,8 @@ int main() {
         if (fund > 200) {
             std::cout << "Frame " << i << "\n";
             std::cout << "Move " << std::endl << "Move " << std::endl;
+            std::cout.flush();
+            std::cerr.flush();
             continue;
         }
         update_dynamic_lut();
