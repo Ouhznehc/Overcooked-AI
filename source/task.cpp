@@ -5,8 +5,11 @@
 
 std::deque<task> task_pool;
 task player0_s_rice[6] = { {schedule_move_and_put_or_pick, "rice"}, {schedule_move_and_put_or_pick, "Pot"}, {schedule_interact, "rice"}, {schedule_move_and_put_or_pick, "Plate"}, {schedule_move_and_put_or_pick, "s_rice"}, {schedule_move_and_put_or_pick, "service_window"} };
-task player0_kelp[4] = { {schedule_move_and_put_or_pick, "kelp"}, {schedule_move_and_put_or_pick, "Plate"}, {schedule_move_and_put_or_pick, "Plate"}, {schedule_move_and_put_or_pick, "service_window"} };
-task player0_s_fish[9] = { {schedule_move_and_put_or_pick, "fish"} , {schedule_move_and_put_or_pick, "Chop"}, {schedule_interact, "fish"}, {schedule_move_and_put_or_pick, "c_fish"}, {schedule_move_and_put_or_pick, "Pan"}, {schedule_interact, "c_fish"}, {schedule_move_and_put_or_pick, "Plate"}, {schedule_move_and_put_or_pick, "s_fish"} };
+task player0_kelp[21] = { {schedule_move_and_put_or_pick, "kelp"}, {schedule_move_and_put_or_pick, "Plate"}, {schedule_move_and_put_or_pick, "Plate"}, {schedule_move_and_put_or_pick, "temp"},\
+                            {schedule_move_and_put_or_pick, "fish"} , {schedule_move_and_put_or_pick, "Chop"}, {schedule_interact, "fish"}, {schedule_move_and_put_or_pick, "c_fish"}, {schedule_move_and_put_or_pick, "Pan"}, {schedule_interact, "c_fish"}, {schedule_move_and_put_or_pick, "Plate"}, {schedule_move_and_put_or_pick, "s_fish"}, {schedule_move_and_put_or_pick, "temp"}, \
+                            {schedule_move_and_put_or_pick, "rice"}, {schedule_move_and_put_or_pick, "Pot"}, {schedule_interact, "rice"}, {schedule_move_and_put_or_pick, "Plate"}, {schedule_move_and_put_or_pick, "s_rice"}, {schedule_move_and_put_or_pick, "temp"}, {schedule_move_and_put_or_pick, "temp"}, {schedule_move_and_put_or_pick, "service_window"} };
+task player0_s_fish[17] = { {schedule_move_and_put_or_pick, "fish"} , {schedule_move_and_put_or_pick, "Chop"}, {schedule_interact, "fish"}, {schedule_move_and_put_or_pick, "c_fish"}, {schedule_move_and_put_or_pick, "Pan"}, {schedule_interact, "c_fish"}, {schedule_move_and_put_or_pick, "Plate"}, {schedule_move_and_put_or_pick, "s_fish"}, {schedule_move_and_put_or_pick, "temp"}, \
+                            {schedule_move_and_put_or_pick, "rice"}, {schedule_move_and_put_or_pick, "Pot"}, {schedule_interact, "rice"}, {schedule_move_and_put_or_pick, "Plate"}, {schedule_move_and_put_or_pick, "s_rice"}, {schedule_move_and_put_or_pick, "temp"}, {schedule_move_and_put_or_pick, "temp"}, {schedule_move_and_put_or_pick, "service_window"} };
 task player1_task_pool[4] = { {schedule_move_and_put_or_pick, "DirtyPlates"}, {schedule_move_and_put_or_pick, "sink"}, {schedule_stop, " "}, {schedule_interact, "DirtyPlates"} };
 task* player0_task;
 task* player1_task;
@@ -17,7 +20,7 @@ std::pair<std::string, std::string> allocate_task() {
   if (player0_current == 0) {
     if (Order[0].recipe[0] == "kelp") {
       player0_task = player0_kelp;
-      mod = 4;
+      mod = 21;
     }
     else if (Order[0].recipe[0] == "s_rice") {
       player0_task = player0_s_rice;
@@ -25,7 +28,7 @@ std::pair<std::string, std::string> allocate_task() {
     }
     else if (Order[0].recipe[0] == "s_fish") {
       player0_task = player0_s_fish;
-      mod = 9;
+      mod = 17;
     }
     else assert(0);
   }
