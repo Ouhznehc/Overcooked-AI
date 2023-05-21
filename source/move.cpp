@@ -203,7 +203,7 @@ std::pair<bool, std::string> move_towards_by_location(Location src, Location dst
     return { false, "PutOrPick " + pick_direction };
   }
   else {
-    evaluate_map(id);
+    evaluate_map(id ^ 1);
     auto move = move_towards_spafa(move_src, move_dst);
     if (move == " ") {
       std::string move_dir = "";
