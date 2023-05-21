@@ -56,8 +56,8 @@ void evaluate_map(int id) {
   ValueMap[player_x][player_y] += -100 * inf;
   ValueMap[cliff_x][cliff_y] += -100 * inf;
   for (int i = 0; i < 9; i++) {
-    ValueMap[player_x + dx[i]][player_y + dy[i]] += -inf;
-    ValueMap[cliff_x + dx[i]][cliff_y + dy[i]] += -inf;
+    ValueMap[player_x + dx[i]][player_y + dy[i]] += -100 * inf;
+    ValueMap[cliff_x + dx[i]][cliff_y + dy[i]] += -100 * inf;
   }
 }
 
