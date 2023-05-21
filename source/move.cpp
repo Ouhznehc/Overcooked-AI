@@ -219,7 +219,7 @@ static Location fetch_move_dst(Location dst) {
 static bool is_arive(Location src, Location dst, int id) {
   double hamilton_distance = std::fabs(src.x - dst.x) + std::fabs(src.y - dst.y);
   double hamilton_velocity = std::fabs(player[id].x_velocity) + std::fabs(player[id].y_velocity);
-  return hamilton_distance < 0.5;
+  return hamilton_distance < 0.05;
 }
 
 static std::string fetch_pick_direction(Location src, Location dst) {
@@ -242,17 +242,13 @@ std::pair<bool, std::string> move_towards_by_location(Location src, Location dst
   else {
     evaluate_map(id);
     auto move = move_towards_spafa(move_src, move_dst);
-    auto rc = alert_dest(id, move_dst);
-    if (rc.first) return { true, rc.second };
     if (move == " ") {
-      if (dst.x == 0 || dst.x == width - 1) {
-        if (move_src.y > move_dst.y) return { true, "Move U" };
-        else return { true, "Move D" };
-      }
-      if (dst.y == 0 || dst.y == height - 1) {
-        if (move_src.x > move_dst.x) return { true, "Move L" };
-        else return { true, "Move R" };
-      };
+      std::string move_dir = "";
+      if (move_src.x > move_dst.x) move_dir += "L";
+      if (move_src.x < move_dst.x) move_dir += "R";
+      if (move_src.y > move_dst.y) move_dir += "U";
+      if (move_src.y < move_dst.y) move_dir += "D";
+      return { true, "Move " + move_dir };
     }
     return { true, "Move " + move };
   }
