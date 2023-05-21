@@ -187,7 +187,6 @@ Direction find_best_direction(int_loc src, int_loc dst) {
 
 
 std::string move_towards_spafa(Location src, Location dst) {
-  // return "LU";
 
   int src_x = (int)src.x, src_y = (int)src.y;
   int dst_x = (int)dst.x, dst_y = (int)dst.y;
