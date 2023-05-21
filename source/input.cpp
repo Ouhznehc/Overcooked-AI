@@ -156,7 +156,6 @@ static void update_static_lut() {
     for (int i = 0; i < width; i++) {
         for (int j = 0; j < height; j++) {
             switch (map[i][j]) {
-            case 's': static_lut["hot"].push_back(Location(i, j)); break;
             case 'c': static_lut["Chop"].push_back(Location(i, j)); break;
             case 'k': static_lut["sink"].push_back(Location(i, j)); break;
             case 'r': static_lut["clean_plate_location"].push_back(Location(i, j)); break;
@@ -169,6 +168,12 @@ static void update_static_lut() {
     }
     for (int i = 0; i < ingredient_count; i++) {
         static_lut[ingredient_box[i].name].push_back(ingredient_box[i].location);
+    }
+    for (int i = 0; i < entity_count; i++) {
+        if (entity[i].item[0] == "Pot")
+            static_lut["pot_place"].push_back(entity[i].location);
+        if (entity[i].item[0] == "Pan")
+            static_lut["pan_place"].push_back(entity[i].location);
     }
 }
 
@@ -197,7 +202,7 @@ static void update_order_lut() {
                 packed_task.push_back({ action::interact_with, "Pot", {"rice" } });
                 packed_task.push_back({ action::move_towards, "Pot", {"s_rice"} });
                 packed_task.push_back({ action::move_towards, "Plate", items });
-                packed_task.push_back({ action::move_towards, "hot", {""} });
+                packed_task.push_back({ action::move_towards, "pot_place", {""} });
             }
             else if (recipe == "s_fish") {
                 packed_task.push_back({ action::move_towards, "fish", {""} });
@@ -207,7 +212,7 @@ static void update_order_lut() {
                 packed_task.push_back({ action::move_towards, "Pan", {""} });
                 packed_task.push_back({ action::move_towards, "Pan", {"s_fish"} });
                 packed_task.push_back({ action::move_towards, "Plate",  items });
-                packed_task.push_back({ action::move_towards, "hot", {""} });
+                packed_task.push_back({ action::move_towards, "pan_place", {""} });
             }
             else {
                 std::cerr << "Unknown Recipe" << std::endl;
