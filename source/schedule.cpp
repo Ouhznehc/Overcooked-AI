@@ -32,11 +32,27 @@ static std::pair<Location, Location> fetch_task_dst() {
   Location cook_dst, wash_dst;
   std::string cook_object = cook_work.current_task[cook_work.task_cnt].object;
   std::string wash_object = wash_work.current_task[wash_work.task_cnt].object;
-  if (static_lut.find(cook_object) != static_lut.end()) cook_dst = static_lut.at(cook_object)[0];
-  else if (dynamic_lut.find(cook_object) != dynamic_lut.end()) cook_dst = dynamic_lut.at(cook_object)[0];
+  if (cook_object == "Plate") {
+
+    for (int i = 0; i < entity_count; i++) {
+      if (entity[i].item[0] == "Plate") {
+        int flag = 1;
+        auto items = cook_work.current_task[cook_work.task_cnt].item;
+        if (entity[i].item.size() < items.size() + 1) continue;
+        for (int j = 0; j < items.size(); j++) {
+          if (items[j] != entity[i].item[j + 1]) flag = 0;
+        }
+        if (flag) { cook_dst = entity[i].location; break; }
+      }
+    }
+  }
   else {
-    std::cerr << "cannot find dst: " << cook_object << std::endl;;
-    assert(0);
+    if (static_lut.find(cook_object) != static_lut.end()) cook_dst = static_lut.at(cook_object)[0];
+    else if (dynamic_lut.find(cook_object) != dynamic_lut.end()) cook_dst = dynamic_lut.at(cook_object)[0];
+    else {
+      std::cerr << "cannot find dst: " << cook_object << std::endl;;
+      assert(0);
+    }
   }
   if (static_lut.find(wash_object) != static_lut.end()) wash_dst = static_lut.at(wash_object)[0];
   else if (dynamic_lut.find(wash_object) != dynamic_lut.end()) wash_dst = dynamic_lut.at(wash_object)[0];
