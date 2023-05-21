@@ -103,12 +103,22 @@ static std::pair<task_t, task_t> allocate_task() {
 }
 
 std::string handle_task(task_t task, int id) {
+  bool flag = 0;
   std::string action;
   std::pair<bool, std::string> rc;
   switch (task.action) {
   case action::move_towards:
     // std::cerr << "player#" << id << " move_towards" << std::endl;
-    rc = move_towards_by_location(player[id].src, player[id].dst, id);
+    for (int i = 0; i < entity_count; i++) {
+      if (entity[i].item[0] == task.object && entity[i].item.size() >= task.item.size() + 1) {
+        flag = 1;
+        for (int j = 0; j < task.item.size();j++) {
+          if (entity[i].item[j + 1] != task.item[j]) flag = 0;
+        }
+      }
+    }
+    if (!flag) rc = { true, "Move " };
+    else rc = move_towards_by_location(player[id].src, player[id].dst, id);
     action = rc.second;
     break;
   case action::interact_with:
