@@ -20,6 +20,11 @@ int main() {
     for (int i = 0; i < totalFrame; i++) {
         bool skip = frame_read(i);
         if (skip) continue;
+        if (fund > 200) {
+            std::cout << "Frame " << i << "\n";
+            std::cout << "Move " << std::endl << "Move " << std::endl;
+            continue;
+        }
         update_dynamic_lut();
         /* 输出当前帧的操作，此处仅作示例 */
         std::cout << "Frame " << i << "\n";
@@ -28,8 +33,7 @@ int main() {
         auto player1_action = action.second;
         /* 合成一个字符串再输出，否则输出有可能会被打断 */
         std::string output = player0_action + "\n" + player1_action + "\n";
-        if (fund < 200) std::cout << output;
-        else std::cout << "Move " << std::endl << "Move " << std::endl;
+        std::cout << output;
 
         /* 不要忘记刷新输出流，否则游戏将无法及时收到响应 */
         std::cout.flush();
