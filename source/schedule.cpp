@@ -109,7 +109,7 @@ std::string handle_task(task_t task, int id) {
   switch (task.action) {
   case action::move_towards:
     // std::cerr << "player#" << id << " move_towards" << std::endl;
-    if (task.item[0] != "") {
+    if (task.item.size() && task.item[0] != "") {
       flag = 0;
       for (int i = 0; i < entity_count; i++) {
         if (entity[i].item[0] == task.object && entity[i].item.size() >= task.item.size() + 1) {
