@@ -219,7 +219,7 @@ static Location fetch_move_dst(Location dst) {
 static bool is_arive(Location src, Location dst, int id) {
   double hamilton_distance = std::fabs(src.x - dst.x) + std::fabs(src.y - dst.y);
   double hamilton_velocity = std::fabs(player[id].x_velocity) + std::fabs(player[id].y_velocity);
-  return std::fabs(src.x - dst.x) < 0.1 && std::fabs(src.y - dst.y) < 0.1;
+  return hamilton_distance < 0.05;
 }
 
 static std::string fetch_pick_direction(Location src, Location dst) {
