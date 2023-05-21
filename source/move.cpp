@@ -83,7 +83,7 @@ struct int_loc {
     return ValueMap[x][y];
   }
   bool isvalid() const {
-    return x < N && y < N && x >= 0 && y >= 0;
+    return x < width && y < height && x >= 0 && y >= 0;
   }
 };
 
