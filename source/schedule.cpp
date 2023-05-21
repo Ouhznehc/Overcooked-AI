@@ -33,7 +33,6 @@ static std::pair<Location, Location> fetch_task_dst() {
   std::string cook_object = cook_work.current_task[cook_work.task_cnt].object;
   std::string wash_object = wash_work.current_task[wash_work.task_cnt].object;
   if (cook_object == "Plate") {
-
     for (int i = 0; i < entity_count; i++) {
       if (entity[i].item[0] == "Plate") {
         int flag = 1;

@@ -28,7 +28,8 @@ int main() {
         auto player1_action = action.second;
         /* 合成一个字符串再输出，否则输出有可能会被打断 */
         std::string output = player0_action + "\n" + player1_action + "\n";
-        std::cout << output;
+        if (fund < 200) std::cout << output;
+        else std::cout << "Move " << std::endl << "Move " << std::endl;
 
         /* 不要忘记刷新输出流，否则游戏将无法及时收到响应 */
         std::cout.flush();
