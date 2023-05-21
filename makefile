@@ -28,11 +28,11 @@ MAP = maps/level4/level4-4.txt
 
 test: all
 	@clear
-	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l maps/level4/level4-3.txt -p build/main -c
+	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l ${MAP} -p build/main -c
 
 run:
 	@clear
-	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l maps/level3/level3-3.txt -c
+	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l ${MAP} -c
 
 fast_test: all
 	@clear
@@ -44,8 +44,8 @@ compile:
 
 strict_test: compile
 	@clear
-	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l maps/level3/level3-3.txt -p main -c
+	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l ${MAP} -p main -c
 
 strict_fast_test: compile
 	@clear
-	@../test/runner -l maps/level3/level3-3.txt -p main
+	@../test/runner -l ${MAP} -p main
