@@ -33,7 +33,7 @@ run:
 
 fast_test: all
 	@clear
-	@../test/runner -l maps/level4/level4-4.txt -p build/main
+	@../test/runner -l maps/level4/level4-1.txt -p build/main
 
 compile:
 	@find source -type f -name "*.cpp" -exec \
