@@ -43,7 +43,7 @@ void evaluate_map(int id) {
           ValueMap[x + dx[i]][y + dy[i]] += -inf;
         }
       }
-      else ValueMap[x][y] += -100 * inf;
+      else ValueMap[x][y] += -1000 * inf;
       if (map[x][y] == '_') {
         cliff_x = x;
         cliff_y = y;
@@ -53,8 +53,8 @@ void evaluate_map(int id) {
   player_x = (int)player[id].src.x;
   player_y = (int)player[id].src.y;
 
-  ValueMap[player_x][player_y] += -100 * inf;
-  ValueMap[cliff_x][cliff_y] += -100 * inf;
+  ValueMap[player_x][player_y] += -1000 * inf;
+  ValueMap[cliff_x][cliff_y] += -1000 * inf;
   for (int i = 0; i < 9; i++) {
     ValueMap[player_x + dx[i]][player_y + dy[i]] += -inf;
     ValueMap[cliff_x + dx[i]][cliff_y + dy[i]] += -inf;
