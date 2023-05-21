@@ -37,4 +37,4 @@ run:
 
 fast_test: all
 	@clear
-	@../test/runner -l maps/level3/level3-2.txt -p build/main
+	@../test/runner -l maps/level3/level3-3.txt -p build/main
