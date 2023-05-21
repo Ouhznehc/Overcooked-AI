@@ -9,7 +9,7 @@ int main() {
     std::cerr << std::nounitbuf;
     std::string s;
     std::stringstream ss;
-    int frame;
+    // int frame;
     init_read();
     init();
     /*
@@ -20,13 +20,14 @@ int main() {
     for (int i = 0; i < totalFrame; i++) {
         bool skip = frame_read(i);
         if (skip) continue;
-        if (fund > 200) {
-            std::cout << "Frame " << i << "\n";
-            std::cout << "Move " << std::endl << "Move " << std::endl;
-            std::cout.flush();
-            std::cerr.flush();
-            continue;
-        }
+        // if (fund > 200) {
+        //     std::cout << "Frame " << i << "\n";
+        //     std::string output = "Move " + "\n" + "Move " + "\n";
+        //     std::cout << output;
+        //     std::cout.flush();
+        //     std::cerr.flush();
+        //     continue;
+        // }
         update_dynamic_lut();
         /* 输出当前帧的操作，此处仅作示例 */
         std::cout << "Frame " << i << "\n";

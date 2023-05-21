@@ -3,7 +3,7 @@
 void init_read() {
     std::string s;
     std::stringstream ss;
-    int frame;
+    // int frame;
 
     /* 读取初始地图信息 */
     std::getline(std::cin, s, '\0');
@@ -61,7 +61,7 @@ void init_read() {
 bool frame_read(int now_frame) {
     std::string s;
     std::stringstream ss;
-    int frame;
+    // int frame;
     std::getline(std::cin, s, '\0');
     ss.str(s);
     /*

@@ -8,10 +8,6 @@ all:
 		cd build && cmake .. -DCMAKE_BUILD_TYPE=Debug; fi
 	@make -C build
 
-compile:
-	@find source -type f -name "*.cpp" -exec \
-    g++ -std=c++20 -fsanitize=address -O2 -I include -o main {} +
-
 clean:
 	@if [[ -d build ]]; then \
 		rm -r build; fi
@@ -38,3 +34,15 @@ run:
 fast_test: all
 	@clear
 	@../test/runner -l maps/level3/level3-3.txt -p build/main
+
+compile:
+	@find source -type f -name "*.cpp" -exec \
+    g++ -std=c++20 -fsanitize=address -Wall -O2 -I include -o main {} +
+
+strict_test: compile
+	@clear
+	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l maps/level3/level3-3.txt -p main -c
+
+strict_fast_test: compile
+	@clear
+	@../test/runner -l maps/level3/level3-3.txt -p main

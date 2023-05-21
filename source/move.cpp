@@ -51,53 +51,6 @@ void evaluate_map(int id) {
   }
 }
 
-std::pair<bool, std::string> alert_dest(int id, Location dst) {
-  double delta_x = dst.x - player[id].src.x;
-  double delta_y = dst.y - player[id].src.y;
-  bool x_flag, y_flag;
-  if (delta_x > 0 && player[id].x_velocity > 0) {
-    if (delta_x < player[id].x_velocity * player[id].x_velocity / ACCELARATE) x_flag = 1;
-    else x_flag = 0;
-  }
-  else if (delta_x < 0 && player[id].x_velocity < 0) {
-    if (-delta_x < player[id].x_velocity * player[id].x_velocity / ACCELARATE) x_flag = 1;
-    else x_flag = 0;
-  }
-  if (delta_y > 0 && player[id].y_velocity > 0) {
-    if (delta_y < player[id].y_velocity * player[id].y_velocity / ACCELARATE) y_flag = 1;
-    else y_flag = 0;
-  }
-  else if (delta_y < 0 && player[id].y_velocity < 0) {
-    if (-delta_y < player[id].y_velocity * player[id].y_velocity / ACCELARATE) y_flag = 1;
-    else y_flag = 0;
-  }
-  if (x_flag || y_flag) {
-    if (x_flag && y_flag) return { true, " " };
-    else if (x_flag) {
-      if (player[id].x_velocity > 0) {
-        if (dst.y > player[id].src.y) return { true, "LD" };
-        else return { true, "LU" };
-
-        if (dst.y > player[id].src.y) return { true, "RD" };
-        else return { true, "RU" };
-      }
-    }
-    else if (y_flag) {
-      if (player[id].y_velocity > 0) {
-        if (dst.x > player[id].src.x) return { true, "RU" };
-        else return { true, "LU" };
-      }
-      else {
-        if (dst.x > player[id].src.x) return { true, "RD" };
-        else return { true, "LD" };
-      }
-    }
-    else return { false, " " };
-  }
-  else return { false, " " };
-  return { false, " " };
-}
-
 struct int_loc {
   int x, y;
   int_loc(int _x = 0, int _y = 0) : x(_x), y(_y) {}
@@ -179,7 +132,7 @@ Direction find_best_direction(int_loc src, int_loc dst) {
   if (src == dst)
     return Direction_N;
   int_loc nxtloc = get_shortest_path(src, dst);
-  Direction res_direction = Direction_N;
+  // Direction res_direction = Direction_N;
   for (int dir = 0; dir < Direction_N; dir++)
     if (src[dir] == nxtloc) return (Direction)dir;
   return Direction_N;
@@ -218,7 +171,7 @@ static Location fetch_move_dst(Location dst) {
 
 static bool is_arive(Location src, Location dst, int id) {
   double hamilton_distance = std::fabs(src.x - dst.x) + std::fabs(src.y - dst.y);
-  double hamilton_velocity = std::fabs(player[id].x_velocity) + std::fabs(player[id].y_velocity);
+  // double hamilton_velocity = std::fabs(player[id].x_velocity) + std::fabs(player[id].y_velocity);
   return hamilton_distance < 0.3;
 }
 
