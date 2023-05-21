@@ -38,11 +38,11 @@ void evaluate_map(int id) {
   for (int x = 0; x < width; x++) {
     for (int y = 0; y < height; y++) {
       if (map[x][y] == '.') ValueMap[x][y] += -1;
-      else if (!is_around(x, y)) {
-        for (int i = 0; i < 9; i++) {
-          ValueMap[x + dx[i]][y + dy[i]] += -inf;
-        }
-      }
+      // else if (!is_around(x, y)) {
+      //   for (int i = 0; i < 9; i++) {
+      //     ValueMap[x + dx[i]][y + dy[i]] += -inf;
+      //   }
+      // }
       else ValueMap[x][y] += -100 * inf;
       if (map[x][y] == '_') {
         cliff_x = x;
