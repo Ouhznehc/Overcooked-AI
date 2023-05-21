@@ -33,7 +33,7 @@ void evaluate_map(int id) {
   for (int x = 0; x < width; x++) {
     for (int y = 0; y < height; y++) {
       if (map[x][y] == '.') ValueMap[x][y] += -1;
-      else ValueMap[x][y] += -inf;
+      else ValueMap[x][y] += -100 * inf;
       if (map[x][y] == '_') {
         cliff_x = x;
         cliff_y = y;
