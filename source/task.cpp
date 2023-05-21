@@ -6,7 +6,7 @@
 std::deque<task> task_pool;
 task player0_s_rice[6] = { {schedule_move_and_put_or_pick, "rice"}, {schedule_move_and_put_or_pick, "Pot"}, {schedule_interact, "rice"}, {schedule_move_and_put_or_pick, "Plate"}, {schedule_move_and_put_or_pick, "s_rice"}, {schedule_move_and_put_or_pick, "service_window"} };
 task player0_kelp[4] = { {schedule_move_and_put_or_pick, "kelp"}, {schedule_move_and_put_or_pick, "Plate"}, {schedule_move_and_put_or_pick, "Plate"}, {schedule_move_and_put_or_pick, "service_window"} };
-task player0_s_fish[9] = { {schedule_move_and_put_or_pick, "fish"} , {schedule_move_and_put_or_pick, "Chop"}, {schedule_interact, "fish"}, {schedule_move_and_put_or_pick, "c_fish"}, {schedule_move_and_put_or_pick, "Pan"}, {schedule_interact, "c_fish"}, {schedule_move_and_put_or_pick, "Plate"}, {schedule_move_and_put_or_pick, "s_fish"},  {schedule_move_and_put_or_pick, "service_window"} };
+task player0_s_fish[9] = { {schedule_move_and_put_or_pick, "fish"} , {schedule_move_and_put_or_pick, "Chop"}, {schedule_interact, "fish"}, {schedule_move_and_put_or_pick, "c_fish"}, {schedule_move_and_put_or_pick, "Pan"}, {schedule_interact, "c_fish"}, {schedule_move_and_put_or_pick, "Plate"}, {schedule_move_and_put_or_pick, "s_fish"} };
 task player1_task_pool[4] = { {schedule_move_and_put_or_pick, "DirtyPlates"}, {schedule_move_and_put_or_pick, "sink"}, {schedule_stop, " "}, {schedule_interact, "DirtyPlates"} };
 task* player0_task;
 task* player1_task;
