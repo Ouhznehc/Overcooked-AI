@@ -107,7 +107,7 @@ std::string handle_task(task_t task, int id) {
   std::string action;
   std::pair<bool, std::string> rc;
   if (task.item.size() && task.item[0] != "") {
-    if (task.object == "Pot" || task.object == "Pan" || task.object == "Plate") {
+    if (task.object == "Pot" || task.object == "Pan") {
       flag = 0;
       for (int i = 0; i < entity_count; i++) {
         if (entity[i].item[0] == task.object && entity[i].item.size() >= task.item.size() + 1) {
