@@ -5,10 +5,10 @@ static Location fetch_move_src(Location src) {
 }
 
 static Location fetch_move_dst(Location dst) {
-  if (dst.x == 0) return { dst.x + 1.4, dst.y + 0.5 };
-  if (dst.x == width - 1) return { dst.x - 0.4, dst.y + 0.5 };
-  if (dst.y == 0) return { dst.x + 0.5, dst.y + 1.4 };
-  if (dst.y == height - 1) return { dst.x + 0.5, dst.y - 0.4 };
+  if (dst.x == 0) return { dst.x + 1.5, dst.y + 0.5 };
+  if (dst.x == width - 1) return { dst.x - 0.5, dst.y + 0.5 };
+  if (dst.y == 0) return { dst.x + 0.5, dst.y + 1.5 };
+  if (dst.y == height - 1) return { dst.x + 0.5, dst.y - 0.5 };
   assert(0);
 }
 
