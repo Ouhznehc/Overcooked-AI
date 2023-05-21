@@ -20,5 +20,5 @@ std::pair<bool, std::string> interact_with_object(Location src, Location dst, st
       else return { true, "Interact " + interact_direction };
     }
   }
-  assert(0);
+  return { false, "Move " };
 }
