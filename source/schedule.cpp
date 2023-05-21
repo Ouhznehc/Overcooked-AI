@@ -110,16 +110,18 @@ std::string handle_task(task_t task, int id) {
   case action::move_towards:
     // std::cerr << "player#" << id << " move_towards" << std::endl;
     if (task.item.size() && task.item[0] != "") {
-      flag = 0;
-      for (int i = 0; i < entity_count; i++) {
-        if (entity[i].item[0] == task.object && entity[i].item.size() >= task.item.size() + 1) {
-          flag = 1;
-          for (int j = 0; j < task.item.size();j++) {
-            if (entity[i].item[j + 1] != task.item[j]) flag = 0;
+      if (task.object == "Pot" || task.object == "Pan") {
+        flag = 0;
+        for (int i = 0; i < entity_count; i++) {
+          if (entity[i].item[0] == task.object && entity[i].item.size() >= task.item.size() + 1) {
+            flag = 1;
+            for (int j = 0; j < task.item.size();j++) {
+              if (entity[i].item[j + 1] != task.item[j]) flag = 0;
+            }
           }
         }
       }
-      if (task.object == "Chop" && task.item[0] == "c_fish") flag = 1;
+      else flag = 1;
     }
     else flag = 1;
     if (!flag) rc = { true, "Move " };
