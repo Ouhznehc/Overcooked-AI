@@ -40,7 +40,7 @@ void evaluate_map(int id) {
       if (map[x][y] == '.') ValueMap[x][y] += -1;
       else if (map[x][y] == '*' && !is_around(x, y)) {
         for (int i = 0; i < 9; i++) {
-          ValueMap[x + dx[i]][y + dy[i]] += -inf;
+          ValueMap[x + dx[i]][y + dy[i]] += -100 * inf;
         }
       }
       else ValueMap[x][y] += -100 * inf;
