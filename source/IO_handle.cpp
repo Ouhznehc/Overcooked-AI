@@ -205,5 +205,5 @@ void init() {
     for (int i = 0; i < IngredientCount; i++) {
         LUT[Ingredient[i].name].push_back({ (double)Ingredient[i].x, (double)Ingredient[i].y });
     }
-    LUT["temp"].push_back({ 0, 1 });
+    LUT["temp"].push_back({ 9, 2 });
 }
