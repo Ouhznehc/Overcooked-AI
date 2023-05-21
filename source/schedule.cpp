@@ -35,13 +35,13 @@ static std::pair<Location, Location> fetch_task_dst() {
   if (static_lut.find(cook_object) != static_lut.end()) cook_dst = static_lut.at(cook_object)[0];
   else if (dynamic_lut.find(cook_object) != dynamic_lut.end()) cook_dst = dynamic_lut.at(cook_object)[0];
   else {
-    std::cerr << "cannot find dst" << std::endl;;
+    std::cerr << "cannot find dst: " << cook_object << std::endl;;
     assert(0);
   }
   if (static_lut.find(wash_object) != static_lut.end()) wash_dst = static_lut.at(wash_object)[0];
   else if (dynamic_lut.find(wash_object) != dynamic_lut.end()) wash_dst = dynamic_lut.at(wash_object)[0];
   else {
-    std::cerr << "cannot find dst" << std::endl;;
+    std::cerr << "cannot find dst: " << wash_object << std::endl;;
     assert(0);
   }
   return { cook_dst, wash_dst };
