@@ -106,24 +106,24 @@ std::string handle_task(task_t task, int id) {
   bool flag = 0;
   std::string action;
   std::pair<bool, std::string> rc;
-  switch (task.action) {
-  case action::move_towards:
-    // std::cerr << "player#" << id << " move_towards" << std::endl;
-    if (task.item.size() && task.item[0] != "") {
-      if (task.object == "Pot" || task.object == "Pan") {
-        flag = 0;
-        for (int i = 0; i < entity_count; i++) {
-          if (entity[i].item[0] == task.object && entity[i].item.size() >= task.item.size() + 1) {
-            flag = 1;
-            for (int j = 0; j < task.item.size();j++) {
-              if (entity[i].item[j + 1] != task.item[j]) flag = 0;
-            }
+  if (task.item.size() && task.item[0] != "") {
+    if (task.object == "Pot" || task.object == "Pan" || task.object == "Plate") {
+      flag = 0;
+      for (int i = 0; i < entity_count; i++) {
+        if (entity[i].item[0] == task.object && entity[i].item.size() >= task.item.size() + 1) {
+          flag = 1;
+          for (int j = 0; j < task.item.size();j++) {
+            if (entity[i].item[j + 1] != task.item[j]) flag = 0;
           }
         }
       }
-      else flag = 1;
     }
     else flag = 1;
+  }
+  else flag = 1;
+  switch (task.action) {
+  case action::move_towards:
+    // std::cerr << "player#" << id << " move_towards" << std::endl;
     if (!flag) rc = { true, "Move " };
     else rc = move_towards_by_location(player[id].src, player[id].dst, id);
     action = rc.second;
@@ -131,7 +131,8 @@ std::string handle_task(task_t task, int id) {
   case action::interact_with:
     // std::cerr << "player#" << id << " interact_with" << std::endl;
     player[id].status = work_status::busy;
-    rc = interact_with_object(player[id].src, player[id].dst, task.object, task.item, id);
+    if (!flag) rc = { true, "Move " };
+    else rc = interact_with_object(player[id].src, player[id].dst, task.object, task.item, id);
     action = rc.second;
     break;
   case action::lazy_around:

@@ -180,33 +180,33 @@ static void update_order_lut() {
         std::sort(total_order[i].recipe.begin(), total_order[i].recipe.end());
         for (auto recipe : total_order[i].recipe) {
             if (recipe == "fish" || recipe == "rice" || recipe == "kelp") {
-                packed_task.push_back({ action::move_towards, recipe, items });
+                packed_task.push_back({ action::move_towards, recipe, {""} });
                 packed_task.push_back({ action::move_towards, "Plate", items });
             }
             else if (recipe == "c_fish") {
-                packed_task.push_back({ action::move_towards, "fish", items });
-                packed_task.push_back({ action::move_towards, "Chop", items });
+                packed_task.push_back({ action::move_towards, "fish", {""} });
+                packed_task.push_back({ action::move_towards, "Chop", {""} });
                 packed_task.push_back({ action::interact_with, "Chop", {"fish"} });
                 packed_task.push_back({ action::move_towards, "Chop", {"c_fish"} });
                 packed_task.push_back({ action::move_towards, "Plate", items });
             }
             else if (recipe == "s_rice") {
-                packed_task.push_back({ action::move_towards, "rice", items });
-                packed_task.push_back({ action::move_towards, "Pot", items });
+                packed_task.push_back({ action::move_towards, "rice", {""} });
+                packed_task.push_back({ action::move_towards, "Pot", {""} });
                 packed_task.push_back({ action::interact_with, "Pot", {"rice" } });
                 packed_task.push_back({ action::move_towards, "Plate", items });
                 packed_task.push_back({ action::move_towards, "Pot", {"s_rice"} });
                 packed_task.push_back({ action::move_towards, "clean_plate_location", items });
             }
             else if (recipe == "s_fish") {
-                packed_task.push_back({ action::move_towards, "fish", items });
-                packed_task.push_back({ action::move_towards, "Chop", items });
+                packed_task.push_back({ action::move_towards, "fish", {""} });
+                packed_task.push_back({ action::move_towards, "Chop", {""} });
                 packed_task.push_back({ action::interact_with, "Chop", {"fish"} });
                 packed_task.push_back({ action::move_towards, "Chop", {"c_fish"} });
-                packed_task.push_back({ action::move_towards, "Pan", {"c_fish"} });
+                packed_task.push_back({ action::move_towards, "Pan", {""} });
                 packed_task.push_back({ action::move_towards, "Plate", items });
                 packed_task.push_back({ action::move_towards, "Pan", {"s_fish"} });
-                packed_task.push_back({ action::move_towards, "clean_plate_location", items });
+                packed_task.push_back({ action::move_towards, "clean_plate_location", {""} });
             }
             else {
                 std::cerr << "Unknown Recipe" << std::endl;
@@ -216,7 +216,7 @@ static void update_order_lut() {
         }
         assert(items == total_order[i].recipe);
         packed_task.push_back({ action::move_towards, "Plate", items });
-        packed_task.push_back({ action::move_towards, "service_window", items });
+        packed_task.push_back({ action::move_towards, "service_window", {""} });
         order_lut[total_order[i].recipe] = packed_task;
     }
     packed_task_t packed_task;
