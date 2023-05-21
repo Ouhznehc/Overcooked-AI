@@ -25,7 +25,7 @@ submit:
 
 test: all
 	@clear
-	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l maps/level4/level4-1.txt -p build/main -c
+	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l maps/level4/level4-2.txt -p build/main -c
 
 run:
 	@clear
@@ -33,7 +33,7 @@ run:
 
 fast_test: all
 	@clear
-	@../test/runner -l maps/level4/level4-1.txt -p build/main
+	@../test/runner -l maps/level4/level4-2.txt -p build/main
 
 compile:
 	@find source -type f -name "*.cpp" -exec \
