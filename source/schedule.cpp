@@ -109,14 +109,18 @@ std::string handle_task(task_t task, int id) {
   switch (task.action) {
   case action::move_towards:
     // std::cerr << "player#" << id << " move_towards" << std::endl;
-    for (int i = 0; i < entity_count; i++) {
-      if (entity[i].item[0] == task.object && entity[i].item.size() >= task.item.size() + 1) {
-        flag = 1;
-        for (int j = 0; j < task.item.size();j++) {
-          if (entity[i].item[j + 1] != task.item[j]) flag = 0;
+    if (task.item[0] != "") {
+      flag = 0;
+      for (int i = 0; i < entity_count; i++) {
+        if (entity[i].item[0] == task.object && entity[i].item.size() >= task.item.size() + 1) {
+          flag = 1;
+          for (int j = 0; j < task.item.size();j++) {
+            if (entity[i].item[j + 1] != task.item[j]) flag = 0;
+          }
         }
       }
     }
+    else flag = 1;
     if (!flag) rc = { true, "Move " };
     else rc = move_towards_by_location(player[id].src, player[id].dst, id);
     action = rc.second;
