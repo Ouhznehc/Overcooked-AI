@@ -202,7 +202,7 @@ static void update_order_lut() {
                 packed_task.push_back({ action::interact_with, "Pot", {"rice" } });
                 packed_task.push_back({ action::move_towards, "Pot", {"s_rice"} });
                 packed_task.push_back({ action::move_towards, "Plate", items });
-                packed_task.push_back({ action::move_towards, "pot_place", {""} });
+                packed_task.push_back({ action::move_towards, "pot_location", {""} });
             }
             else if (recipe == "s_fish") {
                 packed_task.push_back({ action::move_towards, "fish", {""} });
@@ -212,7 +212,7 @@ static void update_order_lut() {
                 packed_task.push_back({ action::move_towards, "Pan", {""} });
                 packed_task.push_back({ action::move_towards, "Pan", {"s_fish"} });
                 packed_task.push_back({ action::move_towards, "Plate",  items });
-                packed_task.push_back({ action::move_towards, "pan_place", {""} });
+                packed_task.push_back({ action::move_towards, "pan_location", {""} });
             }
             else {
                 std::cerr << "Unknown Recipe" << std::endl;
