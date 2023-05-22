@@ -171,9 +171,9 @@ static void update_static_lut() {
     }
     for (int i = 0; i < entity_count; i++) {
         if (entity[i].item[0] == "Pot")
-            static_lut["pot_place"].push_back(entity[i].location);
+            static_lut["pot_location"].push_back(entity[i].location);
         if (entity[i].item[0] == "Pan")
-            static_lut["pan_place"].push_back(entity[i].location);
+            static_lut["pan_location"].push_back(entity[i].location);
     }
 }
 
@@ -243,6 +243,7 @@ void init() {
     cook_work.player = wash_work.player = player::null;
     cook_work.task_cnt = wash_work.task_cnt = -1;
     player[0].status = player[1].status = work_status::leisure;
+    player[0].move_direction = player[1].move_direction = "";
 }
 
 void update_dynamic_lut() {

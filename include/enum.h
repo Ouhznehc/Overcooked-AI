@@ -67,6 +67,7 @@ typedef struct Order {
 typedef struct Player {
     Location src;
     Location dst;
+    Location fix;
     std::string move_direction;
     int status;
     double x_velocity; // 速度
