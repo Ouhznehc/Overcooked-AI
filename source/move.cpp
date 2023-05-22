@@ -60,7 +60,7 @@ std::pair<bool, std::string> move_towards_by_location(Location src, Location dst
     player[id].move_direction = move_direction;
     return { true, "Move " + move_direction };
   }
-  return { true, "Move " };
+  return { true, "Move  " };
 }
 
 std::pair<bool, std::string> lazy_around_dog(Location src, Location dst, int id) {
