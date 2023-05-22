@@ -51,7 +51,7 @@ std::pair<bool, std::string> move_towards_by_location(Location src, Location dst
   Location move_src = fetch_move_src(src, id);
   Location move_dst = fetch_move_dst(dst);
   if (id == 0) {
-    std::cerr << "src: " << src.x << " " << src.y << std::endl;
+    std::cerr << "src: " << src.x - 0.5 << " " << src.y - 0.5 << std::endl;
     std::cerr << "move_src: " << move_src.x << " " << move_src.y << std::endl;
     std::cerr << "dst: " << dst.x << " " << dst.y << std::endl;
     std::cerr << "move_dst: " << move_dst.x << " " << move_dst.y << std::endl;
