@@ -48,9 +48,10 @@ static std::string A_star_direction(Location src, Location dst) {
 std::pair<bool, std::string> move_towards_by_location(Location src, Location dst, int id) {
   std::string move_direction = "";
   std::string pick_direction = "";
-  std::cerr << dst.x << " " << dst.y << std::endl;
   Location move_src = fetch_move_src(src, id);
   Location move_dst = fetch_move_dst(dst);
+  std::cerr << "dst: " << dst.x << " " << dst.y << std::endl;
+  std::cerr << "move_dst: " << move_dst.x << " " << move_dst.y << std::endl;
   if (is_arive(move_src, move_dst, id)) {
     pick_direction = fetch_pick_direction(move_src, dst);
     return { false, "PutOrPick " + pick_direction };
