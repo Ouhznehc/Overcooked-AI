@@ -42,7 +42,7 @@ static std::string A_star_direction(Location src, Location dst) {
   if (src.x < dst.x) ret += "R";
   if (src.y > dst.y) ret += "U";
   if (src.y < dst.y) ret += "D";
-  assert(0);
+  return ret;
 }
 
 std::pair<bool, std::string> move_towards_by_location(Location src, Location dst, int id) {
