@@ -3,8 +3,8 @@
 #define LIMIT 0.4
 
 static Location fetch_move_src(Location src, int id) {
-  src = { src.x - 0.5, src.y - 0.5 };
   Location center = Location((int)src.x, (int)src.y);
+  src = { src.x - 0.5, src.y - 0.5 };
   double delta_x = std::fabs(src.x - center.x);
   double delta_y = std::fabs(src.y - center.y);
   if (delta_x < LIMIT && delta_y < LIMIT) {
