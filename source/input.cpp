@@ -175,7 +175,7 @@ static void update_static_lut() {
     for (int i = 0; i < width; i++) {
         for (int j = 0; j < height; j++) {
             if (map[i][j] == '*') {
-                if (hamilton_distance(Location(i, j), service_window) < hamilton_distance(plate_location, service_window)) plate_location = Location(i, j);
+                if (hamilton_distance(Location(i, j), service_window) <= hamilton_distance(plate_location, service_window)) plate_location = Location(i, j);
             }
         }
     }
