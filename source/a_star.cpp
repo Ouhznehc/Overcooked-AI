@@ -72,9 +72,6 @@ bool is_obstacle(int id, int direction, Point point) {
 }
 
 std::string fetch_first_move(int id, Point start, Node current) {
-  int start_x = start.x;
-  int start_y = start.y;
-  std::cerr << current.current.x << " " << current.current.y << " " << start.x << " " << start.y << std::endl;
   Node tmp = current;
   int first_move = -1;
   while (1) {
