@@ -115,7 +115,7 @@ std::string A_star_direction(int id, Location src, Location dst) {
   init_list();
   // 设置起始节点
   int start_x = start.x;
-  int start_y = destination.y;
+  int start_y = start.y;
 
   open_list[start_x][start_y] = { Point(start_x, start_y), Point(start_x, start_y), 0.0, 0.0, 0.0 };
 
