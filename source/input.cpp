@@ -159,9 +159,8 @@ static void update_static_lut() {
             case 'c': static_lut["Chop"].push_back(Location(i, j)); break;
             case 'k': static_lut["sink"].push_back(Location(i, j)); break;
             case 'r': static_lut["clean_plate_location"].push_back(Location(i, j)); break;
-            case 'p': static_lut["dirty_plate_location"].push_back(Location(i, j));
-                static_lut["plate_location"].push_back(Location(i, j - 1));
-                break;
+            case 'p': static_lut["dirty_plate_location"].push_back(Location(i, j)); break;
+            case 't': static_lut["plate_location"].push_back(Location(i, j + 1)); break;
             case '$': static_lut["service_window"].push_back(Location(i, j)); break;
             default:
                 break;
