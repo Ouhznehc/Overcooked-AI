@@ -124,7 +124,7 @@ std::string A_star_direction(int id, Location src, Location dst) {
 
     if (is_destination(current.current, destination)) {
       // 到达目的地，结束算法
-      std::cerr << "Destination reached." << std::endl;
+      // std::cerr << "Destination reached" << std::endl;
       return fetch_first_move(id, start, destination);
     }
 
@@ -150,7 +150,7 @@ std::string A_star_direction(int id, Location src, Location dst) {
   }
 
   // 无法找到路径
-  std::cerr << "No path found." << std::endl;
+  // std::cerr << "No path found." << std::endl;
   return " "; // 返回一个无效的方向值
 }
 
