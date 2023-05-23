@@ -19,6 +19,7 @@ static Location fetch_move_dst(Location dst) {
   if (dst.x == width - 1) return { dst.x - 1, dst.y };
   if (dst.y == 0) return { dst.x, dst.y + 1 };
   if (dst.y == height - 1) return { dst.x, dst.y - 1 };
+  std::cerr << dst.x << " " << dst.y << std::endl;
   assert(0);
 }
 
