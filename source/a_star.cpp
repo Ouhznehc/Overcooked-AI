@@ -59,14 +59,14 @@ bool is_obstacle(int id, int direction, Point point) {
 
   // if (player[id ^ 1].move_direction == " ") return false;
 
-  int player_direction = -1;
-  for (int i = 0; i < 8; i++) if (player[id ^ 1].move_direction == Direction[i]) player_direction = i;
+  // int player_direction = -1;
+  // for (int i = 0; i < 8; i++) if (player[id ^ 1].move_direction == Direction[i]) player_direction = i;
 
-  player_point = Point((int)player[id ^ 1].fix.x + dx[player_direction], (int)player[id ^ 1].fix.y + dy[player_direction]);
+  // player_point = Point((int)player[id ^ 1].fix.x + dx[player_direction], (int)player[id ^ 1].fix.y + dy[player_direction]);
 
-  if (point.x + dx[direction] == player_point.x && point.y == player_point.y) return true;
-  if (point.x == player_point.x && point.y + dy[direction] == player_point.y) return true;
-  if (point.x + dx[direction] == player_point.x && point.y + dy[direction] == player_point.y) return true;
+  // if (point.x + dx[direction] == player_point.x && point.y == player_point.y) return true;
+  // if (point.x == player_point.x && point.y + dy[direction] == player_point.y) return true;
+  // if (point.x + dx[direction] == player_point.x && point.y + dy[direction] == player_point.y) return true;
 
   return false;
 }
