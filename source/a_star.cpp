@@ -120,7 +120,7 @@ std::string A_star_direction(int id, Location src, Location dst) {
 
     if (close_list[current_x][current_y]) continue;
 
-    close_list[current_x][current_y] = true;
+    close_list[current_x][current_y] = 1;
 
     if (is_destination(current.current, destination)) {
       // 到达目的地，结束算法
