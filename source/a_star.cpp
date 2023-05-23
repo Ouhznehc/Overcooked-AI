@@ -77,7 +77,8 @@ std::string fetch_first_move(int id, Point start, Node current) {
   Node tmp = current;
   int first_move = -1;
   while (1) {
-    if (tmp.parent.x == start.x && tmp.current.y == start.y) {
+    if (tmp.current.x == start.x && tmp.current.y == start.y)break;
+    if (tmp.parent.x == start.x && tmp.parent.y == start.y) {
       for (int i = 0; i < 8; i++) {
         int new_x = start.x + dx[i];
         int new_y = start.y + dy[i];
