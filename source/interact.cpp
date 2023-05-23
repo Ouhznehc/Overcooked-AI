@@ -11,7 +11,7 @@ static std::string fetch_interact_direction(Location dst) {
 
 std::pair<bool, std::string> interact_with_object(Location src, Location dst, std::string object, std::vector<std::string> item, int id) {
   std::string interact_direction = fetch_interact_direction(dst);
-  auto rc = move_towards_by_location(src, dst, id);
+  auto rc = move_towards_by_location(src, dst, id, true);
   if (rc.first) return rc;
   if (object == "Pot" || object == "Pan") return { false, "Interact " + interact_direction };
   for (int i = 0; i < entity_count; i++) {

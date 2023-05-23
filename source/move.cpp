@@ -64,7 +64,7 @@ std::pair<bool, std::string> move_towards_by_location(Location src, Location dst
 }
 
 std::pair<bool, std::string> lazy_around_dog(Location src, Location dst, int id) {
-  auto rc = move_towards_by_location(src, dst, id, 1);
+  auto rc = move_towards_by_location(src, dst, id, true);
   if (rc.first) return { false, rc.second };
   else return { false, "Move " };
 }
