@@ -141,8 +141,8 @@ std::string handle_task(task_t task, int id) {
   switch (task.action) {
   case action::move_towards:
     // std::cerr << "player#" << id << " move_towards" << std::endl;
-    if (!flag) rc = { true, "Move " };
-    else rc = move_towards_by_location(player[id].src, player[id].dst, id);
+
+    rc = move_towards_by_location(player[id].src, player[id].dst, id, flag);
     action = rc.second;
     break;
   case action::interact_with:

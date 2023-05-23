@@ -37,7 +37,7 @@ static std::string fetch_pick_direction(Location src, Location dst) {
   assert(0);
 }
 
-std::pair<bool, std::string> move_towards_by_location(Location src, Location dst, int id) {
+std::pair<bool, std::string> move_towards_by_location(Location src, Location dst, int id, bool flag) {
   std::string move_direction = "";
   std::string pick_direction = "";
   Location move_src = fetch_move_src(src, id);
@@ -51,7 +51,8 @@ std::pair<bool, std::string> move_towards_by_location(Location src, Location dst
   if (is_arive(move_src, move_dst, id)) {
     pick_direction = fetch_pick_direction(move_src, dst);
     player[id].move_direction = " ";
-    return { false, "PutOrPick " + pick_direction };
+    if (flag) return { false, "PutOrPick " + pick_direction };
+    else return { true, "Move " };
   }
   move_direction = A_star_direction(id, move_src, move_dst);
   if (player[id].move_direction == move_direction) return { true, "Move " + move_direction };
