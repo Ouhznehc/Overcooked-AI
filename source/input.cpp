@@ -172,10 +172,11 @@ static void update_static_lut() {
     for (int i = 0; i < entity_count; i++) {
         if (entity[i].item[0] == "Pot") {
             static_lut["pot_location"].push_back(entity[i].location);
+        }
+        if (entity[i].item[0] == "Pan") {
+            static_lut["pan_location"].push_back(entity[i].location);
             static_lut["plate_location"].push_back({ entity[i].location.x, entity[i].location.y + 1 });
         }
-        if (entity[i].item[0] == "Pan")
-            static_lut["pan_location"].push_back(entity[i].location);
     }
 }
 
