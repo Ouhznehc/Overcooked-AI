@@ -51,7 +51,7 @@ std::pair<bool, std::string> move_towards_by_location(Location src, Location dst
     pick_direction = fetch_pick_direction(move_src, dst);
     return { false, "PutOrPick " + pick_direction };
   }
-  move_direction = A_star_direction(move_src, move_dst);
+  move_direction = A_star_direction(id, move_src, move_dst);
   if (player[id].move_direction == move_direction) return { true, "Move " + move_direction };
   if (player[id].x_velocity == 0 && player[id].y_velocity == 0) {
     player[id].move_direction = move_direction;
