@@ -170,7 +170,7 @@ static void update_static_lut() {
             }
         }
     }
-    Location plate_location = Location(-1, -1);
+    Location plate_location = Location(-1000, -1000);
     Location service_window = static_lut["service_window"][0];
     for (int i = 0; i < width; i++) {
         for (int j = 0; j < height; j++) {
