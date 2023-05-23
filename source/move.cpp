@@ -36,15 +36,6 @@ static std::string fetch_pick_direction(Location src, Location dst) {
   assert(0);
 }
 
-static std::string A_star_direction(Location src, Location dst) {
-  std::string ret = "";
-  if (src.x > dst.x) ret += "L";
-  if (src.x < dst.x) ret += "R";
-  if (src.y > dst.y) ret += "U";
-  if (src.y < dst.y) ret += "D";
-  return ret;
-}
-
 std::pair<bool, std::string> move_towards_by_location(Location src, Location dst, int id) {
   std::string move_direction = "";
   std::string pick_direction = "";
