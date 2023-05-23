@@ -170,8 +170,10 @@ static void update_static_lut() {
         static_lut[ingredient_box[i].name].push_back(ingredient_box[i].location);
     }
     for (int i = 0; i < entity_count; i++) {
-        if (entity[i].item[0] == "Pot")
+        if (entity[i].item[0] == "Pot") {
             static_lut["pot_location"].push_back(entity[i].location);
+            static_lut["plate_location"].push_back({ entity[i].location.x, entity[i].location.y + 1 });
+        }
         if (entity[i].item[0] == "Pan")
             static_lut["pan_location"].push_back(entity[i].location);
     }
@@ -194,6 +196,7 @@ static void update_order_lut() {
                 packed_task.push_back({ action::move_towards, "Chop", {""} });
                 packed_task.push_back({ action::interact_with, "Chop", {"fish"} });
                 packed_task.push_back({ action::move_towards, "Chop", {"c_fish"} });
+                packed_task.push_back({ action::move_towards, "Plate", items });
                 packed_task.push_back({ action::move_towards, "Plate", items });
             }
             else if (recipe == "s_rice") {
@@ -221,7 +224,7 @@ static void update_order_lut() {
             items.push_back(recipe);
         }
         assert(items == total_order[i].recipe);
-        packed_task.push_back({ action::move_towards, "Plate", items });
+        packed_task.push_back({ action::move_towards, "plate_location", items });
         packed_task.push_back({ action::move_towards, "service_window", {""} });
         order_lut[total_order[i].recipe] = packed_task;
     }
