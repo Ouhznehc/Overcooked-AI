@@ -8,7 +8,7 @@ struct Point {
 };
 
 struct Node {
-  Node* parent;
+  Point parent;
   Point current;
   double f;
   double g;
@@ -71,23 +71,22 @@ bool is_obstacle(int id, int direction, Point point) {
   return false;
 }
 
-std::string fetch_first_move(int id, Point start, Node* current) {
+std::string fetch_first_move(int id, Point start, Node current) {
   int start_x = start.x;
   int start_y = start.y;
-  Node* tmp = current;
+  Node tmp = current;
   int first_move = -1;
-  while (tmp) {
-    if (tmp->parent->current.x == start.x && tmp->parent->current.y == start.y) {
+  while (1) {
+    if (tmp.parent.x == start.x && tmp.current.y == start.y) {
       for (int i = 0; i < 8; i++) {
         int new_x = start.x + dx[i];
         int new_y = start.y + dy[i];
-        if (new_x == tmp->current.x && new_y == tmp->current.y)
+        if (new_x == tmp.current.x && new_y == tmp.current.y)
           first_move = i;
       }
       break;
     }
-    tmp = tmp->parent;
-    std::cerr << tmp->current.x << " " << tmp->current.y << " " << current->current.x << " " << current->current.y << std::endl;
+    tmp = open_list[tmp.parent.x][tmp.parent.y];
   }
   if (first_move == -1) return " ";
   else return Direction[first_move];
@@ -97,7 +96,7 @@ void init_list() {
   for (int i = 0; i < width; i++) {
     for (int j = 0; j < height; j++) {
       open_list[i][j].f = open_list[i][j].g = open_list[i][j].h = INFINITY;
-      open_list[i][j].parent = NULL;
+      open_list[i][j].parent.x = open_list[i][j].parent.y = -1;
       open_list[i][j].current.x = i;
       open_list[i][j].current.y = j;
 
@@ -115,7 +114,7 @@ std::string A_star_direction(int id, Location src, Location dst) {
   int start_x = start.x;
   int start_y = destination.y;
 
-  open_list[start_x][start_y] = { NULL, Point(start_x, start_y), 0.0, 0.0, 0.0 };
+  open_list[start_x][start_y] = { Point(start_x, start_y), Point(start_x, start_y), 0.0, 0.0, 0.0 };
 
   std::priority_queue<Node> pq;
   pq.push(open_list[start_x][start_y]);
@@ -134,7 +133,7 @@ std::string A_star_direction(int id, Location src, Location dst) {
     if (is_destination(current.current, destination)) {
       // 到达目的地，结束算法
       // std::cerr << "Destination reached" << std::endl;
-      return fetch_first_move(id, start, &current);
+      return fetch_first_move(id, start, current);
     }
 
     // 对当前节点的邻居节点进行处理
@@ -147,7 +146,7 @@ std::string A_star_direction(int id, Location src, Location dst) {
 
         if (g_new < open_list[new_x][new_y].g) {
           // 更新邻居节点的父节点和g值
-          open_list[new_x][new_y].parent = &current;
+          open_list[new_x][new_y].parent = Point(current_x, current_y);
           open_list[new_x][new_y].g = g_new;
           open_list[new_x][new_y].h = distance(Point(new_x, new_y), destination);
           open_list[new_x][new_y].f = open_list[new_x][new_y].g + open_list[new_x][new_y].h;
