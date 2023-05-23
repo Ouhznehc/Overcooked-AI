@@ -87,6 +87,7 @@ std::string fetch_first_move(int id, Point start, Node current) {
       break;
     }
     tmp = open_list[tmp.parent.x][tmp.parent.y];
+    std::cerr << tmp.current.x << " " << tmp.current.y << std::endl;
   }
   if (first_move == -1) return " ";
   else return Direction[first_move];
