@@ -1,5 +1,9 @@
 #include <input.h>
 
+static double hamilton_distance(Location src, Location dst) {
+    return std::fabs(src.x - dst.x) + std::fabs(src.y - dst.y);
+}
+
 void init_read() {
     std::string s;
     std::stringstream ss;
@@ -160,13 +164,23 @@ static void update_static_lut() {
             case 'k': static_lut["sink"].push_back(Location(i, j)); break;
             case 'r': static_lut["clean_plate_location"].push_back(Location(i, j)); break;
             case 'p': static_lut["dirty_plate_location"].push_back(Location(i, j)); break;
-            case 't': static_lut["plate_location"].push_back(Location(i, j + 1)); break;
             case '$': static_lut["service_window"].push_back(Location(i, j)); break;
             default:
                 break;
             }
         }
     }
+    Location plate_location = Location(-1, -1);
+    Location service_window = static_lut["service_window"][0];
+    for (int i = 0; i < width; i++) {
+        for (int j = 0; j < height; j++) {
+            if (map[i][j] == '*') {
+                if (hamilton_distance(Location(i, j), service_window) < hamilton_distance(plate_location, service_window)) plate_location = Location(i, j);
+            }
+        }
+    }
+    static_lut["plate_location"].push_back(plate_location);
+
     for (int i = 0; i < ingredient_count; i++) {
         static_lut[ingredient_box[i].name].push_back(ingredient_box[i].location);
     }
