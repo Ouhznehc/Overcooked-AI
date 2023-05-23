@@ -205,6 +205,8 @@ static void update_order_lut() {
             if (recipe == "fish" || recipe == "rice" || recipe == "kelp") {
                 packed_task.push_back({ action::move_towards, recipe, {""} });
                 packed_task.push_back({ action::move_towards, "Plate", items });
+                packed_task.push_back({ action::move_towards, "Plate", items });
+                packed_task.push_back({ action::move_towards, "plate_location", {""} });
             }
             else if (recipe == "c_fish") {
                 packed_task.push_back({ action::move_towards, "fish", {""} });
