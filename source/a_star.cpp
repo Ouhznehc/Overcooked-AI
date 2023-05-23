@@ -23,7 +23,7 @@ struct Node {
 int dx[8] = { 0, 0, -1, 1, -1, 1, -1, 1 };
 int dy[8] = { -1, 1, 0, 0, -1, -1, 1, 1 };
 
-std::string direction[8] = { "U", "D", "L", "R", "LU", "RU", "LD", "RD" };
+std::string Direction[8] = { "U", "D", "L", "R", "LU", "RU", "LD", "RD" };
 
 Node open_list[N][N];
 int close_list[N][N];
@@ -50,6 +50,19 @@ bool is_obstacle(int id, int direction, Point point) {
   if (map[point.x + dx[direction]][point.y + dy[direction]] == '*' || map[point.x + dx[direction]][point.y + dy[direction]] == '_') return true;
 
   Point player_point = Point((int)player[id ^ 1].fix.x, (int)player[id ^ 1].fix.y);
+
+
+
+  if (point.x + dx[direction] == player_point.x && point.y == player_point.y) return true;
+  if (point.x == player_point.x && point.y + dy[direction] == player_point.y) return true;
+  if (point.x + dx[direction] == player_point.x && point.y + dy[direction] == player_point.y) return true;
+
+  if (player[id ^ 1].move_direction == " ") return false;
+
+  int player_direction = -1;
+  for (int i = 0; i < 8; i++) if (player[id ^ 1].move_direction == Direction[i]) player_direction = i;
+
+  player_point = Point((int)player[id ^ 1].fix.x + dx[player_direction], (int)player[id ^ 1].fix.y + dy[player_direction]);
 
   if (point.x + dx[direction] == player_point.x && point.y == player_point.y) return true;
   if (point.x == player_point.x && point.y + dy[direction] == player_point.y) return true;
@@ -81,7 +94,7 @@ std::string fetch_first_move(int id, Point start, Point destination) {
     }
   }
   if (first_move == -1) return " ";
-  else return direction[first_move];
+  else return Direction[first_move];
 }
 
 void init_list() {
