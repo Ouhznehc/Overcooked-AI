@@ -23,7 +23,7 @@ submit:
 		https://exam.problemsolving.top:8085/api/v2/submission/lab
 	@rm -r ${TEMP}
 
-MAP = maps/level4/level4-2.txt
+MAP = maps/level1/level1-1.txt
 
 
 test: all
@@ -49,3 +49,7 @@ strict_test: compile
 strict_fast_test: compile
 	@clear
 	@../test/runner -l ${MAP} -p main
+
+xsz: compile
+	@clear
+	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l ${MAP} -p xsz -c
