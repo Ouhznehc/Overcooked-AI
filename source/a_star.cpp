@@ -47,7 +47,7 @@ bool is_obstacle(int id, int direction, Point point) {
 
   if (map[point.x + dx[direction]][point.y] != '.') return true;
   if (map[point.x][point.y + dy[direction]] != '.') return true;
-  if (map[point.x + dx[direction]][point.y + dy[direction]] == '.') return true;
+  if (map[point.x + dx[direction]][point.y + dy[direction]] != '.') return true;
 
   Point player_point = Point((int)player[id ^ 1].fix.x, (int)player[id ^ 1].fix.y);
 
