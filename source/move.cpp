@@ -25,10 +25,16 @@ static Location fetch_move_dst(Location dst) {
   assert(0);
 }
 
-static bool is_arive(Location src, Location dst, int id) {
-  double hamilton_distance = std::fabs(src.x - dst.x) + std::fabs(src.y - dst.y);
-  double hamilton_velocity = std::fabs(player[id].x_velocity) + std::fabs(player[id].y_velocity);
-  return hamilton_distance < 0.1;
+static bool is_almost_arive(Location src, Location dst) {
+  return src == dst;
+}
+static bool is_surely_arive(Location src, Location dst, int id) {
+  src = { src.x - 0.5, src.y - 0.5 };
+  double delta_x = std::fabs(src.x - dst.x);
+  double delta_y = std::fabs(src.y - dst.y);
+  double distance = std::sqrt(delta_x * delta_x + delta_y * delta_y);
+  bool is_stop = player[id].x_velocity == 0 && player[id].y_velocity == 0;
+  return distance < 0.3 && is_stop;
 }
 
 static std::string fetch_pick_direction(Location src, Location dst) {
@@ -49,6 +55,21 @@ static std::string change_move_direction(std::string prev, std::string next, int
   else return " ";
 }
 
+static std::string slightly_move_towards(Location src, Location dst, int id) {
+  src = { src.x - 0.5, src.y - 0.5 };
+  double delta_x = std::fabs(src.x - dst.x);
+  double delta_y = std::fabs(src.y - dst.y);
+  double distance = std::sqrt(delta_x * delta_x + delta_y * delta_y);
+  if (distance < 0.05) return " ";
+  std::string ret = "";
+  if (src.x > dst.x) ret += "L";
+  if (src.x < dst.x) ret += "R";
+  if (src.y > dst.y) ret += "U";
+  if (src.y < dst.y) ret += "D";
+  return ret;
+}
+
+
 std::pair<bool, std::string> move_towards_by_location(Location src, Location dst, int id, bool flag) {
   std::string move_direction = "";
   std::string pick_direction = "";
@@ -61,11 +82,14 @@ std::pair<bool, std::string> move_towards_by_location(Location src, Location dst
   //   std::cerr << "dst: " << dst.x << " " << dst.y << std::endl;
   //   std::cerr << "move_dst: " << move_dst.x << " " << move_dst.y << std::endl;
   // }
-  if (is_arive(move_src, move_dst, id)) {
-    pick_direction = fetch_pick_direction(move_src, dst);
-    player[id].move_direction = " ";
-    if (flag) return { false, "PutOrPick " + pick_direction };
-    else return { true, "Move " };
+  if (is_almost_arive(move_src, move_dst)) {
+    if (is_surely_arive(src, dst, id)) {
+      pick_direction = fetch_pick_direction(move_src, dst);
+      player[id].move_direction = " ";
+      if (flag) return { false, "PutOrPick " + pick_direction };
+      else return { true, "Move " };
+    }
+    else return { true, "Move " + slightly_move_towards(src, move_dst, id) };
   }
   move_direction = A_star_direction(id, move_src, move_dst);
   if (player[id].move_direction == move_direction) return { true, "Move " + move_direction };
