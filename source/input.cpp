@@ -265,6 +265,7 @@ void init() {
     cook_work.task_cnt = wash_work.task_cnt = -1;
     player[0].status = player[1].status = work_status::leisure;
     player[0].move_direction = player[1].move_direction = "";
+    player[0].margin = player[1].margin = false;
 }
 
 void update_dynamic_lut() {

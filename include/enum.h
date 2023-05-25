@@ -68,6 +68,7 @@ typedef struct Player {
     Location src;
     Location dst;
     Location fix;
+    bool margin;
     std::string move_direction;
     int status;
     double x_velocity; // 速度

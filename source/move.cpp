@@ -10,7 +10,9 @@ static Location fetch_move_src(Location src, int id) {
   if (delta_x < LIMIT && delta_y < LIMIT) {
     player[id].fix.x = center_src.x;
     player[id].fix.y = center_src.y;
+    player[id].margin = false;
   }
+  else player[id].margin = true;
   return player[id].fix;
 }
 
@@ -57,11 +59,11 @@ std::pair<bool, std::string> move_towards_by_location(Location src, Location dst
   }
   move_direction = A_star_direction(id, move_src, move_dst);
   if (player[id].move_direction == move_direction) return { true, "Move " + move_direction };
-  if (player[id].x_velocity == 0 && player[id].y_velocity == 0) {
+  if (player[id].x_velocity == 0 && player[id].y_velocity == 0 && !player[id].margin) {
     player[id].move_direction = move_direction;
     return { true, "Move " + move_direction };
   }
-  return { true, "Move  " };
+  return { true, "Move " + player[id].move_direction };
 }
 
 std::pair<bool, std::string> lazy_around_dog(Location src, Location dst, int id) {
