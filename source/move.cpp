@@ -1,6 +1,6 @@
 #include <move.h>
 
-#define LIMIT 0.1
+#define LIMIT 0
 
 static Location fetch_move_src(Location src, Location dst, int id) {
   Location center_src = Location((int)src.x, (int)src.y);
