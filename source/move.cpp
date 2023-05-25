@@ -8,6 +8,8 @@ static Location fetch_move_src(Location src, Location dst, int id) {
   src = { src.x - 0.5, src.y - 0.5 };
   double delta_x = std::fabs(src.x - center_src.x);
   double delta_y = std::fabs(src.y - center_src.y);
+  std::cerr << "center_src: " << center_src.x << " " << center_src.y << std::endl;
+  std::cerr << "center_dst: " << center_dsr.x << " " << center_dst.y << std::endl;
   if (center_src == center_dst) {
     assert(0);
     if (delta_x < LIMIT && delta_y < LIMIT) {
