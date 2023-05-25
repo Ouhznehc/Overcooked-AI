@@ -35,7 +35,6 @@ run:
 	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l ${MAP} -c
 
 fast_test: all
-	@clear
 	@../test/runner -l ${MAP} -p build/main
 
 compile:
