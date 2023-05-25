@@ -61,7 +61,7 @@ static std::string slightly_move_towards(Location src, Location dst, int id) {
   double delta_x = std::fabs(src.x - dst.x);
   double delta_y = std::fabs(src.y - dst.y);
   double distance = std::sqrt(delta_x * delta_x + delta_y * delta_y);
-  if (distance < 0.05) return " ";
+  if (distance < 0.01) return " ";
   std::string ret = "";
   if (src.x > dst.x) ret += "L";
   if (src.x < dst.x) ret += "R";
