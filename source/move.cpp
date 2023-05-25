@@ -33,8 +33,9 @@ static bool is_surely_arive(Location src, Location dst, int id) {
   double delta_x = std::fabs(src.x - dst.x);
   double delta_y = std::fabs(src.y - dst.y);
   double distance = std::sqrt(delta_x * delta_x + delta_y * delta_y);
+
   bool is_stop = player[id].x_velocity == 0 && player[id].y_velocity == 0;
-  return distance < 0.3 && is_stop;
+  return distance < 1.3 && is_stop;
 }
 
 static std::string fetch_pick_direction(Location src, Location dst) {
@@ -83,7 +84,6 @@ std::pair<bool, std::string> move_towards_by_location(Location src, Location dst
   //   std::cerr << "move_dst: " << move_dst.x << " " << move_dst.y << std::endl;
   // }
   if (is_almost_arive(move_src, move_dst, id)) {
-    assert(0);
     if (is_surely_arive(src, dst, id)) {
       assert(0);
       pick_direction = fetch_pick_direction(move_src, dst);
