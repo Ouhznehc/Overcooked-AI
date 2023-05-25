@@ -4,7 +4,7 @@
 
 static Location fetch_move_src(Location src, Location dst, int id) {
   Location center_src = Location((int)src.x, (int)src.y);
-  Location center_dst = Location((int)src.x, (int)src.y);
+  Location center_dst = Location((int)dst.x, (int)dst.y);
   src = { src.x - 0.5, src.y - 0.5 };
   double delta_x = std::fabs(src.x - center_src.x);
   double delta_y = std::fabs(src.y - center_src.y);
