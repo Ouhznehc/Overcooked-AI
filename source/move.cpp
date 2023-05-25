@@ -9,6 +9,7 @@ static Location fetch_move_src(Location src, Location dst, int id) {
   double delta_x = std::fabs(src.x - center_src.x);
   double delta_y = std::fabs(src.y - center_src.y);
   if (center_src == center_dst) {
+    assert(0);
     if (delta_x < LIMIT && delta_y < LIMIT) {
       player[id].fix.x = center_src.x;
       player[id].fix.y = center_src.y;
@@ -33,7 +34,7 @@ static Location fetch_move_dst(Location dst) {
 static bool is_arive(Location src, Location dst, int id) {
   double hamilton_distance = std::fabs(src.x - dst.x) + std::fabs(src.y - dst.y);
   // double hamilton_velocity = std::fabs(player[id].x_velocity) + std::fabs(player[id].y_velocity);
-  return hamilton_distance < 0.01;
+  return hamilton_distance < 0.2;
 }
 
 static std::string fetch_pick_direction(Location src, Location dst) {
