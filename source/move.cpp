@@ -46,8 +46,7 @@ static std::string change_move_direction(std::string prev, std::string next, int
     return next;
   }
   if (player[id].margin) return " ";
-  if (!player[id].margin) return prev;
-  assert(0);
+  else return prev;
 }
 
 std::pair<bool, std::string> move_towards_by_location(Location src, Location dst, int id, bool flag) {
