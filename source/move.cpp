@@ -1,24 +1,13 @@
 #include <move.h>
 
-#define LIMIT 0.3
+#define LIMIT 0.35
 
-static Location fetch_move_src(Location src, Location dst, int id) {
+static Location fetch_move_src(Location src, int id) {
   Location center_src = Location((int)src.x, (int)src.y);
-  Location center_dst = Location((int)dst.x, (int)dst.y);
   src = { src.x - 0.5, src.y - 0.5 };
   double delta_x = std::fabs(src.x - center_src.x);
   double delta_y = std::fabs(src.y - center_src.y);
-  // if (id == 0) {
-  //   std::cerr << "center_src: " << center_src.x << " " << center_src.y << std::endl;
-  //   std::cerr << "center_dst: " << center_dst.x << " " << center_dst.y << std::endl;
-  // }
-  if (center_src == center_dst) {
-    if (delta_x < LIMIT && delta_y < LIMIT) {
-      player[id].fix.x = center_src.x;
-      player[id].fix.y = center_src.y;
-    }
-  }
-  else {
+  if (delta_x < LIMIT && delta_y < LIMIT) {
     player[id].fix.x = center_src.x;
     player[id].fix.y = center_src.y;
   }
@@ -52,7 +41,7 @@ std::pair<bool, std::string> move_towards_by_location(Location src, Location dst
   std::string move_direction = "";
   std::string pick_direction = "";
   Location move_dst = fetch_move_dst(dst);
-  Location move_src = fetch_move_src(src, move_dst, id);
+  Location move_src = fetch_move_src(src, id);
 
   // if (id == 0) {
   //   std::cerr << "src: " << src.x - 0.5 << " " << src.y - 0.5 << std::endl;
