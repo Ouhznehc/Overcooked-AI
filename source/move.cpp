@@ -84,6 +84,7 @@ std::pair<bool, std::string> move_towards_by_location(Location src, Location dst
   // }
   if (is_almost_arive(move_src, move_dst)) {
     if (is_surely_arive(src, dst, id)) {
+      assert(0);
       pick_direction = fetch_pick_direction(move_src, dst);
       player[id].move_direction = " ";
       if (flag) return { false, "PutOrPick " + pick_direction };
