@@ -39,6 +39,16 @@ static std::string fetch_pick_direction(Location src, Location dst) {
   assert(0);
 }
 
+static std::string change_move_direction(std::string prev, std::string next, int id) {
+  assert(prev != next);
+  if (player[id].x_velocity == 0 && player[id].y_velocity == 0 && !player[id].margin) {
+    player[id].move_direction = next;
+    return next;
+  }
+  else if (player[id].margin) return " ";
+  else return prev;
+}
+
 std::pair<bool, std::string> move_towards_by_location(Location src, Location dst, int id, bool flag) {
   std::string move_direction = "";
   std::string pick_direction = "";
@@ -59,10 +69,7 @@ std::pair<bool, std::string> move_towards_by_location(Location src, Location dst
   }
   move_direction = A_star_direction(id, move_src, move_dst);
   if (player[id].move_direction == move_direction) return { true, "Move " + move_direction };
-  if (player[id].x_velocity == 0 && player[id].y_velocity == 0 && !player[id].margin) {
-    player[id].move_direction = move_direction;
-    return { true, "Move " + move_direction };
-  }
+  else return { true, "Move " + change_move_direction(player[id].move_direction, move_direction, id) };
   return { true, "Move " + player[id].move_direction };
 }
 
