@@ -25,7 +25,6 @@ submit:
 
 MAP = maps/level4/level4-3.txt
 
-
 test: all
 	@clear
 	@../test/QtOvercooked.app/Contents/MacOS/QtOvercooked -l ${MAP} -p build/main -c
