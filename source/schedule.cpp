@@ -109,6 +109,8 @@ static std::pair<task_t, task_t> allocate_task_by_location(Location cook_dst, Lo
   // else player[1].dst = cook_dst;
   // if (wash_work.player == player::player0) player[0].dst = wash_dst;
   // else player[1].dst = wash_dst;
+  player0_task = cook_work.current_task[cook_work.task_cnt];
+  player1_task = wash_work.current_task[wash_work.task_cnt];
   cook_work.player = player::player0; player[0].dst = cook_dst;
   wash_work.player = player::player1; player[1].dst = wash_dst;
   return { player0_task, player1_task };
