@@ -70,45 +70,47 @@ static double distance(Location a, Location b) {
 
 static std::pair<task_t, task_t> allocate_task_by_location(Location cook_dst, Location wash_dst) {
   task_t player0_task, player1_task;
-  if (player[0].status == work_status::busy) {
-    if (cook_work.player == player::player0) {
-      player0_task = cook_work.current_task[cook_work.task_cnt];
-      player1_task = wash_work.current_task[wash_work.task_cnt];
-    }
-    else {
-      player0_task = wash_work.current_task[wash_work.task_cnt];
-      player1_task = cook_work.current_task[cook_work.task_cnt];
-    }
-  }
-  else if (player[1].status == work_status::busy) {
-    if (cook_work.player == player::player1) {
-      player0_task = wash_work.current_task[wash_work.task_cnt];
-      player1_task = cook_work.current_task[cook_work.task_cnt];
-    }
-    else {
-      player0_task = cook_work.current_task[cook_work.task_cnt];
-      player1_task = wash_work.current_task[wash_work.task_cnt];
-    }
-  }
-  else {
-    if (distance(player[0].src, cook_dst) < distance(player[1].src, cook_dst)) {
-      cook_work.player = player::player0;
-      wash_work.player = player::player1;
-      player0_task = cook_work.current_task[cook_work.task_cnt];
-      player1_task = wash_work.current_task[wash_work.task_cnt];
-    }
-    else {
-      cook_work.player = player::player1;
-      wash_work.player = player::player0;
-      player1_task = cook_work.current_task[cook_work.task_cnt];
-      player0_task = wash_work.current_task[wash_work.task_cnt];
-    }
-  }
-  assert(cook_work.player != wash_work.player);
-  if (cook_work.player == player::player0) player[0].dst = cook_dst;
-  else player[1].dst = cook_dst;
-  if (wash_work.player == player::player0) player[0].dst = wash_dst;
-  else player[1].dst = wash_dst;
+  // if (player[0].status == work_status::busy) {
+  //   if (cook_work.player == player::player0) {
+  //     player0_task = cook_work.current_task[cook_work.task_cnt];
+  //     player1_task = wash_work.current_task[wash_work.task_cnt];
+  //   }
+  //   else {
+  //     player0_task = wash_work.current_task[wash_work.task_cnt];
+  //     player1_task = cook_work.current_task[cook_work.task_cnt];
+  //   }
+  // }
+  // else if (player[1].status == work_status::busy) {
+  //   if (cook_work.player == player::player1) {
+  //     player0_task = wash_work.current_task[wash_work.task_cnt];
+  //     player1_task = cook_work.current_task[cook_work.task_cnt];
+  //   }
+  //   else {
+  //     player0_task = cook_work.current_task[cook_work.task_cnt];
+  //     player1_task = wash_work.current_task[wash_work.task_cnt];
+  //   }
+  // }
+  // else {
+  //   if (distance(player[0].src, cook_dst) < distance(player[1].src, cook_dst)) {
+  //     cook_work.player = player::player0;
+  //     wash_work.player = player::player1;
+  //     player0_task = cook_work.current_task[cook_work.task_cnt];
+  //     player1_task = wash_work.current_task[wash_work.task_cnt];
+  //   }
+  //   else {
+  //     cook_work.player = player::player1;
+  //     wash_work.player = player::player0;
+  //     player1_task = cook_work.current_task[cook_work.task_cnt];
+  //     player0_task = wash_work.current_task[wash_work.task_cnt];
+  //   }
+  // }
+  // assert(cook_work.player != wash_work.player);
+  // if (cook_work.player == player::player0) player[0].dst = cook_dst;
+  // else player[1].dst = cook_dst;
+  // if (wash_work.player == player::player0) player[0].dst = wash_dst;
+  // else player[1].dst = wash_dst;
+  cook_work.player = player::player0; player[0].dst = cook_dst;
+  wash_work.player = player::player1; player[1].dst = wash_dst;
   return { player0_task, player1_task };
 }
 
