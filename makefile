@@ -23,7 +23,7 @@ submit:
 		https://exam.problemsolving.top:8085/api/v2/submission/lab
 	@rm -r ${TEMP}
 
-MAP = maps/level5/level5-2.txt
+MAP = maps/level5/level5-3.txt
 
 test: all
 	@clear
