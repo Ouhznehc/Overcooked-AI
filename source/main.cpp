@@ -9,7 +9,7 @@ int main() {
     std::cerr << std::nounitbuf;
     std::string s;
     std::stringstream ss;
-    // int frame;
+    //int frame;
     init_read();
     init();
     /*
@@ -37,7 +37,6 @@ int main() {
         /* 合成一个字符串再输出，否则输出有可能会被打断 */
         std::string output = player0_action + "\n" + player1_action + "\n";
         std::cout << output;
-
         /* 不要忘记刷新输出流，否则游戏将无法及时收到响应 */
         std::cout.flush();
         std::cerr.flush();
